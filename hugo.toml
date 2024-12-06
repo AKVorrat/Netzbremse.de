@@ -1,4 +1,31 @@
 baseURL = 'https://netzbremse.de/'
 languageCode = 'de'
 title = 'Netzbrmse'
-theme = 'netzbremse.de'
+
+# Required setting for Tailwind 
+# https://github.com/bep/hugo-starter-tailwind-basic
+[module]
+  [module.hugoVersion]
+    extended = false
+    min      = "0.112.0"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "hugo_stats.json"
+    target = "assets/watching/hugo_stats.json"
+
+[build]
+  writeStats = true
+  [[build.cachebusters]]
+    source = "assets/watching/hugo_stats\\.json"
+    target = "styles\\.css"
+  [[build.cachebusters]]
+    source = "(postcss|tailwind)\\.config\\.js"
+    target = "css"
+  [[build.cachebusters]]
+    source = "assets/.*\\.(js|ts|jsx|tsx)"
+    target = "js"
+  [[build.cachebusters]]
+    source = "assets/.*\\.(.*)$"
+    target = "$1"

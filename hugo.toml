@@ -1,0 +1,4 @@
+baseURL = 'https://netzbremse.de/'
+languageCode = 'de'
+title = 'Netzbrmse'
+theme = 'netzbremse.de'

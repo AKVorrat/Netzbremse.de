@@ -1,6 +1,30 @@
 baseURL = 'https://netzbremse.de/'
 languageCode = 'de'
-title = 'Netzbrmse'
+title = 'Netzbremse - Die Telekom drosselt das Netz!'
+
+[params]
+  shortTitle = 'Netzbremse'
+
+[params.hero] 
+  title = "Die Telekom drosselt das Netz. Tun wir etwas dagegen!"
+
+[params.footer]
+  imprintURL = "https://epicenter.works/kontakt"
+  privacyURL = "https://epicenter.works/datenschutz"
+
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '#'
+    weight = 10
+  [[menus.main]]
+    name = 'Products'
+    pageRef = '#'
+    weight = 20
+  [[menus.main]]
+    name = 'Services'
+    pageRef = '#'
+    weight = 30
 
 # Required setting for Tailwind 
 # https://github.com/bep/hugo-starter-tailwind-basic
@@ -14,6 +38,17 @@ title = 'Netzbrmse'
   [[module.mounts]]
     source = "hugo_stats.json"
     target = "assets/watching/hugo_stats.json"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "node_modules/@fontsource/roboto/files"
+    target = "static/fonts"
+    includeFiles = "roboto-latin-*.woff2"
+  [[module.mounts]]
+    source = "node_modules/@fontsource/source-code-pro/files"
+    target = "static/fonts"
+    includeFiles = "*-latin-*.woff2"
 
 [build]
   writeStats = true

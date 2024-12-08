@@ -11,6 +11,9 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@fontsource/roboto": "^5.1.0",
+    "@fontsource/source-code-pro": "^5.1.0",
+    "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.20",
     "daisyui": "^4.12.14",
     "postcss": "^8.4.49",

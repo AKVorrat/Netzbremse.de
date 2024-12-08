@@ -4,10 +4,10 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <header>
+  <header class="sticky top-0 z-30">
     {{ partial "header.html" . }}
   </header>
-  <main>
+  <main class="prose max-w-none">
     {{ block "main" . }}{{ end }}
   </main>
   <footer>

@@ -1,4 +1,5 @@
 {{ define "main" }}
+  {{ partial "hero.html" . }}
   {{ .Content }}
   {{ range site.RegularPages }}
     <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>

@@ -1,5 +1,15 @@
 {{ define "main" }}
   {{ partial "hero.html" . }}
 
-  {{ .Content }}
+  {{ $page := . }}
+
+  {{ range $i, $s := .Page.Params.sections }}
+    {{ partial "section" 
+      (dict 
+        "page" $page 
+        "section" $s 
+        "bgPrimary" (not (modBool $i 2))
+      ) 
+    }}
+  {{ end  }}
 {{ end }}

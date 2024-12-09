@@ -7,7 +7,6 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
   logo = "/img/icon-frame.png"
   logoAlt = "Magenta farbenes umgedrehtes 'T' mit quadratischer umrandung"
 
-
 [params.hero] 
   title = "Die Telekom drosselt das Netz. Tun wir etwas dagegen!"
 
@@ -20,6 +19,17 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
     name = 'Video'
     URL = '#video'
     weight = 10
+  [[menus.main]]
+    name = 'Newsletter'
+    URL = '#newsletter'
+    weight = 20
+  [[menus.main]]
+    name = 'Unterstützung'
+    URL = '#support-us'
+    weight = 30
+
+[markup.goldmark.renderer]
+  unsafe = true # Allow HTML in md files
 
 # Required setting for Tailwind 
 # https://github.com/bep/hugo-starter-tailwind-basic

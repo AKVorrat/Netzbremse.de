@@ -10,10 +10,11 @@ This page uses **TailwindCSS** and **daisyUI**
 
 ## TODO
 
-- Responsive NAV
-- Fonts
-- YouTube video with privacy wrapper
+- Youtube Video
+- Sections
+- Newsletter
+- Footer
 - OpenGraph
 - Social media sharing
-- Footer
-- YouTube Video
+- Logos Epicenter, GFF, VZBV
+- Spenden

@@ -1,0 +1,7 @@
+<section id="{{ .section.id }}" 
+  class="flex flex-col items-center py-10 px-4 {{ if .bgPrimary }} bg-primary text-primary-content {{end }}">
+  {{ if .section.title }}
+    <h2 class="{{ if .bgPrimary }} text-primary-content {{end }} mt-0">{{ .section.title }}</h2>
+  {{ end }}
+  {{ partial (printf "sections/%s" .section.type) (dict "page" .page "section" .section "bgPrimary" .bgPrimary) }}
+</section>

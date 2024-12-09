@@ -1,0 +1,25 @@
+<!-- 
+{{/* 
+    Usage: 
+    {{< youtube id="qtIqKaDlqXo" title=""  >}} 
+*/}}
+-->
+
+{{ $thumbnailFile := printf "/img/yt-thumbnails/%s.jpg" (.Get `id`) }}
+
+<lite-youtube 
+    videoid="{{ .Get `id` }}" 
+    {{ if (resources.GetMatch $thumbnailFile) }}
+        {{ $thumbnailUrl := ((resources.GetMatch $thumbnailFile).Fill `1200x675 jpg Smart q50`).RelPermalink | safeURL }}
+        style="{{ printf "background-image: url(%s);" $thumbnailUrl | safeCSS }} "
+    {{ end }}
+    {{ if (.Get `title`) }}
+        data-title="{{ .Get `title` }}"
+    {{ end }}
+    >
+    <a href="https://youtube.com/watch?v={{ .Get `id` }}" class="lty-playbtn" title="Play Video">
+        {{ if (.Get `title`) }}
+            <span class="lyt-visually-hidden">Play Video: {{ .Get `title` }}</span>
+        {{ end }}
+    </a>
+</lite-youtube>

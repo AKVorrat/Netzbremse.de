@@ -10,8 +10,9 @@
   <main class="prose max-w-none">
     {{ block "main" . }}{{ end }}
   </main>
-  <footer>
+  <footer class="bg-primary text-primary-content p-10">
     {{ partial "footer.html" . }}
   </footer>
+  {{ partialCached "js.html" . }}
 </body>
 </html>

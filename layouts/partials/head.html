@@ -2,5 +2,4 @@
 <meta name="viewport" content="width=device-width">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 <link rel="manifest" href="manifest.json" />
-{{ partialCached "head/css.html" . }}
-{{ partialCached "head/js.html" . }}
+{{ partialCached "css.html" . }}

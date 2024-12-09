@@ -4,6 +4,9 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
 
 [params]
   shortTitle = 'Netzbremse'
+  logo = "/img/icon-frame.png"
+  logoAlt = "Magenta farbenes umgedrehtes 'T' mit quadratischer umrandung"
+
 
 [params.hero] 
   title = "Die Telekom drosselt das Netz. Tun wir etwas dagegen!"
@@ -49,6 +52,14 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
     source = "node_modules/@fontsource/source-code-pro/files"
     target = "static/fonts"
     includeFiles = "*-latin-*.woff2"
+  [[module.mounts]]
+    source = "node_modules/@fontsource/source-code-pro/files"
+    target = "static/fonts"
+    includeFiles = "*-latin-*.woff2"
+  [[module.mounts]]
+    source = "node_modules/lite-youtube-embed/src/"
+    target = "assets/css/"
+    includeFiles = "lite-yt-embed.css"
 
 [build]
   writeStats = true

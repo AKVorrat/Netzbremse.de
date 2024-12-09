@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "devDependencies": {
+  "dependencies": {
+    "lite-youtube-embed": "^0.3.3",
     "@fontsource/roboto": "^5.1.0",
     "@fontsource/source-code-pro": "^5.1.0",
     "@tailwindcss/typography": "^0.5.15",

@@ -1,0 +1,15 @@
+FROM  hugomods/hugo AS builder
+
+WORKDIR /src
+
+COPY package*.json .
+
+RUN npm ci
+
+COPY . . 
+
+RUN hugo 
+
+FROM nginx AS run
+
+COPY --from=builder /src/public /usr/share/nginx/html 

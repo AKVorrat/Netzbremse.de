@@ -17,17 +17,9 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
 
 [menus]
   [[menus.main]]
-    name = 'Home'
-    pageRef = '#'
+    name = 'Video'
+    URL = '#video'
     weight = 10
-  [[menus.main]]
-    name = 'Products'
-    pageRef = '#'
-    weight = 20
-  [[menus.main]]
-    name = 'Services'
-    pageRef = '#'
-    weight = 30
 
 # Required setting for Tailwind 
 # https://github.com/bep/hugo-starter-tailwind-basic

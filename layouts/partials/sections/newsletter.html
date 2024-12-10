@@ -1,5 +1,5 @@
-<form class="join sm:join-horizontal join-vertical max-w-[65ch] w-full" action="/" method="GET">
-  <input class="input input-bordered join-item flex-grow" placeholder="Email" type="email" name="email" id="email" required />
-  <label class="label sr-only" for="email"></label>
+<form class="join sm:join-horizontal join-vertical max-w-[65ch] w-full" method="POST" action="{{ .page.Site.Params.newsletter.subscribeURL }}">
+  <input class="input input-bordered join-item flex-grow" placeholder="Email" type="email" name="feld_email" id="feld_email" required />
+  <label class="label sr-only" for="feld_email"></label>
   <input class="btn btn-primary join-item font-normal text-base" type="submit" sumbin value="Newsletter abonieren" />
 </form>

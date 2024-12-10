@@ -13,7 +13,7 @@ Renders a menu for the given menu ID.
 {{- with index site.Menus $menuID }}
   <nav class="navbar shadow-xl flex bg-base-100 text-primary">
     <a class="btn btn-ghost text-xl flex flex-row align-middle" href="/">
-      <img src="{{ $page.Site.Params.logo }}" alt="{{ $page.Site.Params.logoAlt }}" class="h-8 w-8 mr-1">
+      <img src="{{ ((resources.GetMatch $page.Site.Params.logo).Fit `128x128 png Smart`).RelPermalink | safeURL  }}" alt="{{ $page.Site.Params.logoAlt }}" class="h-8 w-8">
       {{ $page.Site.Params.shortTitle }}
     </a>
 

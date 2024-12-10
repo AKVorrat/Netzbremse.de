@@ -4,7 +4,7 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
 
 [params]
   shortTitle = 'Netzbremse'
-  logo = "/img/icon-frame.png"
+  logo = "/img/icon-funnel.png"
   logoAlt = "Magenta farbenes umgedrehtes 'T' mit quadratischer umrandung"
 
 [params.hero] 
@@ -13,6 +13,9 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
 [params.footer]
   imprintURL = "https://epicenter.works/kontakt"
   privacyURL = "https://epicenter.works/datenschutz"
+
+[params.newsletter] 
+  subscribeURL = "https://secure.dialog-mail.com/s/dyXMJ"
 
 [menus]
   [[menus.main]]

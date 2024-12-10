@@ -1,0 +1,39 @@
+@import "fonts.css";
+@import "lite-yt-embed.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav {
+    font-family: "Source Code Pro";
+    font-weight: 600;
+}
+
+.prose {
+    --tw-prose-invert-bullets: "#ffffff";
+    --tw-prose-invert-body: "#ffffff";
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+}
+
+.prose .icon {
+}

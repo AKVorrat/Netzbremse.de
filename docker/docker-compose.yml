@@ -1,0 +1,8 @@
+services:
+  site: 
+    image: ghcr.io/t-muehlberger/netzbremse.de
+    build:
+      context: "../."
+      dockerfile: "docker/dockerfile"
+    ports: 
+      - "127.0.0.1:8080:80"

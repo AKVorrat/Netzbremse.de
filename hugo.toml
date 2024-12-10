@@ -1,0 +1,82 @@
+baseURL = 'https://netzbremse.de/'
+languageCode = 'de'
+title = 'Netzbremse - Die Telekom drosselt das Netz!'
+
+[params]
+  shortTitle = 'Netzbremse'
+  logo = "/img/icon-funnel.png"
+  logoAlt = "Magenta farbenes umgedrehtes 'T' mit quadratischer umrandung"
+
+[params.hero] 
+  title = "Die Telekom drosselt das Netz. Tun wir etwas dagegen!"
+
+[params.footer]
+  imprintURL = "https://epicenter.works/kontakt"
+  privacyURL = "https://epicenter.works/datenschutz"
+
+[params.newsletter] 
+  subscribeURL = "https://secure.dialog-mail.com/s/dyXMJ"
+
+[menus]
+  [[menus.main]]
+    name = 'Video'
+    URL = '#video'
+    weight = 10
+  [[menus.main]]
+    name = 'Newsletter'
+    URL = '#newsletter'
+    weight = 20
+  [[menus.main]]
+    name = 'Unterstützung'
+    URL = '#support-us'
+    weight = 30
+
+[markup.goldmark.renderer]
+  unsafe = true # Allow HTML in md files
+
+# Required setting for Tailwind 
+# https://github.com/bep/hugo-starter-tailwind-basic
+[module]
+  [module.hugoVersion]
+    extended = false
+    min      = "0.112.0"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "hugo_stats.json"
+    target = "assets/watching/hugo_stats.json"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "node_modules/@fontsource/roboto/files"
+    target = "static/fonts"
+    includeFiles = "roboto-latin-*.woff2"
+  [[module.mounts]]
+    source = "node_modules/@fontsource/source-code-pro/files"
+    target = "static/fonts"
+    includeFiles = "*-latin-*.woff2"
+  [[module.mounts]]
+    source = "node_modules/@fontsource/source-code-pro/files"
+    target = "static/fonts"
+    includeFiles = "*-latin-*.woff2"
+  [[module.mounts]]
+    source = "node_modules/lite-youtube-embed/src/"
+    target = "assets/css/"
+    includeFiles = "lite-yt-embed.css"
+
+[build]
+  writeStats = true
+  [[build.cachebusters]]
+    source = "assets/watching/hugo_stats\\.json"
+    target = "styles\\.css"
+  [[build.cachebusters]]
+    source = "(postcss|tailwind)\\.config\\.js"
+    target = "css"
+  [[build.cachebusters]]
+    source = "assets/.*\\.(js|ts|jsx|tsx)"
+    target = "js"
+  [[build.cachebusters]]
+    source = "assets/.*\\.(.*)$"
+    target = "$1"

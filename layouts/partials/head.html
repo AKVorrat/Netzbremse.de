@@ -2,4 +2,10 @@
 <meta name="viewport" content="width=device-width">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 <link rel="manifest" href="manifest.json" />
+
+<!-- Pre-Loading only the most used fonts -->
+<link rel="preload" href="/fonts/source-code-pro-latin-600-normal.woff2" as="font" type="font/woff2" />
+<link rel="preload" href="/fonts/roboto-latin-300-normal.woff2" as="font" type="font/woff2" />
+<link rel="preload" href="/fonts/roboto-latin-400-normal.woff2" as="font" type="font/woff2" />
+
 {{ partialCached "css.html" . }}

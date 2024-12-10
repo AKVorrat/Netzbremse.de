@@ -10,11 +10,8 @@ This page uses **TailwindCSS** and **daisyUI**
 
 ## TODO
 
-- Youtube Video
-- Sections
+- Favicon
+- Share buttons
 - Newsletter
-- Footer
 - OpenGraph
-- Social media sharing
-- Logos Epicenter, GFF, VZBV
 - Spenden

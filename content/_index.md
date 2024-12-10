@@ -6,14 +6,14 @@ params:
   sections: 
   - type: video
     id: video
-    title: "Kurze erklärung!"
+    title: "Kurze Erklärung!"
     youtubeID: "X9SVf57ii1w"
     youtubeTitle: "Uploadfilter Erklärt"
   - type: content
     id: explainer
     title: "Worum geht es?"
     content: |    
-      Die Verbraucherzentrale Bundesverband, die Gesellschaft für Freiheitsrechte und Epicenter.works gehen zur Bundesnetzagentur und klagen gegen die unfaire Geschäftspraxis der Telekom. 
+      Die [Verbraucherzentrale Bundesverband](https://www.vzbv.de/), die [Gesellschaft für Freiheitsrechte](https://freiheitsrechte.org/) und [Epicenter.works](https://freiheitsrechte.org/) gehen zur Bundesnetzagentur und klagen gegen die unfaire Geschäftspraxis der Telekom. 
       
       Der Konzern verbindet sein Netz nämlich nur zu den Inhaltsanbietern, die ihm extra Geld dafür zahlen. Wenn sich deine Lieblingswebsite das nicht leisten kann, dann laden deren Inhalte nur langsam oder gar nicht. 
       
@@ -26,6 +26,7 @@ params:
     title: "Bist du Kunde der Deutschen Telekom?"
     content: |
       Bist du Telekom Kundin oder Kunde und willst helfen? Kennst du dich mit Netzwerktechnik aus und hast Messdaten, die für uns relevant sein könnten? Hast du Erfahrungen mit Zusammenschaltungsverträgen mit der Telekom und willst vertraulich mit uns sprechen?
+      {{< chat msg="Hallo, ich bin Kunde der Telekom und kenne das Problem nur zu gut :(" >}}
   - type: about-us
     id: about-us
     title: "Wer sind wir?"

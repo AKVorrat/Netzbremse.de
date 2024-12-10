@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+	<link rel="shortcut icon" href="https://secure.dialog-mail.com/_img/nixgibts.ico" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="language" content="de" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="copyright" content="Dialog-Mail eMarketing Systems GmbH, (c) 2002-2024" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>netzbremse.de</title>
+	<script>
+	function showReqiredField(e, txt) {
+		e.parentElement.classList.add("missing_req");
+		if(e.type === "text") {
+			e.focus();
+		}
+		e.onblur = function() {
+			closeErrorMessage();
+		}
+		const newDiv = document.createElement("div");
+		newDiv.className = "errmsgdiv";
+		newDiv.id = "reqInfoMsg";
+		newDiv.setAttribute("role", "alert")
+		newDiv.onclick = closeErrorMessage;
+		newDiv.innerHTML = '<div class="text"><span style="font-size: 80%; color: #ffffff">' + txt + '</span></div>';
+		e.parentElement.appendChild(newDiv);
+		if(e.type === "radio" || e.type == "checkbox") {
+			let rect = cumulativeOffset(e);
+			newDiv.style.top = (rect.top + 10) + "px";
+		}
+	}
+	function closeErrorMessage() {
+		if(document.getElementById("reqInfoMsg")) {
+			document.getElementById("reqInfoMsg").outerHTML = "";
+		}
+	}
+	function checkForm() {
+		document.getElementById("alertspan").style.display = "none";
+		closeErrorMessage();
+		let old_req_elements = document.getElementsByClassName('missing_req');
+		while(old_req_elements.length > 0) {
+			old_req_elements[0].classList.remove("missing_req");
+		}
+		var numberPattern = new RegExp("^-?[0-9]+$");
+
+		if(document.getElementById("dmgeb_datum") && document.getElementById("dmgeb_datum").value != "") {
+			let temp_geb_date = document.getElementById("dmgeb_datum").value;
+			if(isValidDate(temp_geb_date, 1) === false) {
+				showReqiredField(document.form1.feld_geb_datum, "Bitte geben Sie ein g\u00fcltiges Datum f\u00fcr dieses Feld ein!");
+				return false;
+			}
+		}
+		if(document.getElementById("ds_cb") ) {
+			document.getElementById("ds_cb").onclick = closeErrorMessage;
+		}
+		if(document.form1.feld_vorname.value == "") {
+			showReqiredField(document.form1.feld_vorname, "Das Feld  'Vorname' muss ausgef\u00fcllt werden!");
+			return false;
+		}
+		if(document.form1.feld_nachname.value == "") {
+			showReqiredField(document.form1.feld_nachname, "Das Feld  'Nachname' muss ausgef\u00fcllt werden!");
+			return false;
+		}
+		if(document.form1.feld_email.value == "") {
+			showReqiredField(document.form1.feld_email, "Das Feld  'E-Mail' muss ausgef\u00fcllt werden!");
+			return false;
+		}
+		if (!isValidEmail(document.form1.feld_email.value) ) {
+			showReqiredField(document.form1.feld_email, "Bitte kontrollieren Sie Ihre E-Mail-Adresse!");
+			return false;
+		}
+
+		if(document.getElementById("ds_cb") ) {
+			/* datenschutz */
+			var dse_mand = 1;
+			if(dse_mand === 1 && document.getElementById("ds_cb").checked === false) {
+				document.getElementById("dsecbspan").classList.add("missing_req");
+				showReqiredField(document.getElementById("ds_cb"), "Bitte stimmen Sie den Datenschutz-Bedingungen zu!");
+				return false;
+			}
+			else {
+				document.getElementById("dsecbspan").style.backgroundColor = "";
+			}
+			document.getElementById("dsv_reply").value = document.getElementById("ds_cb").checked === false ? "0" : "1";
+		}
+
+		var customerRet = customerFunction();
+		if(customerRet === false) {
+			return false;
+		}
+		return true;
+	}
+	function isValidEmail(str) {
+		var regx = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[^\.!#$%&'*+\/=?^`{|}~\s]+(\.[^!#$%&'*+\/=?^`.{|}~\s]+)+$/;
+		return regx.test(str);
+	}
+	function isValidDate(d, pastOnly) {
+		d = d.trim();
+		if(d.length === 0) {
+			return false;
+		}
+		let aDate = d.split('.');
+		if(aDate.length != 3) {
+			return false;
+		}
+		let cmpDate = new Date(aDate[2], aDate[1]-1, aDate[0]);
+		let ret = (cmpDate.getDate() == aDate[0] && cmpDate.getMonth()+1 == aDate[1] && cmpDate.getFullYear() == aDate[2]);
+
+		if(ret === false || typeof pastOnly === "undefined") {
+			return ret;
+		}
+		let now = new Date();
+		return (cmpDate.getTime() < now.getTime() );
+	}
+	function preventReturnSubmit(evt) {
+		// prevent the form from submitting by (accidentally) hitting the ENTER-key
+		var evt = (evt) ? evt : ((event) ? event : null);
+		var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+		if ((evt.keyCode == 13) && (node.type == "text")) { return false; }
+	}
+	function cumulativeOffset(element) {
+		let top = 0, left = 0;
+		do {
+			top += element.offsetTop  || 0;
+			left += element.offsetLeft || 0;
+			element = element.offsetParent;
+		} while(element);
+
+		return {
+			top: top,
+			left: left
+		};
+	}
+	document.onkeypress = preventReturnSubmit;
+
+function customerFunction() {
+}
+</script>
+
+
+	<script>
+		let counter = 3;
+		let intervalID;
+		let unsublink = "";
+		window.onload = function() {
+			let fp = 1;
+			if((fp === 2 || fp === 4) && document.getElementById("unsubscribeCounter")) {
+				if(document.getElementById("unsubscribeLink") ) {
+					document.getElementById("unsubscribeLink").classList.add("disabled");
+				}
+				intervalID = setInterval(setCounter, 1000);
+				document.getElementById("unsubscribeCounter").innerHTML = "("+ counter +")";
+			}			
+		}
+		function setCounter() {
+			--counter;
+			document.getElementById("unsubscribeCounter").innerHTML = "("+ counter +")";
+			if(counter === 0) {
+				clearInterval(intervalID);
+				setTimeout(function() {
+					document.getElementById("unsubscribeCounter").innerHTML = "";
+					if(document.getElementById("unsubscribeLink") ) {
+						let a = document.getElementById("unsubscribeLink"); 
+						unsublink = unsublink.replace(/\|/g, ".");
+						unsublink = unsublink.replace(/\*/g, "/");
+						a.setAttribute("href", unsublink);
+						a.classList.remove("disabled");
+					}
+				}, 1000);
+			}
+		}
+	</script>
+
+
+<style type="text/css">
+	.dm-page-container {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	.dm-page-container-table {
+		box-sizing: border-box !important;
+		max-width: 600px;
+		min-width: 350px;
+		border: 1px solid #666666;
+		margin: 0 auto;
+	}
+	.dm-page-container *{
+		box-sizing: border-box !important;
+	}
+	.dm-page-container img{
+		max-width: 100%;
+	}
+
+	.dm-page-wrapper {
+		padding: 0 8px;
+		width: 100%
+	}
+
+	.dm-input-group, .dm-buttons-group {
+		margin-bottom: 1rem;
+	}
+
+    .text-truncate {
+        display: inline-block;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+	@media screen and (min-width: 600px) {
+		.dm-input-group {
+			display: flex;
+			align-items: center;
+		}
+		.dm-input-group .dm-label{
+			flex: 0 180px;
+			padding-right:10px;
+			overflow: hidden;
+		}
+		.dm-input-group .dm-label label{
+			display: block;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		.dm-input-group .dm-input{
+			flex: 1;
+		}
+		.dm-input-group .dm-input .form_fields{
+			flex: 0 0 350px;
+		}
+	}
+	@media screen and (max-width: 599px) {
+		.dm-input-group .dm-input .form_fields{
+			flex: 1 1 350px;
+		}
+	}
+
+	.dm-input-group .dm-input{
+		display: flex;
+		align-items: center;
+	}
+
+	#customer_banner {
+		max-width: 100%;
+	}
+
+input[type="text"], select, textarea {
+	background-color: #FFFFFF;
+	border: none;
+	display: inline-block;
+	flex-grow: 1;
+	width:100%;
+}
+#show_ds p {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 15px;
+}
+.readonlyInput {
+	color: #bbbbbb;
+}
+.missing_req {
+	background-image: url("https://secure.dialog-mail.com/_img/icons2019/allgemein/rufzeichen.png");
+	background-position: right 2px center;
+	background-repeat: no-repeat;
+}
+.form_fields {
+	background-color: #FFFFFF;
+	border: 1px solid #ced4da;
+	padding: 3px 20px 3px 2px;
+	display: flex;
+	justify-content: stretch;
+}
+.form_fields input {
+	outline: none;
+}
+.b-1 {
+	border: 1px solid #D3D3D3 !important;
+}
+#ds_cb {
+	margin: 0;
+}
+#dsecbspan.missing_req {
+	outline: 3px solid #be0027;
+	background-color: #be0027;
+}
+.errmsgdiv {
+	background-color: #be0027;
+	color: #ffffff;
+	display: block;
+	position: absolute;
+	padding: 4px;
+	margin-top: 25px;
+	border-radius: 3px;
+}
+.errmsgdiv:before{
+	position: absolute;
+	height: 0;
+	width: 0;
+	top: -10px;
+	left: 5px;
+	border: 5px solid transparent;
+	border-bottom-color: #be0027;
+	content: "";
+}
+.errmsgdivcaptcha {
+	background-color: #be0027;
+	color: #ffffff;
+	padding: 4px;
+	border-radius: 3px;
+	margin-top: 10px;
+}
+a.disabled {
+	opacity: 0.45;
+	pointer-events: none;
+}
+#unsubscribeCounter, #dataChangeCounter {
+	padding: 0 5px;
+}
+.pref {
+	background-color: #ced4da;
+	color:#000000;
+	padding: 6px 12px;
+	border: 1px solid #bec4c9;
+	cursor: pointer;
+}
+.pref.disabled {
+	cursor: default !important;
+	color: #777777;
+}
+</style>
+
+	<link rel="stylesheet" media="all" type="text/css" href="https://secure.dialog-mail.com/clients/85NvzsyTAO/formulare.css?id=1733493165" />
+</head>
+<body>
+	<!--[if (gte mso 9)|(IE)]>
+	<table cellpadding="0" cellspacing="0" width="602" align="center" style="width: 602px; border-spacing: 0;" >
+	<tr>
+	<td style="padding-top: 0; padding-bottom: 0; padding-right: 0; padding-left: 0;">
+	<![endif]-->
+<div class="dm-page-container" style="max-width: 600px; margin: 0 auto;">
+  <table class="dm-page-container-table" align="center" style="box-sizing: border-box !important; width: 100%; max-width: 600px; min-width: 350px; border: 1px solid #666666; margin: 0 auto; background-color:#FFFFFF;">
+	  <tr><td>
+    <div class="dm-page-wrapper text-truncate" style="padding: 0 8px;" role="main">
+<br />			<p align="center"><span class="titel">ANMELDUNG</span></p><span class="text">Vielen Dank f&uuml;r Ihr Interesse f&uuml;r &quot;netzbremse.de&quot;! Bitte f&uuml;llen Sie das nachstehende Formular f&uuml;r die Anmeldung aus.<br />Sie k&ouml;nnen sich &uuml;brigens jederzeit wieder abmelden; in jeder E-Mail finden Sie dazu einen entsprechenden Abmeldelink.<br /><br />Selbstverst&auml;ndlich gehen wir sehr sorgsam mit Ihren Daten um; Details dazu finden Sie in den Datenschutz-Richtlinien auf unserer Website.<br /><br /><strong>Hinweis:</strong> Lediglich die mit &quot;*&quot; gekennzeichneten Felder sind verpflichtend; alle anderen Felder sind freiwillig:</span><br />
+	    <form name="form1" id="form1" method="post" action="https://secure.dialog-mail.com/s/dyXMJ" onsubmit="return checkForm()">
+		<hr size="1" />
+		<div class="text">Ich m&ouml;chte mich bei folgenden Listen anmelden:</div>
+		<table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="4">
+		  <tr>
+			<td class="text-truncate" width="100%" style="max-width: 600px" valign="top">
+			  <input type="checkbox" name="gruppe_85778" value="gruppe_85778" checked="checked" disabled="disabled" />
+			    <span class="text " title="netzbremse.de">netzbremse.de</span>
+			</td>
+<td></td>
+                </tr>
+		</table>
+		<hr size="1" />
+		  <div class="dm-input-group" id="trdmanrede">
+		    <div class="dm-label">
+		      <div class="text"><label for="dmanrede">Anrede</label></div>
+		    </div>
+		    <div class="dm-input">
+		      				<div class="form_fields">
+					<select id="dmanrede"  name="feld_anrede" class="text">
+							<option value=""></option>
+							<option value="Herr">Herr</option>
+							<option value="Frau">Frau</option>
+							<option value="Divers">Divers</option>
+							<option value="Familie">Familie</option>
+							<option value="Firma">Firma</option></select>
+				</div>			</div>
+		 </div>
+		  <div class="dm-input-group" id="trdmvorname">
+		    <div class="dm-label">
+		      <div class="text"><label for="dmvorname">Vorname</label></div>
+		    </div>
+		    <div class="dm-input">
+		      				<div class="form_fields">
+					<input type="text" id="dmvorname" name="feld_vorname" value="" aria-required="true" maxlength="255" class="text"  />
+				</div><span class="text">&nbsp;*</span>			</div>
+		 </div>
+		  <div class="dm-input-group" id="trdmnachname">
+		    <div class="dm-label">
+		      <div class="text"><label for="dmnachname">Nachname</label></div>
+		    </div>
+		    <div class="dm-input">
+		      				<div class="form_fields">
+					<input type="text" id="dmnachname" name="feld_nachname" value="" aria-required="true" maxlength="255" class="text"  />
+				</div><span class="text">&nbsp;*</span>			</div>
+		 </div>
+		  <div class="dm-input-group" id="trdmemail">
+		    <div class="dm-label">
+		      <div class="text"><label for="dmemail">E-Mail</label></div>
+		    </div>
+		    <div class="dm-input">
+		      				<div class="form_fields">
+										<input type="text" id="dmemail" name="feld_email" aria-required="true" value="" maxlength="255" class="text"  />
+				</div><span class="text">&nbsp;*</span>			</div>
+		 </div>
+	<input name="last_name" type="text" value="" aria-disabled="true" tabindex="-1" style="display: contents; width: 1px !important; max-width: 1px !important; height: 1px !important; max-height: 1px !important; line-height: 1px !important; padding: 0 !important; margin: 0 !important; background-color: transparent !important; border: 0 !important;" />
+	<div class="dm-buttons-group">
+		<input aria-label="Abschicken" type="submit" class="pref "  value="Abschicken" /> 	</div>
+<!-- *** Hinweis: Wenn eine Checkbox disabled ist, wird der Wert NICHT &uuml;bertragen. Deswegen wird die Default-Gruppe als Hidden-Field &uuml;bertragen *** -->
+	<input type="hidden" name="dmail_charset" value="UTF-8" />
+	<input type="hidden" name="gruppe_85778" value="gruppe_85778" />
+	<input type="hidden" name="vl" value="0" />
+	<input type="hidden" name="pdoi" value="" />
+	<input type="hidden" name="init" value="1733493165" />
+	<input type="hidden" name="init_display" value="1733493165" />
+		</form>
+	</div>
+
+	  <span id="alertspan" style="display: none; margin-left: 10px; padding: 4px; background-color: #ffffff !important; color: red !important;" class="text"></span>
+		  </td></tr>
+  </table>
+</div>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</body>
+</html>

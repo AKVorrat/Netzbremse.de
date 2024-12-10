@@ -26,7 +26,10 @@ params:
     title: "Bist du Kunde der Deutschen Telekom?"
     content: |
       Bist du Telekom Kundin oder Kunde und willst helfen? Kennst du dich mit Netzwerktechnik aus und hast Messdaten, die für uns relevant sein könnten? Hast du Erfahrungen mit Zusammenschaltungsverträgen mit der Telekom und willst vertraulich mit uns sprechen?
+
       {{< chat msg="Hallo, ich bin Kunde der Telekom und kenne das Problem nur zu gut :(" >}}
+
+      [team@epicenter.works](mailto:team@epicenter.works) | Signal: [+43 670 404 98 89](https://signal.me/#p/+436704049889) | Threema (ID: [BXJMX4R5](https://threema.id/BXJMX4R5?text=))
   - type: about-us
     id: about-us
     title: "Wer sind wir?"

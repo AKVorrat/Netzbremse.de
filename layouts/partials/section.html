@@ -3,6 +3,5 @@
   {{ if .section.title }}
     <h2 class="mt-0">{{ .section.title }}</h2>
   {{ end }}
-    {{ partial (printf "sections/%s" .section.type) (dict "page" .page "section" .section "bgPrimary" .bgPrimary) }}
-  </div>
+  {{ partial (printf "sections/%s" .section.type) (dict "page" .page "section" .section "bgPrimary" .bgPrimary) }}
 </section>

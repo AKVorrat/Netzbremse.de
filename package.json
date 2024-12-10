@@ -11,12 +11,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "lite-youtube-embed": "^0.3.3",
     "@fontsource/roboto": "^5.1.0",
     "@fontsource/source-code-pro": "^5.1.0",
     "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.20",
     "daisyui": "^4.12.14",
+    "lite-youtube-embed": "^0.3.3",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
     "tailwindcss": "^3.4.16"

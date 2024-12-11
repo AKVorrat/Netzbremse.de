@@ -33,16 +33,21 @@ params:
   - type: about-us
     id: about-us
     title: "Wer sind wir?"
+    donationTitle: "Unterstütze uns mit deiner Spende!"
+    content: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec ligula tempor, convallis tortor nec, accumsan erat. In eget egestas nibh, cursus semper nibh. Phasellus tempus blandit elit sit amet finibus. Aenean elit sem, mattis sed purus at, accumsan consectetur nulla.
     members:
     - name: "Gesellschaft für Freiheitsrechte"
       url: "https://freiheitsrechte.org/"
       logo: "/img/gff/Gesellschaft_für_Freiheitsrechte_logo.svg.png"
+      donationURL: "https://freiheitsrechte.org/mitmachen/einzelspenden"
     - name: "Verbraucherzentrale Bundesverband"
       url: "https://www.vzbv.de/"
       logo: "/img/vzbv/Verbraucherzentrale_Bundesverband_Logo.svg.png"
     - name: "Epicenter.Works"
       url: "https://epicenter.works/"
       logo: "/img/ew/ew_logo_rgb-l.png"
+      donationURL: "https://epicenter.works/unterstuetzung"
 ---
 
 <section id="video"  class="flex justify-center py-10">

@@ -17,3 +17,17 @@
     </div>
   {{ end }}
 </div>
+
+<h3 class="text-center">{{ .section.donationTitle }}</h3>
+
+<p class="prose {{ if .bgPrimary }} !prose-invert {{ end }}">
+  {{ .section.content }}
+</p>
+
+<div class="grid grid-flow-col auto-cols-fr gap-4">
+  {{ range .section.members }}
+    {{ if .donationURL }}
+    <a href="{{ .donationURL }}" class="btn btn-neutral px-6" target="_blank">{{ .name }}</a>
+    {{ end }}
+  {{ end }}
+</div>

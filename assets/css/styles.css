@@ -33,7 +33,7 @@ nav {
     width: 1em;
     height: 1em;
     vertical-align: -0.125em;
-}
-
-.prose .icon {
+    display: inline-block;
+    fill: currentColor;
+    stroke: currentColor;
 }

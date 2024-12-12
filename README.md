@@ -25,7 +25,4 @@ hugo server
 - Share buttons
 - Newsletter
   - Improve confirmation UI
-- OpenGraph Metadata
-- Donation buttons
-  - EW
-  - GFF
+- Check meta tags and OpenGraph for SEO

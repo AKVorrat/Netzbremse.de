@@ -1,6 +1,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+
+<title>{{ site.Title }}</title>
+<meta name="description" content="{{ .Params.description }}">
+
+<meta property="og:url" content="https://netzbremse.de">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ site.Title }}">
+<meta property="og:description" content="{{ .Params.description }}">
 
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

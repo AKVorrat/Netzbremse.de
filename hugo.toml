@@ -4,6 +4,7 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
 
 [params]
   shortTitle = 'Netzbremse'
+  description = 'Wenn du Kund:in der Deutschen Telekom bist und manche Webseiten einfach nicht laden wollen, dann haben wir vielleicht die Lösung für dein Problem!'
   logo = "/img/hourglass.png"
   logoAlt = "Magenta farbenes umgedrehtes 'T' mit quadratischer umrandung"
 

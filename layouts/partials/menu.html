@@ -21,6 +21,7 @@ Renders a menu for the given menu ID.
 
     <div class="dropdown flex justify-end">
       <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
+        <span class="sr-only">Navigation öffnen</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
@@ -39,7 +40,7 @@ Renders a menu for the given menu ID.
       </ul>
     </div>
 
-    <div class=" hidden md:flex">
+    <div class="hidden md:flex">
       <ul class="menu menu-horizontal text-xl">
         {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
       </ul>

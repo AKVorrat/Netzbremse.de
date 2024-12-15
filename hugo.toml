@@ -29,7 +29,7 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
     weight = 20
   [[menus.main]]
     name = 'Unterstützung'
-    URL = '#support-us'
+    URL = '#contact-us'
     weight = 30
 
 [markup.goldmark.renderer]

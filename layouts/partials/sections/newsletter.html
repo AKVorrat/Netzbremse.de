@@ -3,3 +3,13 @@
   <label class="label sr-only" for="feld_email"></label>
   <input class="btn btn-primary join-item font-normal text-base" type="submit" sumbin value="Newsletter abonieren" />
 </form>
+
+<h3 class="text-center">{{ .section.shareTitle }} </h3>
+<p class="prose text-center {{ if .bgPrimary }} !prose-invert {{ end }}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat pellentesque eros, fermentum efficitur lectus varius vel.</p>
+<ul class="p-0 mt-1 flex gap-1 sm:gap-2">
+  {{ range .section.shareLinks }}
+  <li class="inline-block my-0 p-0">
+    {{ partial "utils/share-btn" . }}
+  </li>
+  {{ end }}
+</ul>

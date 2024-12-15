@@ -19,10 +19,3 @@ To install dependencies and run the local development server run:
 npm install
 hugo server
 ```
-
-## TODO
-
-- Share buttons
-- Newsletter
-  - Improve confirmation UI
-- Check meta tags and OpenGraph for SEO

@@ -24,26 +24,26 @@ params:
     title: "Möchtest Du Dich unserer Beschwerde anschließen? Oder hören, wie es weitergeht?"
     shareTitle: "Hilf uns, mehr Menschen zu erreichen!"
     shareBody: ""
+    shareMessage: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst: https://netzbremse.de"
     shareLinks:
     - service: "WhatsApp"
-      message: "Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst: netzbremse.de"
+      # Emojis not supported in WhatsApp Link
+      message: "Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst: https://netzbremse.de"
     - service: "E-Mail"
       subject: "Netzbremse"
-      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst: https://netzbremse.de"
     - service: "Twitter"
+      # Don't want to have the url twice
       message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst:"
       url: https://netzbremse.de
     - service: "Reddit"
+      # Do not add url separately
       message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst."
       url: https://netzbremse.de
     - service: "Telegram"
-      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst."
       url: https://netzbremse.de
     - service: "LinkedIn"
-      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst"
       url: https://netzbremse.de
     - service: "Facebook"
-      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst"
       url: https://netzbremse.de
 
   - type: contact-us

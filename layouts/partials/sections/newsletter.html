@@ -17,7 +17,7 @@
 <ul class="p-0 mt-1 flex gap-1 sm:gap-2">
   {{ range .section.shareLinks }}
   <li class="inline-block my-0 p-0">
-    {{ partial "utils/share-btn" . }}
+    {{ partial "utils/share-btn" (dict "section" $section "link" .) }}
   </li>
   {{ end }}
 </ul>

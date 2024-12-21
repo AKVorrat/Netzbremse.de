@@ -4,10 +4,21 @@
 <title>{{ site.Title }}</title>
 <meta name="description" content="{{ .Site.Params.description }}">
 
-<meta property="og:url" content="https://netzbremse.de">
+{{ $ogImageURL := ((resources.GetMatch .Site.Params.logo).Fit `360x360 png Smart`).RelPermalink | safeURL }}
+
+<meta property="og:url" content="{{ .Site.BaseURL }}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ site.Title }}">
-<meta property="og:description" content="{{ .Params.description }}">
+<meta property="og:image" content="{{ $ogImageURL }}">
+<meta property="og:description" content="{{ .Site.Params.description }}">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary">
+<meta property="twitter:domain" content="{{ .Site.Params.domain }}">
+<meta property="twitter:url" content="{{ .Site.BaseURL }}">
+<meta name="twitter:title" content="{{ site.Title }}">
+<meta name="twitter:description" content="{{ .Site.Params.description }}">
+<meta name="twitter:image" content="{{ $ogImageURL }}">
 
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

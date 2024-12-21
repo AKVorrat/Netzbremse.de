@@ -13,40 +13,49 @@ params:
     id: explainer
     title: "Worum geht es?"
     content: |    
-      Die [Verbraucherzentrale Bundesverband](https://www.vzbv.de/), die [Gesellschaft für Freiheitsrechte](https://freiheitsrechte.org/) und [Epicenter.works](https://freiheitsrechte.org/) gehen zur Bundesnetzagentur und klagen gegen die unfaire Geschäftspraxis der Telekom. 
+      Die [Epicenter.works](https://freiheitsrechte.org/), die [Gesellschaft für Freiheitsrechte](https://freiheitsrechte.org/), der [Verbraucherzentrale Bundesverband](https://www.vzbv.de/) und die Stanford-Professorin [Barbara van Schewick](https://law.stanford.edu/barbara-van-schewick/) gehen zur Bundesnetzagentur und reichen eine offizielle Beschwerde gegen die unfaire Geschäftspraxis der Telekom ein.
+            
+      Der Konzern verbindet sein Netz nämlich nur zu Inhalteanbietern, von denen er für den Datentransfer extra Geld bekommt.
+      Wenn sich deine Lieblingswebsite das nicht leisten kann, dann laden deren Inhalte nur langsam oder gar nicht. 
       
-      Der Konzern verbindet sein Netz nämlich nur zu den Inhaltsanbietern, die ihm extra Geld dafür zahlen. Wenn sich deine Lieblingswebsite das nicht leisten kann, dann laden deren Inhalte nur langsam oder gar nicht. 
-      
-      Das ist eine Verletzung der Netzneutralität und wie ein künstlicher Flaschenhals ins Netz. Gegen diese Einschränkung der Wahlfreiheit beschweren wir uns bei der Bundesnetzagentur. Gemeinsam beenden wir diese unerhörte Geschäftspraxis der Deutschen Telekom! 
+      Das ist eine Verletzung der Netzneutralität und ein künstlicher Engpass ins Netz. Gegen diese Einschränkung der Wahlfreiheit beschweren wir uns bei der Bundesnetzagentur. Gemeinsam beenden wir diese unerhörte Geschäftspraxis der Deutschen Telekom! 
   - type: newsletter
     id: newsletter
-    title: "Erfahre wie es weiter geht!"
+    title: "Möchtest Du Dich unserer Beschwerde anschließen? Oder hören, wie es weitergeht?"
     shareTitle: "Hilf uns, mehr Menschen zu erreichen!"
     shareBody: ""
     shareLinks:
     - service: "WhatsApp"
-      message: "https://netzbremse.de"
+      message: "Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst: netzbremse.de"
     - service: "E-Mail"
       subject: "Netzbremse"
-      message: "https://netzbremse.de"
+      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst: https://netzbremse.de"
     - service: "Twitter"
-      message: "https://netzbremse.de"
+      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst:"
+      url: https://netzbremse.de
     - service: "Reddit"
-      message: "https://netzbremse.de"
+      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst."
+      url: https://netzbremse.de
     - service: "Telegram"
-      message: "https://netzbremse.de"
+      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst."
+      url: https://netzbremse.de
     - service: "LinkedIn"
-      message: "https://netzbremse.de"
+      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst"
+      url: https://netzbremse.de
     - service: "Facebook"
-      message: "https://netzbremse.de"
+      message: "💰 Du bist Telekomkund:in und deine Lieblingsseiten laden nur langsam oder gar nicht? Hier erfährst du warum das so ist & was du dagegen tun kannst"
+      url: https://netzbremse.de
 
   - type: contact-us
     id: contact-us
-    title: "Bist du Kunde der Deutschen Telekom?"
+    title: "Wie kann man dem Projekt helfen?"
+    msgBubble: "Hallo, ich bin Kundin der Telekom und kenne das Problem nur zu gut :("
     content: |
-      Bist du Telekom Kundin oder Kunde und willst helfen? Kennst du dich mit Netzwerktechnik aus und hast Messdaten, die für uns relevant sein könnten? Hast du Erfahrungen mit Zusammenschaltungsverträgen mit der Telekom und willst vertraulich mit uns sprechen?
+      Bist du Telekom Kundin oder Kunde und willst helfen? Dann melde dich bei uns &mdash; jeder Erfahrungsbericht zählt!
 
-      {{< chat msg="Hallo, ich bin Kunde der Telekom und kenne das Problem nur zu gut :(" >}}
+      Vielleicht kennst du dich sogar mit Netzwerktechnik aus und hast Messdaten, die für uns relevant sein könnten? Oder du hast Erfahrungen mit Zusammenschaltungsverträgen mit der Telekom und willst vertraulich mit uns sprechen?
+
+      Dann kontaktiere uns über einen der folgenden Kanäle:
     channels:
     - "[team@epicenter.works](mailto:team@epicenter.works)"
     - "Signal: [+43 670 404 98 89](https://signal.me/#p/+436704049889)"
@@ -54,10 +63,12 @@ params:
   - type: about-us
     id: about-us
     title: "Wer sind wir?"
-    donationTitle: "Unterstütze uns mit deiner Spende!"
-    content: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec ligula tempor, convallis tortor nec, accumsan erat. In eget egestas nibh, cursus semper nibh. Phasellus tempus blandit elit sit amet finibus. Aenean elit sem, mattis sed purus at, accumsan consectetur nulla.
+    donationTitle: "Spende jetzt für ein freies Internet!"
     members:
+    - name: "Epicenter.Works"
+      url: "https://epicenter.works/"
+      logo: "/img/ew/ew_logo_rgb-l.png"
+      donationURL: "https://epicenter.works/unterstuetzung"
     - name: "Gesellschaft für Freiheitsrechte"
       url: "https://freiheitsrechte.org/"
       logo: "/img/gff/Gesellschaft_für_Freiheitsrechte_logo.svg.png"
@@ -65,10 +76,8 @@ params:
     - name: "Verbraucherzentrale Bundesverband"
       url: "https://www.vzbv.de/"
       logo: "/img/vzbv/Verbraucherzentrale_Bundesverband_Logo.svg.png"
-    - name: "Epicenter.Works"
-      url: "https://epicenter.works/"
-      logo: "/img/ew/ew_logo_rgb-l.png"
-      donationURL: "https://epicenter.works/unterstuetzung"
+    - name: "Prof. Dr. Barbara van Schewick"
+      url: "https://law.stanford.edu/barbara-van-schewick/"
 ---
 
 <section id="video"  class="flex justify-center py-10">

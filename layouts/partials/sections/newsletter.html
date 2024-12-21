@@ -1,16 +1,19 @@
 <form class="join sm:join-horizontal join-vertical max-w-[65ch] w-full" method="POST" action="{{ .page.Site.Params.newsletter.subscribeURL }}" target="_blank">
   <input class="input input-bordered join-item flex-grow" placeholder="Email" type="email" name="feld_email" id="feld_email" required />
   <label class="label sr-only" for="feld_email">E-Mail Adresse</label>
-  <input class="btn btn-primary join-item font-normal text-base" type="submit" submit value="Newsletter abonieren" />
+
   <input hidden name="dmail_charset" value="UTF-8">
   <input hidden name="gruppe_85778" value="gruppe_85778">
 
   {{/* Spam protection recommended by Dialog-Mail */}}
   <input name="last_name" type="text" value="" aria-disabled="true" tabindex="-1" style="display: contents; width: 1px !important; max-width: 1px !important; height: 1px !important; max-height: 1px !important; line-height: 1px !important; padding: 0 !important; margin: 0 !important; background-color: transparent !important; border: 0 !important;" />
+
+  <input class="btn btn-primary join-item font-normal text-base" type="submit" submit value="Updates abonnieren" />
 </form>
 
-<h3 class="text-center">{{ .section.shareTitle }} </h3>
-<p class="prose text-center {{ if .bgPrimary }} !prose-invert {{ end }}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat pellentesque eros, fermentum efficitur lectus varius vel.</p>
+{{ $section := .section }}
+
+<h3 class="text-center">{{ .section.shareTitle }}</h3>
 <ul class="p-0 mt-1 flex gap-1 sm:gap-2">
   {{ range .section.shareLinks }}
   <li class="inline-block my-0 p-0">

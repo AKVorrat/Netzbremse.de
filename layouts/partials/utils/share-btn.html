@@ -1,32 +1,41 @@
-{{ $url := "" }}
-{{ $icon := "" }}
+{{ $class := "btn btn-circle btn-primary text-2xl" }}
+{{ $srText := printf "Via %s teilen" .service }}
 
 {{ if eq .service "WhatsApp" }}
-  {{ $icon = "whatsapp" }}
-  {{ $url = printf "https://wa.me/?text=%s" (urlquery .message) }}
+  <a href="https://api.whatsapp.com/send?text={{ .message }}" class="{{ $class }}" target="_blank" title="{{ .service }}">
+    {{ partial "utils/icon" "whatsapp" }}
+    <span class="sr-only">{{ $srText }}</span>
+  </a>
 {{ else if eq .service "E-Mail" }}
-  {{ $icon = "email" }}
-  {{ $url = printf "mailto://?subject=%s&body=%s" (urlquery .subject) (urlquery .message) }}
+  <a href="mailto:?subject={{ .subject }}&body={{ .message }}" class="{{ $class }}" target="_blank" title="{{ .service }}">
+    {{ partial "utils/icon" "email" }}
+    <span class="sr-only">{{ $srText }}</span>
+  </a>
 {{ else if eq .service "Twitter" }}
-  {{ $icon = "twitter" }}
-  {{ $url = printf "https://twitter.com/share?url=%s" (urlquery .message) }}
+  <a href="https://twitter.com/share?text={{ .message }}&url={{ .url }}" class="{{ $class }}" target="_blank" title="{{ .service }}">
+    {{ partial "utils/icon" "twitter" }}
+    <span class="sr-only">{{ $srText }}</span>
+  </a>
 {{ else if eq .service "Telegram" }}
-  {{ $icon = "telegram" }}
-  {{ $url = printf "https://t.me/share/url?url=%s" (urlquery .message) }}
+  <a href="https://t.me/share/url?text={{ .message }}&url={{ .url }}" class="{{ $class }}" target="_blank" title="{{ .service }}">
+    {{ partial "utils/icon" "telegram" }}
+    <span class="sr-only">{{ $srText }}</span>
+  </a>
 {{ else if eq .service "LinkedIn" }}
-  {{ $icon = "linkedin" }}
-  {{ $url = printf "https://www.linkedin.com/sharing/share-offsite/?url=%s" (urlquery .message) }}
+  <a href="https://www.linkedin.com/sharing/share-offsite/?text={{ .message }}&url={{ .url }}" class="{{ $class }}" target="_blank" title="{{ .service }}">
+    {{ partial "utils/icon" "linkedin" }}
+    <span class="sr-only">{{ $srText }}</span>
+  </a>
 {{ else if eq .service "Facebook" }}
-  {{ $icon = "facebook" }}
-  {{ $url = printf "https://www.facebook.com/sharer/sharer.php?u=%s" (urlquery .message) }}
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ .url }}" class="{{ $class }}" target="_blank" title="{{ .service }}">
+    {{ partial "utils/icon" "facebook" }}
+    <span class="sr-only">{{ $srText }}</span>
+  </a>
 {{ else if eq .service "Reddit" }}
-  {{ $icon = "reddit" }}
-  {{ $url = printf "https://www.reddit.com/submit?url=%s" (urlquery .message) }}
+  <a href="https://www.reddit.com/submit?title={{ .message }}&url={{ .url }}" class="{{ $class }}" target="_blank" title="{{ .service }}">
+    {{ partial "utils/icon" "reddit" }}
+    <span class="sr-only">{{ $srText }}</span>
+  </a>
 {{ else }}
   {{ fmt.Errorf "share-btn: unknown service %s" .service }}
 {{ end }}
-
-<a href="{{ $url | safeURL }}" class="btn btn-circle btn-primary text-2xl" target="_blank" title="{{ .service }}">
-  {{ partial "utils/icon" $icon }}
-  <span class="sr-only">Share via {{ .service }}</span>
-</a>

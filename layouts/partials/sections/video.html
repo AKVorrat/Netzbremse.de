@@ -1,3 +1,6 @@
 <div class="card bg-base-100 shadow-xl overflow-hidden max-w-[720px] flex w-full">
-  {{ partial "utils/youtube" (dict "id" .section.youtubeID "title" .section.youtubeTitle) }} 
+  {{ partial "utils/youtube" (dict "id" .section.youtubeID "title" .section.youtubeTitle) }}
 </div>
+{{ if .section.altURL }} 
+<p>{{ .section.altURL | markdownify }}</p>
+{{ end }}

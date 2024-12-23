@@ -7,8 +7,9 @@ params:
   - type: video
     id: video
     title: "Kurze Erklärung!"
-    youtubeID: "X9SVf57ii1w"
+    youtubeID: "CIxYEw4o5UU"
     youtubeTitle: "Uploadfilter Erklärt"
+    altURL: "[Engish Version](https://youtu.be/aA1kid1AFZg)"
   - type: content
     id: explainer
     title: "Worum geht es?"

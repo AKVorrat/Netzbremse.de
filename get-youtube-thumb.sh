@@ -15,4 +15,4 @@ FILE="${2:-hqdefault}"
 
 echo "Downloading Thumbnail for Video with ID: $1 File: $FILE"
 
-curl --output "./assets/img/yt-thumbnail/$1.jpg" "https://img.youtube.com/vi/$1/$FILE.jpg" 
+curl --output "./assets/img/yt-thumbnails/$1.jpg" "https://img.youtube.com/vi/$1/$FILE.jpg"

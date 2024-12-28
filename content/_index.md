@@ -7,19 +7,18 @@ params:
   - type: video
     id: video
     title: "Kurze Erklärung!"
-    youtubeID: "CIxYEw4o5UU"
-    youtubeTitle: "Uploadfilter Erklärt"
-    altURL: "[Engish Version](https://youtu.be/aA1kid1AFZg)"
+    youtubeID: "B20noT-X9e8"
+    youtubeTitle: "Die Telekom drosselt das Netz. Tun wir etwas dagegen!"
+    altURL: "[Engish Version](https://youtu.be/GQdh8QtSBs8)"
   - type: content
     id: explainer
     title: "Worum geht es?"
     content: |    
-      Die [Epicenter.works](https://freiheitsrechte.org/), die [Gesellschaft für Freiheitsrechte](https://freiheitsrechte.org/), der [Verbraucherzentrale Bundesverband](https://www.vzbv.de/) und die Stanford-Professorin [Barbara van Schewick](https://law.stanford.edu/barbara-van-schewick/) gehen zur Bundesnetzagentur und reichen eine offizielle Beschwerde gegen die unfaire Geschäftspraxis der Telekom ein.
+      Die [Epicenter.works](https://epicenter.works/), die [Gesellschaft für Freiheitsrechte](https://freiheitsrechte.org/), der [Verbraucherzentrale Bundesverband](https://www.vzbv.de/) und Stanford-Professorin [Barbara van Schewick](https://law.stanford.edu/barbara-van-schewick/) gehen zur Bundesnetzagentur und reichen eine offizielle Beschwerde gegen die unfaire Geschäftspraxis der Telekom ein.
             
-      Der Konzern verbindet sein Netz nämlich nur zu Inhalteanbietern, von denen er für den Datentransfer extra Geld bekommt.
-      Wenn sich deine Lieblingswebsite das nicht leisten kann, dann laden deren Inhalte nur langsam oder gar nicht. 
+      Die Telekom schafft künstliche Engpässe an den Zugängen zum Telekom-Netz. Finanzstarke Dienste, die die Telekom bezahlen, kommen schnell durch und funktionieren super. Dienste, die sich das nicht leisten können, werden ausgebremst und laden oft langsam oder gar nicht.
       
-      Das ist eine Verletzung der Netzneutralität und ein künstlicher Engpass ins Netz. Gegen diese Einschränkung der Wahlfreiheit beschweren wir uns bei der Bundesnetzagentur. Gemeinsam beenden wir diese unerhörte Geschäftspraxis der Deutschen Telekom! 
+      Das bedeutet: Die Telekom entscheidet, welche Dienste wir problemlos nutzen können, und verletzt so die Netzneutralität. Dagegen beschweren wir uns bei der Bundesnetzagentur. Gemeinsam beenden wir diese unfaire Praxis! 
   - type: newsletter
     id: newsletter
     title: "Möchtest Du Dich unserer Beschwerde anschließen? Oder hören, wie es weitergeht?"

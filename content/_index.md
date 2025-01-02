@@ -9,7 +9,7 @@ params:
     title: "Kurze Erklärung!"
     youtubeID: "B20noT-X9e8"
     youtubeTitle: "Die Telekom drosselt das Netz. Tun wir etwas dagegen!"
-    altURL: "[Engish Version](https://youtu.be/GQdh8QtSBs8)"
+    altURL: "[English Version](https://youtu.be/GQdh8QtSBs8)"
   - type: content
     id: explainer
     title: "Worum geht es?"

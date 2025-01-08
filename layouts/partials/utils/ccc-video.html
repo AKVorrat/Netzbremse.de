@@ -1,0 +1,14 @@
+<!-- 
+{{/* 
+    Usage: 
+    {{ partial "utils/ccc-video" (dict "embedURL" "https://media.ccc.de/v/.../oembed#t=123") }} 
+*/}}
+-->
+
+<iframe 
+    width="100%" 
+    height="100%" 
+    src="{{ .embedURL }}" 
+    frameborder="0" 
+    allowfullscreen>
+</iframe>

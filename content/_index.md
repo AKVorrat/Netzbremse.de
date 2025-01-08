@@ -7,9 +7,11 @@ params:
   - type: video
     id: video
     title: "Kurze Erklärung!"
+    platform: "youtube"
     youtubeID: "B20noT-X9e8"
     youtubeTitle: "Die Telekom drosselt das Netz. Tun wir etwas dagegen!"
     altURL: "[English Version](https://youtu.be/GQdh8QtSBs8)"
+
   - type: content
     id: explainer
     title: "Worum geht es?"
@@ -19,7 +21,17 @@ params:
       Die Telekom schafft künstliche Engpässe an den Zugängen zum Telekom-Netz. Finanzstarke Dienste, die die Telekom bezahlen, kommen schnell durch und funktionieren super. Dienste, die sich das nicht leisten können, werden ausgebremst und laden oft langsam oder gar nicht.
       
       Das bedeutet: Die Telekom entscheidet, welche Dienste wir problemlos nutzen können, und verletzt so die Netzneutralität. Dagegen beschweren wir uns bei der Bundesnetzagentur. Gemeinsam beenden wir diese unfaire Praxis! 
+
+  - type: video
+    bg: light
+    id: conference-talk
+    title: "Talk beim Chaos Communication Congress 38C3"
+    platform: "ccc"
+    embedURL: "https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever/oembed#t=1205"
+    altURL: "[Ganzen Talk ansehen!](https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever)"
+
   - type: newsletter
+    bg: light
     id: newsletter
     title: "Möchtest Du Dich unserer Beschwerde anschließen? Oder hören, wie es weitergeht?"
     shareTitle: "Hilf uns, mehr Menschen zu erreichen!"
@@ -79,17 +91,3 @@ params:
     - name: "Prof. Dr. Barbara van Schewick"
       url: "https://law.stanford.edu/barbara-van-schewick/"
 ---
-
-<section id="video"  class="flex justify-center py-10">
-    <div class="card bg-base-100 shadow-xl overflow-hidden md:mx-10 mx-4 w-[720px]">
-        {{< youtube id="X9SVf57ii1w" title="Uploadfilter Erklärt" >}} 
-    </div>
-</section>
-
-<section id="video"  class="flex justify-center py-10 bg-primary text-primary-content">
-  Test
-</section>
-
-<section id="video"  class="flex justify-center py-10">
-  Test
-</section>

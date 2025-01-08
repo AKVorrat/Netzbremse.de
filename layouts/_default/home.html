@@ -3,12 +3,22 @@
 
   {{ $page := . }}
 
+  {{ $bgPrimary := true }}
+
   {{ range $i, $s := .Page.Params.sections }}
+
+    {{ $bgPrimary = not $bgPrimary }}
+    {{ if eq $s.bg "light" }} 
+      {{ $bgPrimary = false }}
+    {{ else if eq $s.bg "primary" }}
+      {{ $bgPrimary = true }}
+    {{ end }}
+
     {{ partial "section" 
       (dict 
         "page" $page 
         "section" $s 
-        "bgPrimary" (not (modBool $i 2))
+        "bgPrimary" $bgPrimary
       ) 
     }}
   {{ end  }}

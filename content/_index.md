@@ -22,14 +22,6 @@ params:
       
       Das bedeutet: Die Telekom entscheidet, welche Dienste wir problemlos nutzen können, und verletzt so die Netzneutralität. Dagegen beschweren wir uns bei der Bundesnetzagentur. Gemeinsam beenden wir diese unfaire Praxis! 
 
-  - type: video
-    bg: light
-    id: conference-talk
-    title: "Talk beim Chaos Communication Congress 38C3"
-    platform: "ccc"
-    embedURL: "https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever/oembed#t=1205"
-    altURL: "[Ganzen Talk ansehen!](https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever)"
-
   - type: newsletter
     bg: light
     id: newsletter
@@ -72,8 +64,18 @@ params:
     - "[team@epicenter.works](mailto:team@epicenter.works)"
     - "Signal: [+43 670 404 98 89](https://signal.me/#p/+436704049889)"
     - "Threema (ID: [BXJMX4R5](https://threema.id/BXJMX4R5?text=))"
+
+  - type: video
+    bg: light
+    id: conference-talk
+    title: "Talk beim Chaos Communication Congress 38C3"
+    platform: "ccc"
+    embedURL: "https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever/oembed#t=1205"
+    altURL: "[Ganzen Talk ansehen!](https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever)"
+
   - type: about-us
     id: about-us
+    bg: light
     title: "Wer sind wir?"
     donationTitle: "Spende jetzt für ein freies Internet!"
     members:
@@ -90,4 +92,26 @@ params:
       logo: "/img/vzbv/Verbraucherzentrale_Bundesverband_Logo.svg.png"
     - name: "Prof. Dr. Barbara van Schewick"
       url: "https://law.stanford.edu/barbara-van-schewick/"
+
+  - type: media-coverage
+    title: "Medienberichte"
+    id: media-coverage
+    publications:
+    - name: "teltarif.de"
+      icon: "" 
+      articles:
+      - title: "Telekom: Engpässe beim Peering sorgen für Streaming-Frust"
+        url: "https://www.teltarif.de/telekom-peering-probleme-internet/news/97447.html"
+      - title: "Verbraucherschützer werfen Telekom Internet-Drossel vor"
+        url: "https://www.teltarif.de/telekom-netzbremse-peering/news/97498.html"
+    - name: "heise online"
+      icon: ""
+      articles: 
+      - title: "Deutsches Forschungsnetz und Telekom: Peeren in Zeiten von Corona"
+        url: "https://www.heise.de/news/Deutsches-Forschungsnetz-und-Telekom-Peeren-in-Zeiten-von-Corona-4694172.html"
+    - name: "golem.de"
+      icon: ""
+      articles: 
+      - title: "Extrakosten für bessere Anbindung an Telekom-Kunden"
+        url: "https://www.golem.de/news/hetzner-und-netzneutralitaet-extrakosten-fuer-bessere-anbindung-an-telekom-kunden-1511-117711.html"
 ---

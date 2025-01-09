@@ -41,3 +41,7 @@ nav {
 .fit-contain {
     object-fit: contain;
 }
+
+.prose {
+    line-height: 1.5 !important;
+}

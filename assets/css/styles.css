@@ -37,3 +37,7 @@ nav {
     fill: currentColor;
     stroke: currentColor;
 }
+
+.fit-contain {
+    object-fit: contain;
+}

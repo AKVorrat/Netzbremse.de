@@ -1,22 +1,33 @@
 <div 
-  class="grid sm:grid-cols-4 grid-cols-1 auto-rows-fr gap-4 justify-items-center justify-center"
+  class="grid sm:grid-cols-2 grid-cols-1 auto-rows-fr gap-4 justify-items-center justify-center"
 >
-  {{ range .section.members }}
-    <div class="card bg-base-100 shadow-xl text-center">
-      <div class="card-body flex justify-center items-center">
-        <a href="{{ .url }}" target="_blank">
-          {{ if .logo }}
-            <span class="sr-only">{{ .name }}</span>
-            <img 
-              class="m-0"
-              src="{{ ((resources.GetMatch .logo).Fit "200x100").RelPermalink | safeURL }}" 
-              alt="Logo von {{ .name }}"
-            >
+  {{ range .section.articles }}
+    <div class="card bg-base-100 shadow-xl prose p-4 w-full flex">
+      <div class="flex-grow">
+
+        {{ $logo := resources.GetMatch .logo }}
+        <img 
+          {{ if eq $logo.MediaType.SubType "svg" }}
+            src="{{ $logo.RelPermalink | safeURL }}" 
           {{ else }}
-            {{ .name }}
+            src="{{ ($logo.Fit "160x96").RelPermalink | safeURL }}" 
           {{ end }}
-        </a>
+          class="float-end max-w-40 max-h-24 fit-contain m-0 ml-3 mb-3"
+          alt="Logo von {{ .publication }}"
+        >
+      
+        <h4 class="text-pretty mt-0 line-clamp-2">
+          <a href="{{ .url }}" target="_blank">
+            {{ .title  }}
+          </a>
+        </h4>  
+
+        <p class="text-balance line-clamp-3 mb-3">
+          {{ .summary }}
+        </p>
+
       </div>
+      <a href="{{ .url }}" target="_blank" class="m-0 leading-none">Zum Beitrag</a>
     </div>
   {{ end }}
 </div>

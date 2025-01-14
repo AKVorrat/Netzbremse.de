@@ -1,0 +1,36 @@
+<div 
+  class="flex flex-wrap gap-4 justify-items-center justify-center max-w-[140ch]"
+>
+  {{ range .section.articles }}
+    <div class="card bg-base-100 shadow-xl prose p-4 pt-0 mt-6 w-full flex-shrink-0 flex">
+      <div class="flex justify-center -m-6">
+        {{ $logo := resources.GetMatch .logo }}
+        <img 
+          {{ if eq $logo.MediaType.SubType "svg" }}
+            src="{{ $logo.RelPermalink | safeURL }}" 
+          {{ else }}
+            src="{{ ($logo.Fit "96x48").RelPermalink | safeURL }}" 
+          {{ end }}
+          class="h-12 max-w-24 fit-contain m-0 "
+          alt="Logo von {{ .publication }}"
+        >
+      </div>
+
+      <div class="flex-grow mt-8">
+        <div class="flex items-center gap-3 flex-shrink">
+          <h4 class="text-pretty mt-0 line-clamp-3">
+            <a href="{{ .url }}" target="_blank">
+              {{ .title  }}
+            </a>
+          </h4> 
+        </div>
+
+        <p class="line-clamp-3 sm:line-clamp-2 mt-0 mb-3">
+          {{ .summary }}
+        </p>
+
+      </div>
+      <a href="{{ .url }}" target="_blank" class="m-0 leading-none">Zum Beitrag von {{ .publication }}</a>
+    </div>
+  {{ end }}
+</div>

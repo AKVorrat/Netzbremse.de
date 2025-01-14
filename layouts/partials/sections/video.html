@@ -1,5 +1,11 @@
-<div class="card bg-base-100 shadow-xl overflow-hidden max-w-[720px] flex w-full">
-  {{ partial "utils/youtube" (dict "id" .section.youtubeID "title" .section.youtubeTitle) }}
+<div class="card bg-base-100 shadow-xl overflow-hidden max-w-[720px] flex w-full aspect-video">
+  {{ if eq .section.platform "youtube" }}
+    {{ partial "utils/youtube" (dict "id" .section.youtubeID "title" .section.youtubeTitle) }}
+  {{ else if eq .section.platform "ccc" }} 
+    {{ partial "utils/ccc-video" (dict "embedURL" .section.embedURL "extURL" .section.extURL "thumbnailURL" .section.thumbnailURL) }}
+  {{ else }}
+    {{ errorf "Invalid video platform" }}
+  {{ end }}
 </div>
 {{ if .section.altURL }} 
 <p>{{ .section.altURL | markdownify }}</p>

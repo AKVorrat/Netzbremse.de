@@ -1,14 +1,42 @@
 <!-- 
 {{/* 
-    Usage: 
-    {{ partial "utils/ccc-video" (dict "embedURL" "https://media.ccc.de/v/.../oembed#t=123") }} 
+  Usage: 
+  {{ partial "utils/ccc-video" (dict "embedURL" "https://media.ccc.de/v/.../oembed#t=123") }} 
 */}}
 -->
 
-<iframe 
+{{ $url := urls.Parse .embedURL }}	
+{{ $host := $url.Host }}
+
+<gdpr-iframe-wrapper 
+  class="w-full h-full grid items-center justify-center grid-cols-1 grid-rows-1 bg-cover"
+  {{ if (resources.GetMatch .thumbnailURL) }}
+  {{ $thumbnailUrl := ((resources.GetMatch .thumbnailURL).Fill `720x405 jpg Smart q85`).RelPermalink | safeURL }}
+    style="{{ printf "background-image: url(%s);" $thumbnailUrl | safeCSS }} "
+  {{ end }}
+>
+  <!-- Loading overlay -->
+  <div class="gdpr-loading-indicator row-start-1 col-start-1 row-span-1 col-span-1 w-full h-full flex justify-center items-center invisible backdrop-blur-lg bg-white/15">
+    <span class="loading loading-ring loading-lg text-primary"></span>
+  </div>
+
+  <iframe 
     width="100%" 
     height="100%" 
-    src="{{ .embedURL }}" 
+    class="row-start-1 col-start-1 row-span-1 col-span-1"
+    data-src="{{ .embedURL }}" 
     frameborder="0" 
     allowfullscreen>
-</iframe>
+  </iframe>
+
+  <!-- consent overlay -->
+  <div 
+    class="gdpr-consent-overlay row-start-1 col-start-1 row-span-1 col-span-1 w-full h-full flex justify-center items-center backdrop-blur-lg bg-white/15"
+    >
+    <a href="{{ .extURL }}"
+      target="_blank"
+      class="btn btn-primary font-normal text-base gdpr-consent-btn">
+      Video von <em>{{ $host }}</em> laden
+    </a>
+  </div>
+</gdpr-iframe-wrapper>

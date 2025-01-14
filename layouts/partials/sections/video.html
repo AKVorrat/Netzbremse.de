@@ -2,7 +2,7 @@
   {{ if eq .section.platform "youtube" }}
     {{ partial "utils/youtube" (dict "id" .section.youtubeID "title" .section.youtubeTitle) }}
   {{ else if eq .section.platform "ccc" }} 
-    {{ partial "utils/ccc-video" (dict "embedURL" .section.embedURL) }}
+    {{ partial "utils/ccc-video" (dict "embedURL" .section.embedURL "extURL" .section.extURL "thumbnailURL" .section.thumbnailURL) }}
   {{ else }}
     {{ errorf "Invalid video platform" }}
   {{ end }}

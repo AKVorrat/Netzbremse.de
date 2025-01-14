@@ -66,45 +66,48 @@ params:
     - "Threema (ID: [BXJMX4R5](https://threema.id/BXJMX4R5?text=))"
 
   - type: video
-    bg: light
+#    bg: light
     id: conference-talk
     title: "Talk beim Chaos Communication Congress 38C3"
     platform: "ccc"
     embedURL: "https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever/oembed#t=1205"
-    altURL: "[Ganzen Talk ansehen!](https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever)"
+    extURL: "https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever"
+    thumbnailURL: "img/thumbnails/ccc-talk-thumbnail.png"
+    altURL: "[Ganzen Talk ansehen](https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever)"
 
-  - type: media-coverage
-    title: Medienberichte
-    id: media-coverage
-    articles:
-    - publication: teltarif.de
-      logo: "/img/publications/logos/teltarif.de.svg" 
-      title: "Telekom: Engpässe beim Peering sorgen für Streaming-Frust"
-      summary: Die Deut­sche Telekom muss endlich die Peering-Kapa­zitäten zu anderen Internet-Knoten erhöhen.
-      url: "https://www.teltarif.de/telekom-peering-probleme-internet/news/97447.html"
-    - publication: teltarif.de
-      logo: /img/publications/logos/teltarif.de.svg
-      title: Verbraucherschützer werfen Telekom Internet-Drossel vor
-      summary: Verbrau­cher­schützer wollen bei der Bundes­netz­agentur Beschwerde gegen Peering-Probleme im Telekom-Netz einrei­chen.
-      url: "https://www.teltarif.de/telekom-netzbremse-peering/news/97498.html"
-    - publication: "heise online"
-      logo: "/img/publications/logos/heise-online-round.svg"
-      title: "Deutsches Forschungsnetz und Telekom: Peeren in Zeiten von Corona"
-      summary: Nicht nur als Krisenlösung sucht das Deutsche Forschungsnetz den direkten Anschluss zur Deutschen Telekom. Die wollte sich aber zuerst auf nichts einlassen.
-      url: "https://www.heise.de/news/Deutsches-Forschungsnetz-und-Telekom-Peeren-in-Zeiten-von-Corona-4694172.html"
-    - publication: "golem.de"
-      logo: "/img/publications/logos/golem-square.png"
-      title: "Extrakosten für bessere Anbindung an Telekom-Kunden"
-      summary: Schon seit mindestens Mai 2015 gibt es sie, eine Option für Hetzner-Kunden, die ihre Server für Kunden der Telekom zwischen 19 und 22 Uhr besser erreichbar machen wollen.
-      url: "https://www.golem.de/news/hetzner-und-netzneutralitaet-extrakosten-fuer-bessere-anbindung-an-telekom-kunden-1511-117711.html"
-    - publication: "golem.de"
-      logo: "/img/publications/logos/golem-square.png"
-      title: "Extrakosten für bessere Anbindung an Telekom-Kunden"
-      summary: Schon seit mindestens Mai 2015 gibt es sie, eine Option für Hetzner-Kunden, die ihre Server für Kunden der Telekom zwischen 19 und 22 Uhr besser erreichbar machen wollen.
-      url: "https://www.golem.de/news/hetzner-und-netzneutralitaet-extrakosten-fuer-bessere-anbindung-an-telekom-kunden-1511-117711.html"
+  # - type: media-coverage
+  #   title: Medienberichte
+  #   id: media-coverage
+  #   articles:
+  #   - publication: teltarif.de
+  #     logo: "/img/publications/logos/teltarif.de.svg" 
+  #     title: "Telekom: Engpässe beim Peering sorgen für Streaming-Frust"
+  #     summary: Die Deut­sche Telekom muss endlich die Peering-Kapa­zitäten zu anderen Internet-Knoten erhöhen.
+  #     url: "https://www.teltarif.de/telekom-peering-probleme-internet/news/97447.html"
+  #   - publication: teltarif.de
+  #     logo: /img/publications/logos/teltarif.de.svg
+  #     title: Verbraucherschützer werfen Telekom Internet-Drossel vor
+  #     summary: Verbrau­cher­schützer wollen bei der Bundes­netz­agentur Beschwerde gegen Peering-Probleme im Telekom-Netz einrei­chen.
+  #     url: "https://www.teltarif.de/telekom-netzbremse-peering/news/97498.html"
+  #   - publication: "heise online"
+  #     logo: "/img/publications/logos/heise-online-round.svg"
+  #     title: "Deutsches Forschungsnetz und Telekom: Peeren in Zeiten von Corona"
+  #     summary: Nicht nur als Krisenlösung sucht das Deutsche Forschungsnetz den direkten Anschluss zur Deutschen Telekom. Die wollte sich aber zuerst auf nichts einlassen.
+  #     url: "https://www.heise.de/news/Deutsches-Forschungsnetz-und-Telekom-Peeren-in-Zeiten-von-Corona-4694172.html"
+  #   - publication: "golem.de"
+  #     logo: "/img/publications/logos/golem-square.png"
+  #     title: "Extrakosten für bessere Anbindung an Telekom-Kunden"
+  #     summary: Schon seit mindestens Mai 2015 gibt es sie, eine Option für Hetzner-Kunden, die ihre Server für Kunden der Telekom zwischen 19 und 22 Uhr besser erreichbar machen wollen.
+  #     url: "https://www.golem.de/news/hetzner-und-netzneutralitaet-extrakosten-fuer-bessere-anbindung-an-telekom-kunden-1511-117711.html"
+  #   - publication: "golem.de"
+  #     logo: "/img/publications/logos/golem-square.png"
+  #     title: "Extrakosten für bessere Anbindung an Telekom-Kunden"
+  #     summary: Schon seit mindestens Mai 2015 gibt es sie, eine Option für Hetzner-Kunden, die ihre Server für Kunden der Telekom zwischen 19 und 22 Uhr besser erreichbar machen wollen.
+  #     url: "https://www.golem.de/news/hetzner-und-netzneutralitaet-extrakosten-fuer-bessere-anbindung-an-telekom-kunden-1511-117711.html"
+
   - type: about-us
     id: about-us
-    bg: light
+  #  bg: light
     title: "Wer sind wir?"
     donationTitle: "Spende jetzt für ein freies Internet!"
     members:

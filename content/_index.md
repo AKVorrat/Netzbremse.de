@@ -16,7 +16,7 @@ params:
     id: explainer
     title: "Worum geht es?"
     content: |    
-      Die [Epicenter.works](https://epicenter.works/), die [Gesellschaft für Freiheitsrechte](https://freiheitsrechte.org/), der [Verbraucherzentrale Bundesverband](https://www.vzbv.de/) und Stanford-Professorin [Barbara van Schewick](https://law.stanford.edu/barbara-van-schewick/) gehen zur Bundesnetzagentur und reichen eine offizielle Beschwerde gegen die unfaire Geschäftspraxis der Telekom ein.
+      [Epicenter.works](https://epicenter.works/), die [Gesellschaft für Freiheitsrechte](https://freiheitsrechte.org/), der [Verbraucherzentrale Bundesverband](https://www.vzbv.de/) und Stanford-Professorin [Barbara van Schewick](https://law.stanford.edu/barbara-van-schewick/) gehen zur Bundesnetzagentur und reichen eine offizielle Beschwerde gegen die unfaire Geschäftspraxis der Telekom ein.
             
       Die Telekom schafft künstliche Engpässe an den Zugängen zum Telekom-Netz. Finanzstarke Dienste, die die Telekom bezahlen, kommen schnell durch und funktionieren super. Dienste, die sich das nicht leisten können, werden ausgebremst und laden oft langsam oder gar nicht.
       

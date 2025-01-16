@@ -61,7 +61,7 @@ params:
 
       Dann kontaktiere uns über einen der folgenden Kanäle:
     channels:
-    - "[team@epicenter.works](mailto:team@epicenter.works)"
+    - "[netzbremse@epicenter.works](mailto:netzbremse@epicenter.works)"
     - "Signal: [+43 670 404 98 89](https://signal.me/#p/+436704049889)"
     - "Threema (ID: [BXJMX4R5](https://threema.id/BXJMX4R5?text=))"
 

@@ -79,6 +79,13 @@ params:
     title: Medienberichte
     id: media-coverage
     articles:
+    - publication: "golem.de"
+      logo: "/img/publications/logos/golem-square.png"
+      logoShadow: true
+      title: 'Peering: Verbraucherschützer machen gegen "Netzbremse" der Telekom mobil'
+      summary: '"Die Telekom drosselt das Netz", beklagen die Macher einer neuen Kampagne. Das verstoße gegen die Netzneutralität. Eine offizielle Beschwerde soll bald folgen.'
+      date: 2025-01-16
+      url: "https://www.golem.de/news/peering-verbraucherzentrale-wirft-der-telekom-drosselung-vor-2501-192195.html"
     - publication: teltarif.de
       logo: "/img/publications/logos/teltarif.de.svg" 
       title: "Telekom: Engpässe beim Peering sorgen für Streaming-Frust"
@@ -118,7 +125,7 @@ params:
       summary: "Die Verbraucherzentrale sucht Betroffene, die Probleme im Netz der Telekom haben. Der Vorwurf: Verletzung der Netzneutralität."
       date: 2025-01-07
       url: "https://www.golem.de/news/peering-verbraucherzentrale-wirft-der-telekom-drosselung-vor-2501-192195.html"
-    - publication: chip.de
+    - publication: chp.de
       logo: "/img/publications/logos/chip-logo.png"
       logoShadow: true
       title: "Vorwürfe gegen die Telekom: Netz soll für viele Dienste gedrosselt worden sein"
@@ -145,6 +152,14 @@ params:
       summary: "Macht die Telekom ihr Netz absichtlich langsamer? Der Verbraucherschutz wirft dem Unternehmen vor, die Netzneutralität absichtlich zu verletzen. Die Telekom verlange von Anbietern Zahlungen für bevorzugten Datentransfer und bremse andere Dienste aus."
       date: 2025-01-08
       url: "https://www.giga.de/tech/unfaires-vorgehen-bei-telekom-internetgeschwindigkeit-ruft-kritiker-auf-den-plan--01JH2ZF7Q9DJ9MFMW2ZNMM2V8M"
+      
+      # Duplicate entry to make animation not jump
+    - publication: teltarif.de
+      logo: /img/publications/logos/teltarif.de.svg
+      title: Verbraucherschützer werfen Telekom Internet-Drossel vor
+      summary: Verbrau­cher­schützer wollen bei der Bundes­netz­agentur Beschwerde gegen Peering-Probleme im Telekom-Netz einrei­chen.
+      date: 2025-01-07
+      url: "https://www.teltarif.de/telekom-netzbremse-peering/news/97498.html"
   - type: about-us
     id: about-us
   #  bg: light

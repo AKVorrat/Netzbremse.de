@@ -2,7 +2,7 @@
   class="overflow-hidden w-[calc(100vw+32px)] max-w-[2000px] no-scrollbar [mask-image:_linear-gradient(to_right,transparent_0,_black_16px,_black_calc(100%-16px),transparent_100%)]"
 >
   <infinite-scroll-x class="grid grid-rows-2 grid-flow-col sm:auto-cols-[65ch] auto-cols-[32ch] gap-4 w-min" >
-  {{ range sort .section.articles "date" }}
+  {{ range .section.articles }}
     <div class="card bg-base-100 shadow-xl prose p-4 pt-0 mt-6 flex-shrink-0 flex snap-center offset">
       <div class="flex justify-center -m-6">
         {{ $logo := resources.GetMatch .logo }}

@@ -58,7 +58,7 @@ nav {
 } 
 
 .offset:nth-child(even) {
-  transform: translateX(-50%);
+  transform: translateX(calc(-50% - 0.5rem));
 }
 
 infinite-scroll-x {

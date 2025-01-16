@@ -1,5 +1,5 @@
 <div 
-  class="overflow-hidden w-screen no-scrollbar"
+  class="overflow-hidden w-[calc(100vw+32px)] max-w-[2000px] no-scrollbar [mask-image:_linear-gradient(to_right,transparent_0,_black_16px,_black_calc(100%-16px),transparent_100%)]"
 >
   <infinite-scroll-x class="grid grid-rows-2 grid-flow-col auto-cols-[65ch] gap-4 w-min" >
   {{ range sort .section.articles "date" }}

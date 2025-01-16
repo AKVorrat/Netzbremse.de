@@ -1,8 +1,10 @@
 <div 
-  class="flex flex-wrap gap-4 justify-items-center justify-center max-w-[140ch]"
+  class="grid grid-rows-2 grid-flow-col auto-cols-[minmax(1fr,100vw)] gap-4 overflow-x-scroll snap-always snap-mandatory no-scrollbar snap-x w-screen"
 >
+  <div class="w-screen"></div>
+  <div class="w-screen"></div>
   {{ range sort .section.articles "date" }}
-    <div class="card bg-base-100 shadow-xl prose p-4 pt-0 mt-6 w-full flex-shrink-0 flex">
+    <div class="card bg-base-100 shadow-xl prose p-4 pt-0 mt-6 max-w-screen min-w-[65ch] flex-shrink-0 flex snap-center">
       <div class="flex justify-center -m-6">
         {{ $logo := resources.GetMatch .logo }}
         <img 
@@ -33,4 +35,6 @@
       <a href="{{ .url }}" target="_blank" class="m-0 leading-none">Zum Beitrag von {{ .publication }}</a>
     </div>
   {{ end }}
+  <div class="w-screen"></div>
+  <div class="w-screen"></div>
 </div>

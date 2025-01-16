@@ -56,3 +56,22 @@ nav {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 } 
+
+.offset:nth-child(even) {
+  transform: translateX(-50%);
+}
+
+infinite-scroll-x {
+  animation: scroll-horizontal 60s linear infinite;
+}
+infinite-scroll-x:hover {
+  animation-play-state: paused;
+}
+@keyframes scroll-horizontal {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem)); 
+  }
+}

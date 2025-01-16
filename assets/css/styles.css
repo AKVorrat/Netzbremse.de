@@ -11,6 +11,7 @@ html {
 
 body {
     font-family: "Roboto";
+    overflow-x: hidden; 
 }
 
 h1,
@@ -44,4 +45,34 @@ nav {
 
 .prose {
     line-height: 1.5 !important;
+}
+
+ /* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+} 
+
+.offset:nth-child(even) {
+  transform: translateX(calc(-50% - 0.5rem));
+}
+
+infinite-scroll-x {
+  animation: scroll-horizontal 60s linear infinite;
+}
+infinite-scroll-x:hover {
+  animation-play-state: paused;
+}
+@keyframes scroll-horizontal {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem)); 
+  }
 }

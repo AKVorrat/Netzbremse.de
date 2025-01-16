@@ -1,7 +1,7 @@
 <div 
   class="flex flex-wrap gap-4 justify-items-center justify-center max-w-[140ch]"
 >
-  {{ range .section.articles }}
+  {{ range sort .section.articles "date" }}
     <div class="card bg-base-100 shadow-xl prose p-4 pt-0 mt-6 w-full flex-shrink-0 flex">
       <div class="flex justify-center -m-6">
         {{ $logo := resources.GetMatch .logo }}
@@ -11,7 +11,7 @@
           {{ else }}
             src="{{ ($logo.Fit "96x48").RelPermalink | safeURL }}" 
           {{ end }}
-          class="h-12 max-w-24 fit-contain m-0 "
+          class="h-12 max-w-24 fit-contain m-0 {{ if .logoShadow }} shadow-xl {{ end }}"
           alt="Logo von {{ .publication }}"
         >
       </div>

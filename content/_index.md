@@ -56,12 +56,11 @@ params:
     msgBubble: "Hallo, ich bin Kundin der Telekom und kenne das Problem nur zu gut :("
     content: |
       Bist du Telekom Kundin oder Kunde und willst helfen? Dann melde dich bei uns &mdash; jeder Erfahrungsbericht zählt!
+      Vielleicht kennst du dich sogar mit Netzwerktechnik aus und hast Messdaten, die für uns relevant sein könnten?
+      Ob mit Messungen oder ohne: Wir freuen uns über deine Nachricht auf [netzbremse@epicenter.works](mailto:netzbremse@epicenter.works)
 
-      Vielleicht kennst du dich sogar mit Netzwerktechnik aus und hast Messdaten, die für uns relevant sein könnten? Oder du hast Erfahrungen mit Zusammenschaltungsverträgen mit der Telekom und willst vertraulich mit uns sprechen?
-
-      Dann kontaktiere uns über einen der folgenden Kanäle:
+      Hast du Erfahrungen mit Zusammenschaltungsverträgen mit der Telekom und willst vertraulich mit uns sprechen? Dann kontaktiere uns per Email oder über einen der folgenden Kanäle:
     channels:
-    - "[netzbremse@epicenter.works](mailto:netzbremse@epicenter.works)"
     - "Signal: [+43 670 404 98 89](https://signal.me/#p/+436704049889)"
     - "Threema (ID: [BXJMX4R5](https://threema.id/BXJMX4R5?text=))"
 

@@ -11,6 +11,8 @@ defaultContentLanguageInSubdir = false
   [languages.en]
     languageName = 'English'
     weight = 2
+
+    title = 'Netzbremse - Telekom is throttling the network!'
     [languages.en.params]
       description = "If you are a customer of Deutsche Telekom and some websites just won't load, then we might have the solution to your problem!"
       socialShareImage = "/img/social_share.en.png"
@@ -57,6 +59,20 @@ defaultContentLanguageInSubdir = false
   [[menus.main]]
     name = 'Presse'
     URL = '#media-coverage'
+
+[languages.en.menus]
+  [[languages.en.menus.main]]
+    name = 'Video'
+    URL = '#video'
+    weight = 10
+  [[languages.en.menus.main]]
+    name = 'Newsletter'
+    URL = '#newsletter'
+    weight = 20
+  [[languages.en.menus.main]]
+    name = 'Support'
+    URL = '#contact-us'
+    weight = 30
 
 [markup.goldmark.renderer]
   unsafe = true # Allow HTML in md files

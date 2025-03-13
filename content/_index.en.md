@@ -8,9 +8,9 @@ params:
     id: video
     title: "Short Explanation!"
     platform: "youtube"
-    youtubeID: "B20noT-X9e8"
+    youtubeID: "GQdh8QtSBs8"
     youtubeTitle: "Telekom is throttling the network. Let's do something about it!"
-    altURL: "[English Version](https://youtu.be/GQdh8QtSBs8)"
+    altURL: "[German Version](https://youtu.be/B20noT-X9e8)"
 
   - type: content
     id: explainer
@@ -162,15 +162,15 @@ params:
     donationTitle: "Donate now for a free internet!"
     members:
     - name: "Epicenter.Works"
-      url: "https://epicenter.works/"
+      url: "https://epicenter.works/en"
       logo: "/img/ew/ew_logo_rgb-l.png"
-      donationURL: "https://epicenter.works/unterstuetzung"
+      donationURL: "https://epicenter.works/en/supporters"
     - name: "Society for Civil Rights"
-      url: "https://freiheitsrechte.org/"
+      url: "https://freiheitsrechte.org/en/"
       logo: "/img/gff/Gesellschaft_für_Freiheitsrechte_logo.svg.png"
-      donationURL: "https://freiheitsrechte.org/mitmachen/einzelspenden"
+      donationURL: "https://freiheitsrechte.org/en/unterstuetzen/einzelspenden"
     - name: "Federation of German Consumer Organizations"
-      url: "https://www.vzbv.de/"
+      url: "https://www.vzbv.de/en"
       logo: "/img/vzbv/Verbraucherzentrale_Bundesverband_Logo.svg.png"
     - name: "Prof. Dr. Barbara van Schewick"
       url: "https://law.stanford.edu/barbara-van-schewick/"

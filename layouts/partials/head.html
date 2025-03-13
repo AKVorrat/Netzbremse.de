@@ -6,7 +6,7 @@
 
 {{ $socialShareImageURL := (resources.GetMatch .Site.Params.socialShareImage).Permalink }}
 
-<meta property="og:url" content="{{ .Site.BaseURL }}">
+<meta property="og:url" content="{{ "/" | absLangURL }}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ site.Title }}">
 <meta property="og:image" content="{{ $socialShareImageURL }}">
@@ -15,7 +15,7 @@
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary">
 <meta property="twitter:domain" content="{{ .Site.Params.domain }}">
-<meta property="twitter:url" content="{{ .Site.BaseURL }}">
+<meta property="twitter:url" content="{{ "/" | absLangURL }}">
 <meta name="twitter:title" content="{{ site.Title }}">
 <meta name="twitter:description" content="{{ .Site.Params.description }}">
 <meta name="twitter:image" content="{{ $socialShareImageURL }}">
@@ -25,7 +25,7 @@
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-title" content="{{ site.Title }}" />
-<link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
+<link rel="manifest" href="/site.webmanifest" />
 
 <!-- Pre-Loading only the most used fonts -->
 <link rel="preload" href="/fonts/source-code-pro-latin-600-normal.woff2" as="font" type="font/woff2" />

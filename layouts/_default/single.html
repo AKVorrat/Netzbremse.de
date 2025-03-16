@@ -1,10 +1,10 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+<div class="min-h-[32ch] bg-primary flex justify-center items-center">
+  <h1 class="sm:text-5xl text-4xl font-bold text-primary-content text-balance mx-10 my-4">{{ page.Title }}</h1>
+</div>
+<div class="flex flex-col items-center">
+  <div class="prose mx-10 my-4">
+    {{ .Content }}
+  </div>
+</div>
 {{ end }}

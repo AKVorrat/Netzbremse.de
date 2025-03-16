@@ -46,15 +46,15 @@ defaultContentLanguageInSubdir = false
 [menus]
   [[menus.main]]
     name = 'Video'
-    URL = '#video'
+    URL = '/#video'
     weight = 10
   [[menus.main]]
     name = 'Newsletter'
-    URL = '#newsletter'
+    URL = '/#newsletter'
     weight = 20
   [[menus.main]]
     name = 'Unterstützung'
-    URL = '#contact-us'
+    URL = '/#contact-us'
     weight = 30
   [[menus.main]]
     name = 'Presse'
@@ -63,15 +63,15 @@ defaultContentLanguageInSubdir = false
 [languages.en.menus]
   [[languages.en.menus.main]]
     name = 'Video'
-    URL = '#video'
+    URL = '/#video'
     weight = 10
   [[languages.en.menus.main]]
     name = 'Newsletter'
-    URL = '#newsletter'
+    URL = '/#newsletter'
     weight = 20
   [[languages.en.menus.main]]
     name = 'Support'
-    URL = '#contact-us'
+    URL = '/#contact-us'
     weight = 30
 
 [markup.goldmark.renderer]

@@ -1,0 +1,6 @@
+<div tabindex="0" class="collapse collapse-arrow bg-base-100 border-primary border my-4 rounded-none">
+  <div class="collapse-title font-semibold font-title">{{ .Get "title" }}</div>
+  <div class="collapse-content text-sm">
+    {{ .InnerDeindent | markdownify }}
+  </div>
+</div>

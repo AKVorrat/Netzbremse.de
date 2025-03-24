@@ -6,7 +6,7 @@
 
 {{ $socialShareImageURL := (resources.GetMatch .Site.Params.socialShareImage).Permalink }}
 
-<meta property="og:url" content="{{ "/" | absLangURL }}">
+<meta property="og:url" content="{{ " /" | absLangURL }}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ site.Title }}">
 <meta property="og:image" content="{{ $socialShareImageURL }}">
@@ -15,7 +15,7 @@
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary">
 <meta property="twitter:domain" content="{{ .Site.Params.domain }}">
-<meta property="twitter:url" content="{{ "/" | absLangURL }}">
+<meta property="twitter:url" content="{{ " /" | absLangURL }}">
 <meta name="twitter:title" content="{{ site.Title }}">
 <meta name="twitter:description" content="{{ .Site.Params.description }}">
 <meta name="twitter:image" content="{{ $socialShareImageURL }}">
@@ -29,7 +29,5 @@
 
 <!-- Pre-Loading only the most used fonts -->
 <link rel="preload" href="/fonts/source-code-pro-latin-600-normal.woff2" as="font" type="font/woff2" />
-<link rel="preload" href="/fonts/roboto-latin-300-normal.woff2" as="font" type="font/woff2" />
-<link rel="preload" href="/fonts/roboto-latin-400-normal.woff2" as="font" type="font/woff2" />
 
 {{ partialCached "css.html" . }}

@@ -12,6 +12,7 @@ html {
 
 body {
   overflow-x: hidden;
+  /*font-family: Roboto;*/
 }
 
 h1,
@@ -22,7 +23,7 @@ h5,
 h6,
 nav,
 .font-title {
-  font-family: "Source Code Pro", 'Courier New', Courier, monospace;
+  font-family: "Source Code Pro", 'Courier New', monospace;
   font-weight: 600;
 }
 

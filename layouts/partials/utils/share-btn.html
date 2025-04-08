@@ -3,40 +3,47 @@
 {{ $msg := .link.message | default .section.shareMessage }}
 
 {{ if eq .link.service "WhatsApp" }}
-  <a href="https://api.whatsapp.com/send?text={{ $msg }}" class="{{ $class }}" target="_blank" title="{{ .link.service }}">
-    {{ partial "utils/icon" "whatsapp" }}
-    <span class="sr-only">{{ $srText }}</span>
-  </a>
+<a href="https://api.whatsapp.com/send?text={{ $msg }}" class="{{ $class }}" target="_blank"
+  title="{{ .link.service }}">
+  {{ partial "icons/icon" (dict "vendor" "fab" "name" "whatsapp" )}}
+  <span class="sr-only">{{ $srText }}</span>
+</a>
 {{ else if eq .link.service "E-Mail" }}
-  <a href="mailto:?subject={{ .link.subject }}&body={{ $msg }}" class="{{ $class }}" target="_blank" title="{{ .link.service }}">
-    {{ partial "utils/icon" "email" }}
-    <span class="sr-only">{{ $srText }}</span>
-  </a>
+<a href="mailto:?subject={{ .link.subject }}&body={{ $msg }}" class="{{ $class }}" target="_blank"
+  title="{{ .link.service }}">
+  {{ partial "icons/icon" (dict "vendor" "far" "name" "envelope" )}}
+  <span class="sr-only">{{ $srText }}</span>
+</a>
 {{ else if eq .link.service "Twitter" }}
-  <a href="https://twitter.com/share?text={{ $msg }}&url={{ .link.url }}" class="{{ $class }}" target="_blank" title="{{ .link.service }}">
-    {{ partial "utils/icon" "twitter" }}
-    <span class="sr-only">{{ $srText }}</span>
-  </a>
+<a href="https://twitter.com/share?text={{ $msg }}&url={{ .link.url }}" class="{{ $class }}" target="_blank"
+  title="{{ .link.service }}">
+  {{ partial "icons/icon" (dict "vendor" "fab" "name" "twitter" )}}
+  <span class="sr-only">{{ $srText }}</span>
+</a>
 {{ else if eq .link.service "Telegram" }}
-  <a href="https://t.me/share/url?text={{ $msg }}&url={{ .link.url }}" class="{{ $class }}" target="_blank" title="{{ .link.service }}">
-    {{ partial "utils/icon" "telegram" }}
-    <span class="sr-only">{{ $srText }}</span>
-  </a>
+<a href="https://t.me/share/url?text={{ $msg }}&url={{ .link.url }}" class="{{ $class }}" target="_blank"
+  title="{{ .link.service }}">
+  {{ partial "icons/icon" (dict "vendor" "fab" "name" "telegram" )}}
+  <span class="sr-only">{{ $srText }}</span>
+</a>
 {{ else if eq .link.service "LinkedIn" }}
-  <a href="https://www.linkedin.com/sharing/share-offsite/?text={{ $msg }}&url={{ .link.url }}" class="{{ $class }}" target="_blank" title="{{ .link.service }}">
-    {{ partial "utils/icon" "linkedin" }}
-    <span class="sr-only">{{ $srText }}</span>
-  </a>
+<a href="https://www.linkedin.com/sharing/share-offsite/?text={{ $msg }}&url={{ .link.url }}" class="{{ $class }}"
+  target="_blank" title="{{ .link.service }}">
+  {{ partial "icons/icon" (dict "vendor" "fab" "name" "linkedin" )}}
+  <span class="sr-only">{{ $srText }}</span>
+</a>
 {{ else if eq .link.service "Facebook" }}
-  <a href="https://www.facebook.com/sharer/sharer.php?u={{ .link.url }}" class="{{ $class }}" target="_blank" title="{{ .link.service }}">
-    {{ partial "utils/icon" "facebook" }}
-    <span class="sr-only">{{ $srText }}</span>
-  </a>
+<a href="https://www.facebook.com/sharer/sharer.php?u={{ .link.url }}" class="{{ $class }}" target="_blank"
+  title="{{ .link.service }}">
+  {{ partial "icons/icon" (dict "vendor" "fab" "name" "facebook" )}}
+  <span class="sr-only">{{ $srText }}</span>
+</a>
 {{ else if eq .link.service "Reddit" }}
-  <a href="https://www.reddit.com/submit?title={{ $msg }}&url={{ .link.url }}" class="{{ $class }}" target="_blank" title="{{ .link.service }}">
-    {{ partial "utils/icon" "reddit" }}
-    <span class="sr-only">{{ $srText }}</span>
-  </a>
+<a href="https://www.reddit.com/submit?title={{ $msg }}&url={{ .link.url }}" class="{{ $class }}" target="_blank"
+  title="{{ .link.service }}">
+  {{ partial "icons/icon" (dict "vendor" "fab" "name" "reddit" )}}
+  <span class="sr-only">{{ $srText }}</span>
+</a>
 {{ else }}
-  {{ fmt.Errorf "share-btn: unknown service %s" .link.service }}
+{{ fmt.Errorf "share-btn: unknown service %s" .link.service }}
 {{ end }}

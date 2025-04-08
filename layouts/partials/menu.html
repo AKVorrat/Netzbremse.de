@@ -11,91 +11,79 @@ Renders a menu for the given menu ID.
 {{- $menuID := .menuID }}
 
 {{- with index site.Menus $menuID }}
-  <nav class="navbar shadow-xl flex bg-base-100 text-primary">
-    <a class="btn btn-ghost text-xl flex flex-row align-middle" href="/">
-      <img src="{{ ((resources.GetMatch $page.Site.Params.logo).Fit `128x128 png Smart`).RelPermalink | safeURL  }}" alt="{{ $page.Site.Params.logoAlt }}" class="h-8 w-8">
-      {{ $page.Site.Params.shortTitle }}
-    </a>
+<nav class="navbar shadow-xl flex bg-base-100 text-primary">
+  <a class="btn btn-ghost text-xl flex flex-row align-middle" href="/">
+    <img src="{{ ((resources.GetMatch $page.Site.Params.logo).Fit `128x128 png Smart`).RelPermalink | safeURL  }}"
+      alt="{{ $page.Site.Params.logoAlt }}" class="h-8 w-8">
+    {{ $page.Site.Params.shortTitle }}
+  </a>
 
-    <div class="flex-auto"></div>
+  <div class="flex-auto"></div>
 
-    <div class="dropdown flex justify-end">
-      <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
-        <span class="sr-only">Navigation öffnen</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      </div>
-      <!-- Mobile only responsive menu -->
-      <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-44 w-52 p-2 shadow">
-        {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }} 
-        {{- partial "inline/menu/language.html" $page }}
-      </ul>
+  <div class="dropdown flex justify-end">
+    <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
+      <span class="sr-only">Navigation öffnen</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+      </svg>
     </div>
+    <!-- Mobile only responsive menu -->
+    <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-44 w-52 p-2 shadow">
+      {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+      <div class="divider divider-vertical divider-primary mx-2 mt-0 -mb-1"></div>
+      {{- partial "inline/menu/language.html" $page }}
+    </ul>
+  </div>
 
-    <div class="hidden md:flex">
-      <ul class="menu menu-horizontal text-xl">
-        {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
-        <div class="divider divider-horizontal divider-primary mx-0 my-2"></div>
-        {{- partial "inline/menu/language.html" $page }}
-      </ul>
-    </div>
-  </nav>
+  <div class="hidden md:flex">
+    <ul class="menu menu-horizontal text-xl">
+      {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+      <div class="divider divider-horizontal divider-primary mx-0 my-2"></div>
+      {{- partial "inline/menu/language.html" $page }}
+    </ul>
+  </div>
+</nav>
 {{- end }}
 
 {{- define "partials/inline/menu/walk.html" }}
-  {{- $page := .page }}
-  {{- range .menuEntries }}
-    {{- $attrs := dict "href" .URL }}
-    {{- if $page.IsMenuCurrent .Menu . }}
-      {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
-    {{- else if $page.HasMenuCurrent .Menu .}}
-      {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
-    {{- end }}
-    {{- $name := .Name }}
-    {{- with .Identifier }}
-      {{- with T . }}
-        {{- $name = . }}
-      {{- end }}
-    {{- end }}
-    <li>
-      <a
-        {{- range $k, $v := $attrs }}
-          {{- with $v }}
-            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-          {{- end }}
-        {{- end -}}
-      >{{ $name }}</a>
-      {{- with .Children }}
-        <ul>
-          {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
-        </ul>
-      {{- end }}
-    </li>
+{{- $page := .page }}
+{{- range .menuEntries }}
+{{- $attrs := dict "href" .URL }}
+{{- if $page.IsMenuCurrent .Menu . }}
+{{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
+{{- else if $page.HasMenuCurrent .Menu .}}
+{{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
+{{- end }}
+{{- $name := .Name }}
+{{- with .Identifier }}
+{{- with T . }}
+{{- $name = . }}
+{{- end }}
+{{- end }}
+<li>
+  <a {{- range $k, $v :=$attrs }} {{- with $v }} {{- printf " %s=%q" $k $v | safeHTMLAttr }} {{- end }} {{- end -}}>{{
+    $name }}</a>
+  {{- with .Children }}
+  <ul>
+    {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+  </ul>
   {{- end }}
+</li>
+{{- end }}
 {{- end }}
 
 {{- define "partials/inline/menu/language.html" }}
-  {{ $siteLanguages := site.Languages}}
-  {{ $pageLang := .Page.Lang}}
-  {{- range .Page.AllTranslations }}
-    {{ $translation := . }}
-    <li>
-    {{- if eq $translation.Lang $pageLang }}
-      <!-- Not sure yet, if we also want a link to the current language or not -->
-      <!-- <a class="" href="{{ $translation.Permalink | relURL }}">{{ upper $translation.Lang }}</a> -->
-    {{ else }}
-      <a class="" href="{{ $translation.Permalink | relURL }}">{{ upper $translation.Lang  }}</a>
-    {{- end }}
-    </li>
+{{ $siteLanguages := site.Languages}}
+{{ $pageLang := .Page.Lang}}
+{{- range .Page.AllTranslations }}
+{{ $translation := . }}
+<li>
+  {{- if eq $translation.Lang $pageLang }}
+  <!-- Not sure yet, if we also want a link to the current language or not -->
+  <!-- <a class="" href="{{ $translation.Permalink | relURL }}">{{ upper $translation.Lang }}</a> -->
+  {{ else }}
+  <a class="" href="{{ $translation.Permalink | relURL }}">{{ upper $translation.Lang }}</a>
   {{- end }}
+</li>
+{{- end }}
 {{- end }}

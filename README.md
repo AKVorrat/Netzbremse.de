@@ -19,3 +19,9 @@ To install dependencies and run the local development server run:
 npm install
 hugo server
 ```
+
+## Staging Server 
+
+- **https://netzbremse.k1.muehlberger.dev**
+- **Username:** netzbremse
+- **Password:** 1Y154mUfUfQQDSnF38HpJ5stcRVBNf9W

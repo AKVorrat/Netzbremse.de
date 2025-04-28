@@ -8,23 +8,24 @@ defaultContentLanguageInSubdir = false
   [languages.de]
     languageName = 'Deutsch'
     weight = 1
-  [languages.en]
-    languageName = 'English'
-    weight = 2
-
-    title = 'Netzbremse - Deutsche Telekom is throttling the internet!'
-    [languages.en.params]
-      description = "If you are a customer of Deutsche Telekom and some websites just won't load, then we might have the solution to your problem!"
-      socialShareImage = "/img/social_share.en.png"
-      logoAlt = 'Magenta-colored hourglass symbol'
-      [languages.en.params.hero]
-        title = "Deutsche Telekom is throttling the internet. Let's do something about it!"
-        subtitle = "If you are a customer of Deutsche Telekom and some websites just won't load, then we might have the solution to your problem!"
-      [languages.en.params.footer]
-        imprintURL = "https://epicenter.works/en/contact"
-        privacyURL = "https://epicenter.works/en/privacy"
-      [languages.en.params.newsletter]
-        subscribeBTN = "Subscribe to Updates"
+# Enable language here as soon as translation is completed
+#  [languages.en]
+#    languageName = 'English'
+#    weight = 2
+#
+#    title = 'Netzbremse - Deutsche Telekom is throttling the internet!'
+#    [languages.en.params]
+#      description = "If you are a customer of Deutsche Telekom and some websites just won't load, then we might have the solution to your problem!"
+#      socialShareImage = "/img/social_share.en.png"
+#      logoAlt = 'Magenta-colored hourglass symbol'
+#      [languages.en.params.hero]
+#        title = "Deutsche Telekom is throttling the internet. Let's do something about it!"
+#        subtitle = "If you are a customer of Deutsche Telekom and some websites just won't load, then we might have the solution to your problem!"
+#      [languages.en.params.footer]
+#        imprintURL = "https://epicenter.works/en/contact"
+#        privacyURL = "https://epicenter.works/en/privacy"
+#      [languages.en.params.newsletter]
+#        subscribeBTN = "Subscribe to Updates"
 
 [params]
   shortTitle = 'Netzbremse'
@@ -66,19 +67,19 @@ defaultContentLanguageInSubdir = false
     name = 'Presse'
     URL = '#media-coverage'
 
-[languages.en.menus]
-  [[languages.en.menus.main]]
-    name = 'Video'
-    URL = '#video'
-    weight = 10
-  [[languages.en.menus.main]]
-    name = 'Newsletter'
-    URL = '#newsletter'
-    weight = 20
-  [[languages.en.menus.main]]
-    name = 'Support'
-    URL = '#contact-us'
-    weight = 30
+#[languages.en.menus]
+#  [[languages.en.menus.main]]
+#    name = 'Video'
+#    URL = '#video'
+#    weight = 10
+#  [[languages.en.menus.main]]
+#    name = 'Newsletter'
+#    URL = '#newsletter'
+#    weight = 20
+#  [[languages.en.menus.main]]
+#    name = 'Support'
+#    URL = '#contact-us'
+#    weight = 30
 
 [markup.goldmark.renderer]
   unsafe = true # Allow HTML in md files

@@ -30,7 +30,9 @@ Renders a menu for the given menu ID.
     <!-- Mobile only responsive menu -->
     <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-44 w-52 p-2 shadow">
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+      {{ if gt (site.Languages | len) 1 }}
       <div class="divider divider-vertical divider-primary mx-2 mt-0 -mb-1"></div>
+      {{ end }}
       {{- partial "inline/menu/language.html" $page }}
     </ul>
   </div>
@@ -38,7 +40,9 @@ Renders a menu for the given menu ID.
   <div class="hidden md:flex">
     <ul class="menu menu-horizontal text-xl">
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+      {{ if gt (site.Languages | len) 1 }}
       <div class="divider divider-horizontal divider-primary mx-0 my-2"></div>
+      {{ end }}
       {{- partial "inline/menu/language.html" $page }}
     </ul>
   </div>

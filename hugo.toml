@@ -38,6 +38,12 @@ defaultContentLanguageInSubdir = false
 [params.hero] 
   title = "Die Telekom drosselt das Netz. Tun wir etwas dagegen!"
   subtitle = "Wenn du Kund:in der Deutschen Telekom bist und manche Webseiten einfach nicht laden wollen, dann haben wir vielleicht die Lösung für dein Problem!"
+  [[params.hero.links]]
+    text = 'Beschwerde'
+    url = 'https://epicenter.works/content/beschwerde-gegen-die-deutsche-telekom-wegen-verletzung-der-netzneutralitaet'
+  [[params.hero.links]]
+    text = 'Presseerklärung'
+    url = 'https://www.vzbv.de/pressemitteilungen/keine-zweiklassengesellschaft-im-internet-buendnis-reicht-beschwerde-gegen'
 
 [params.footer]
   imprintURL = "https://epicenter.works/kontakt"

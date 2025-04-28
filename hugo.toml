@@ -33,6 +33,9 @@ title = 'Netzbremse - Die Telekom drosselt das Netz!'
     name = 'Unterstützung'
     URL = '#contact-us'
     weight = 30
+  [[menus.main]]
+    name = 'Presse'
+    URL = '#media-coverage'
 
 [markup.goldmark.renderer]
   unsafe = true # Allow HTML in md files

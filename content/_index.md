@@ -78,6 +78,27 @@ params:
     title: Medienberichte
     id: media-coverage
     articles:
+    - publication: "DER SPIEGEL"
+      logo: "/img/publications/logos/der-spiegel.png"
+      logoShadow: true
+      title: 'Telekom: Verbraucherschützer kritisieren Einnahmen durch langsames Internet'
+      summary: 'Verbraucherschützer werfen der Telekom vor, mit schlechtem Netz zusätzliches Geld zu machen.'
+      date: 2025-04-25
+      url: "https://www.spiegel.de/panorama/telekom-verbraucherschuetzer-kritisieren-einnahmen-durch-langsames-internet-a-02d4f012-7c7a-406a-bff3-46ad785f19fa"
+    - publication: "TAGESSPIEGEL"
+      logo: "/img/publications/logos/tagesspiegel.png"
+      logoShadow: true
+      title: 'Vorwurf von Verbraucherschützern: Telekom soll Internetzugang absichtlich verlangsamen'
+      summary: 'Ein Bündnis mehrerer Organisationen wirft der Telekom vor, künstliche Engpässe im Netz zu schaffen und damit Geld zu verdienen. Der Konzern weist die Vorwürfe zurück und holt zur Gegenkritik aus.'
+      date: 2025-04-25
+      url: "https://www.tagesspiegel.de/wirtschaft/vorwuf-von-verbraucherschutzern-telekom-soll-internetzugang-absichtlich-verlangsamen-13592920.html"
+    - publication: "netzpolitik.org"
+      logo: "/img/publications/logos/netzpolitik.org.png"
+      logoShadow: true
+      title: 'Netzneutralität: Beschwerde gegen Telekom wegen absichtlicher Netzbremse'
+      summary: 'Laut mehreren zivilgesellschaftlichen Organisationen verlangsamt die Deutsche Telekom das Internet künstlich und verlangt für die volle Geschwindigkeit Geld von Unternehmen. Sie haben deswegen eine Beschwerde bei der Bundesnetzagentur eingereicht. Die Telekom wehrt sich.'
+      date: 2025-04-28
+      url: "https://netzpolitik.org/2025/netzneutralitaet-beschwerde-gegen-telekom-wegen-absichtlicher-netzbremse/"
     - publication: "golem.de"
       logo: "/img/publications/logos/golem-square.png"
       logoShadow: true
@@ -152,13 +173,6 @@ params:
       date: 2025-01-08
       url: "https://www.giga.de/tech/unfaires-vorgehen-bei-telekom-internetgeschwindigkeit-ruft-kritiker-auf-den-plan--01JH2ZF7Q9DJ9MFMW2ZNMM2V8M"
       
-      # Duplicate entry to make animation not jump
-    - publication: teltarif.de
-      logo: /img/publications/logos/teltarif.de.svg
-      title: Verbraucherschützer werfen Telekom Internet-Drossel vor
-      summary: Verbrau­cher­schützer wollen bei der Bundes­netz­agentur Beschwerde gegen Peering-Probleme im Telekom-Netz einrei­chen.
-      date: 2025-01-07
-      url: "https://www.teltarif.de/telekom-netzbremse-peering/news/97498.html"
   - type: about-us
     id: about-us
   #  bg: light

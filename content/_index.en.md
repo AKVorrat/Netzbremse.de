@@ -9,16 +9,16 @@ params:
     title: "Short Explanation!"
     platform: "youtube"
     youtubeID: "GQdh8QtSBs8"
-    youtubeTitle: "Telekom is throttling the network. Let's do something about it!"
+    youtubeTitle: "Deutsche Telekom is throttling the internet. Let's do something about it!"
     altURL: "[German Version](https://youtu.be/B20noT-X9e8)"
 
   - type: content
     id: explainer
     title: "What is this about?"
     content: |    
-      [Epicenter.works](https://epicenter.works/), the [Society for Civil Rights](https://freiheitsrechte.org/), the [Federation of German Consumer Organizations](https://www.vzbv.de/), and Stanford Professor [Barbara van Schewick](https://law.stanford.edu/barbara-van-schewick/) are filing an official complaint with the Federal Network Agency against Telekom's unfair business practices.
+      [Epicenter.works](https://epicenter.works/en/), the [Society for Civil Rights](https://freiheitsrechte.org/), the [Federation of German Consumer Organizations](https://www.vzbv.de/), and Stanford Professor [Barbara van Schewick](https://law.stanford.edu/barbara-van-schewick/) are filing an official complaint with the Federal Network Agency against Deutsche Telekom's unfair business practices.
             
-      Telekom is creating artificial bottlenecks at access points to its network. Financially strong services that pay Telekom get through quickly and work perfectly. Services that cannot afford this are slowed down and often load slowly or not at all.
+      Deutsche Telekom is creating artificial bottlenecks at access points to its network. Financially strong services that pay Telekom get through quickly and work perfectly. Services that cannot afford this are slowed down and often load slowly or not at all.
       
       This means Telekom decides which services we can use without issues, violating net neutrality. We are filing a complaint with the Federal Network Agency to stop this unfair practice together!
 
@@ -28,17 +28,17 @@ params:
     title: "Do you want to join our complaint? Or stay updated on what happens next?"
     shareTitle: "Help us reach more people!"
     shareBody: ""
-    shareMessage: "💰 Are you a Telekom customer, and your favorite websites load slowly or not at all? Find out why and what you can do about it: https://netzbremse.de"
+    shareMessage: "💰 Are you a Deutsche Telekom customer, and your favorite websites load slowly or not at all? Find out why and what you can do about it: https://netzbremse.de"
     shareLinks:
     - service: "WhatsApp"
-      message: "Are you a Telekom customer, and your favorite websites load slowly or not at all? Find out why and what you can do about it: https://netzbremse.de"
+      message: "Are you a Deutsche Telekom customer, and your favorite websites load slowly or not at all? Find out why and what you can do about it: https://netzbremse.de"
     - service: "E-Mail"
       subject: "Netzbremse"
     - service: "Twitter"
-      message: "💰 Are you a Telekom customer, and your favorite websites load slowly or not at all? Find out why and what you can do about it:"
+      message: "💰 Are you a Deutsche Telekom customer, and your favorite websites load slowly or not at all? Find out why and what you can do about it:"
       url: https://netzbremse.de
     - service: "Reddit"
-      message: "💰 Are you a Telekom customer, and your favorite websites load slowly or not at all? Find out why and what you can do about it."
+      message: "💰 Are you a Deutsche Telekom customer, and your favorite websites load slowly or not at all? Find out why and what you can do about it."
       url: https://netzbremse.de
     - service: "Telegram"
       url: https://netzbremse.de
@@ -52,11 +52,11 @@ params:
     title: "How can you help the project?"
     msgBubble: "Hi, I’m a Telekom customer and know this problem all too well :("
     content: |
-      Are you a Telekom customer and want to help? Get in touch with us—every experience counts!
+      Are you a Deutsche Telekom customer and want to help? Get in touch with us—every experience counts!
       Maybe you even have networking expertise and measurement data that could be relevant?
       Whether with or without measurements, we’d love to hear from you at [netzbremse@epicenter.works](mailto:netzbremse@epicenter.works).
 
-      Do you have experience with interconnection agreements with Telekom and want to talk to us confidentially? Contact us via email or one of the following channels:
+      Do you have experience with interconnection agreements with Deutsche Telekom and want to talk to us confidentially? Contact us via email or one of the following channels:
     channels:
     - "Signal: [+43 670 404 98 89](https://signal.me/#p/+436704049889)"
     - "Threema (ID: [BXJMX4R5](https://threema.id/BXJMX4R5?text=))"

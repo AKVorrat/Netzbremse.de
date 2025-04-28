@@ -12,13 +12,13 @@ defaultContentLanguageInSubdir = false
     languageName = 'English'
     weight = 2
 
-    title = 'Netzbremse - Telekom is throttling the network!'
+    title = 'Netzbremse - Deutsche Telekom is throttling the internet!'
     [languages.en.params]
       description = "If you are a customer of Deutsche Telekom and some websites just won't load, then we might have the solution to your problem!"
       socialShareImage = "/img/social_share.en.png"
       logoAlt = 'Magenta-colored hourglass symbol'
       [languages.en.params.hero]
-        title = "Telekom is throttling the network. Let's do something about it!"
+        title = "Deutsche Telekom is throttling the internet. Let's do something about it!"
         subtitle = "If you are a customer of Deutsche Telekom and some websites just won't load, then we might have the solution to your problem!"
       [languages.en.params.footer]
         imprintURL = "https://epicenter.works/en/contact"

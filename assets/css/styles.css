@@ -6,13 +6,13 @@
 @tailwind utilities;
 
 html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-    font-family: "Roboto";
-    overflow-x: hidden; 
+  font-family: Roboto;
+  overflow-x: hidden;
 }
 
 h1,
@@ -21,43 +21,46 @@ h3,
 h4,
 h5,
 h6,
-nav {
-    font-family: "Source Code Pro";
-    font-weight: 600;
+nav,
+.font-title {
+  font-family: "Source Code Pro", 'Courier New', monospace;
+  font-weight: 600;
 }
 
 .prose {
-    --tw-prose-invert-bullets: "#ffffff";
-    --tw-prose-invert-body: "#ffffff";
+  --tw-prose-invert-bullets: "#ffffff";
+  --tw-prose-invert-body: "#ffffff";
 }
 
 .icon {
-    width: 1em;
-    height: 1em;
-    /* vertical-align: -0.125em; */
-    display: inline;
-    fill: currentColor;
-    stroke: currentColor;
+  width: 1em;
+  height: 1em;
+  /* vertical-align: -0.125em; */
+  display: inline;
+  fill: currentColor;
+  stroke: currentColor;
 }
 
 .fit-contain {
-    object-fit: contain;
+  object-fit: contain;
 }
 
 .prose {
-    line-height: 1.5 !important;
+  line-height: 1.5 !important;
 }
 
- /* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-} 
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
 
 .offset:nth-child(even) {
   transform: translateX(calc(-50% - 0.5rem));
@@ -66,14 +69,17 @@ nav {
 infinite-scroll-x {
   animation: scroll-horizontal 60s linear infinite;
 }
+
 infinite-scroll-x:hover {
   animation-play-state: paused;
 }
+
 @keyframes scroll-horizontal {
   from {
     transform: translateX(0%);
   }
+
   to {
-    transform: translateX(calc(-50% - 0.5rem)); 
+    transform: translateX(calc(-50% - 0.5rem));
   }
 }

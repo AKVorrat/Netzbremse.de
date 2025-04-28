@@ -1,10 +1,18 @@
 <div class="hero min-h-[65vh] bg-primary">
     <div class="hero-content text-center flex-col">
-        <h1 class="sm:text-5xl text-4xl font-bold text-primary-content text-balance">{{ .Site.Params.hero.title }}</h1>
-        <div class="text-primary-content max-w-[65ch]" >
-            <p class="m-0 font-light sm:text-2xl text-xl">
-                Wenn du Kund:in der Deutschen Telekom bist und manche Webseiten einfach nicht laden wollen, dann haben wir vielleicht die Lösung für dein Problem!
+        <h1 class="sm:text-5xl text-4xl text-primary-content text-balance">{{ .Site.Params.hero.title }}</h1>
+        <div class="text-primary-content max-w-[65ch]">
+            <p class="m-0 sm:text-2xl text-xl">
+                {{ .Site.Params.hero.subtitle }}
             </p>
+        </div>
+        <div class="flex flex-row flex-wrap items-center justify-center gap-4 mt-6">
+            {{ range .Site.Params.hero.links }}
+            <a href="{{ .url }}" target="_blank" class="btn text-primary text-lg font-normal">
+                {{ .text }}
+                {{ partial "icons/icon" (dict "vendor" "fas" "name" "arrow-up-right-from-square" )}}
+            </a>
+            {{ end }}
         </div>
     </div>
 </div>

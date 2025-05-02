@@ -1,0 +1,5 @@
+---
+sitemap:
+  disable: true
+outputs: []
+---

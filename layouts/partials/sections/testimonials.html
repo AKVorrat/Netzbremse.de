@@ -1,0 +1,65 @@
+<embla-carousel class="w-full">
+  <div class="embla__viewport">
+    <div class="embla__container pb-4">
+      {{ $testimonials := where .page.Site.RegularPages "Section" "testimonials" }}
+      {{ range $testimonials }}
+      <div class="embla__slide">
+        <div class="flex justify-center items-center">
+          <div class="prose max-w-[100ch] card bg-neutral-100 shadow-xl px-5 py-6 mx-5">
+            <h3 class="text-primary flex gap-2 items-center">
+              <span class="text-primary text-5xl">
+                {{ partial "icons/icon" (dict "vendor" "tabler/filled" "name" "quote" )}}
+              </span>
+              @{{ .Params.username }}
+            </h3>
+
+            {{ .Content }}
+
+            <p class="m-0 flex gap-2">
+              <span class="font-semibold">{{ T "threadNr" }} {{ .Params.thread }}</span>
+              {{ $dateFormat1 := "2006-01-02" }}
+              {{ $dateFormat2 := "2.1.2006" }}
+              <time datetime="{{ .Date.Format $dateFormat1 }}" class="">
+                ({{ .Date.Format $dateFormat2 }})
+              </time>
+              <a href="{{ .Params.sourceURL }}" target="_blank" class="ml-auto">{{ T "source" }}</a>
+              <span>(<a href="{{ .Params.archiveURL }}" target="_blank">Archive.org</a>)</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="w-full flex justify-center">
+    <div class="embla__controls flex-grow flex gap-8 justify-between items-center max-w-[65ch] mx-4">
+      <div class="embla__buttons flex gap-2">
+        <button class="embla__button embla__button--prev btn btn-circle btn-sm" type="button">
+          {{ partial "icons/icon" (dict "vendor" "tabler/outline" "name" "chevron-left" "className" "h-5 w-5" )}}
+          <span class="sr-only">{{ T "goToPrevSlide" }}</span>
+        </button>
+        <button class="embla__button embla__button--next btn btn-circle btn-sm" type="button">
+          {{ partial "icons/icon" (dict "vendor" "tabler/outline" "name" "chevron-right" "className" "h-5 w-5")}}
+          <span class="sr-only">{{ T "goToPrevSlide" }}</span>
+        </button>
+        <button class="embla__button embla__button--pause btn btn-circle btn-sm" type="button">
+          {{ partial "icons/icon" (dict "vendor" "tabler/outline" "name" "player-pause" "className" "h-5 w-5")}}
+          <span class="sr-only">{{ T "goToPrevSlide" }}</span>
+        </button>
+        <button class="embla__button embla__button--play btn btn-circle hidden btn-sm" type="button">
+          {{ partial "icons/icon" (dict "vendor" "tabler/outline" "name" "player-play" "className" "h-5 w-5")}}
+          <span class="sr-only">{{ T "goToPrevSlide" }}</span>
+        </button>
+      </div>
+      <div class="embla__dots flex flex-wrap gap-1 content-end">
+        {{ range $index, $item := $testimonials }}
+        <button class="embla__dot btn btn-circle btn-xs [&.selected]:btn-neutral" data-index="{{ $index }}">
+          <span class="sr-only">{{ T "goToItemNr" }}{{ $index }}</span>
+        </button>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+</embla-carousel>

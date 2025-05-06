@@ -81,13 +81,13 @@ Renders a menu for the given menu ID.
 {{ $pageLang := .Page.Lang}}
 {{- range .Page.AllTranslations }}
 {{ $translation := . }}
+{{- if eq $translation.Lang $pageLang }}
+<!-- Not sure yet, if we also want a link to the current language or not -->
+<!-- <a class="" href="{{ $translation.Permalink | relURL }}">{{ upper $translation.Lang }}</a> -->
+{{ else }}
 <li>
-  {{- if eq $translation.Lang $pageLang }}
-  <!-- Not sure yet, if we also want a link to the current language or not -->
-  <!-- <a class="" href="{{ $translation.Permalink | relURL }}">{{ upper $translation.Lang }}</a> -->
-  {{ else }}
   <a class="" href="{{ $translation.Permalink | relURL }}">{{ upper $translation.Lang }}</a>
-  {{- end }}
 </li>
+{{- end }}
 {{- end }}
 {{- end }}

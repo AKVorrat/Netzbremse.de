@@ -6,7 +6,8 @@
 
 {{ $socialShareImageURL := (resources.GetMatch .Site.Params.socialShareImage).Permalink }}
 
-<meta property="og:url" content="{{ " /" | absLangURL }}">
+{{ $rootUrl := "/" }}
+<meta property="og:url" content="{{ $rootUrl | absLangURL }}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ site.Title }}">
 <meta property="og:image" content="{{ $socialShareImageURL }}">
@@ -15,7 +16,7 @@
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary">
 <meta property="twitter:domain" content="{{ .Site.Params.domain }}">
-<meta property="twitter:url" content="{{ " /" | absLangURL }}">
+<meta property="twitter:url" content="{{ $rootUrl | absLangURL }}">
 <meta name="twitter:title" content="{{ site.Title }}">
 <meta name="twitter:description" content="{{ .Site.Params.description }}">
 <meta name="twitter:image" content="{{ $socialShareImageURL }}">

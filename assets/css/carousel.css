@@ -1,6 +1,6 @@
 embla-carousel {
     --slide-size: auto;
-    --slide-spacing: clamp(2rem, 20vw, 20rem);
+    --slide-spacing: clamp(2rem, calc((100vw - 130ch) / 2), 20rem);
 }
 
 .embla__container {

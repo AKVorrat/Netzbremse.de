@@ -3,31 +3,7 @@
     <div class="embla__container pb-4">
       {{ $testimonials := where .page.Site.RegularPages "Section" "testimonials" }}
       {{ range $testimonials }}
-      <div class="embla__slide">
-        <div class="flex justify-center items-center">
-          <div class="prose max-w-[100ch] card bg-neutral-100 shadow-xl px-5 py-6 mx-5">
-            <h3 class="text-primary flex gap-2 items-center">
-              <span class="text-primary text-5xl">
-                {{ partial "icons/icon" (dict "vendor" "tabler/filled" "name" "quote" )}}
-              </span>
-              @{{ .Params.username }}
-            </h3>
-
-            {{ .Content }}
-
-            <p class="m-0 flex gap-2">
-              <span class="font-semibold">{{ T "threadNr" }} {{ .Params.thread }}</span>
-              {{ $dateFormat1 := "2006-01-02" }}
-              {{ $dateFormat2 := "2.1.2006" }}
-              <time datetime="{{ .Date.Format $dateFormat1 }}" class="">
-                ({{ .Date.Format $dateFormat2 }})
-              </time>
-              <a href="{{ .Params.sourceURL }}" target="_blank" class="ml-auto">{{ T "source" }}</a>
-              <span>(<a href="{{ .Params.archiveURL }}" target="_blank">Archive.org</a>)</span>
-            </p>
-          </div>
-        </div>
-      </div>
+      {{ partial "testimonial.html" . }}
       {{ end }}
     </div>
   </div>

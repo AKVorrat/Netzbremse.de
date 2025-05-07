@@ -11,14 +11,23 @@
       {{ .Content }}
 
       <p class="m-0 flex gap-2">
+        {{ if .Params.thread }}
         <span class="font-semibold">{{ T "threadNr" }} {{ .Params.thread }}</span>
+        {{ end }}
         {{ $dateFormat1 := "2006-01-02" }}
         {{ $dateFormat2 := "2.1.2006" }}
+        {{ if .Date }}
         <time datetime="{{ .Date.Format $dateFormat1 }}" class="">
           ({{ .Date.Format $dateFormat2 }})
         </time>
-        <a href="{{ .Params.sourceURL }}" target="_blank" class="ml-auto">{{ T "source" }}</a>
+        {{ end }}
+        <span class="flex-grow"></span>
+        {{ if .Params.sourceURL }}
+        <a href="{{ .Params.sourceURL }}" target="_blank">{{ T "source" }}</a>
+        {{ end }}
+        {{ if .Params.archiveURL }}
         <span>(<a href="{{ .Params.archiveURL }}" target="_blank">Archive.org</a>)</span>
+        {{ end }}
       </p>
     </div>
   </div>

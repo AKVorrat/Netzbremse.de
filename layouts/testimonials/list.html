@@ -1,0 +1,10 @@
+{{ define "main" }}
+{{ $testimonials := where .Site.RegularPages "Section" "testimonials" }}
+<div class="py-4 bg-primary">
+	{{ range $testimonials }}
+	<div class="my-8">
+		{{ partial "testimonial.html" . }}
+	</div>
+	{{ end }}
+</div>
+{{ end }}

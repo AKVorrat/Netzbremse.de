@@ -1,7 +1,7 @@
-<section id="{{ .section.id }}" 
-  class="flex flex-col items-center py-10 px-4 prose max-w-none {{ if .bgPrimary }} bg-primary text-primary-content !prose-invert {{ end }}">
+<section id="{{ .section.id }}"
+  class="flex flex-col items-center py-10 {{ if .section.fullW }} px-0 {{ else }} px-4 {{ end }} prose max-w-none {{ if .bgPrimary }} bg-primary text-primary-content !prose-invert {{ end }}">
   {{ if .section.title }}
-    <h2 class="mt-0 text-center max-w-[65ch] text-balance">{{ .section.title }}</h2>
+  <h2 class="mt-0 text-center max-w-[65ch] text-balance">{{ .section.title }}</h2>
   {{ end }}
   {{ partial (printf "sections/%s" .section.type) (dict "page" .page "section" .section "bgPrimary" .bgPrimary) }}
 </section>

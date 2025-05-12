@@ -71,12 +71,17 @@ defaultContentLanguageInSubdir = false
     URL = '#newsletter'
     weight = 20
   [[menus.main]]
+    name = 'Testimonials'
+    URL = '#testimonials'
+    weight = 30
+  [[menus.main]]
     name = 'Unterstützung'
     URL = '#contact-us'
-    weight = 30
+    weight = 40
   [[menus.main]]
     name = 'Presse'
     URL = '#media-coverage'
+    weight = 50
 
 [languages.en.menus]
   [[languages.en.menus.main]]
@@ -88,12 +93,17 @@ defaultContentLanguageInSubdir = false
     URL = '#newsletter'
     weight = 20
   [[languages.en.menus.main]]
+    name = 'Testimonials'
+    URL = '#testimonials'
+    weight = 30
+  [[languages.en.menus.main]]
     name = 'Support'
     URL = '#contact-us'
-    weight = 30
+    weight = 40
   [[languages.en.menus.main]]
     name = 'Press'
     URL = '#media-coverage'
+    weight = 50
 
 [markup.goldmark.renderer]
   unsafe = true # Allow HTML in md files
@@ -101,8 +111,10 @@ defaultContentLanguageInSubdir = false
 # Required setting for Tailwind 
 # https://github.com/bep/hugo-starter-tailwind-basic
 [module]
-  [module.imports]
+  [[module.imports]]
     path = "github.com/hugomods/icons/vendors/font-awesome"
+  [[module.imports]]
+    path = "github.com/hugomods/icons/vendors/tabler"
   [module.hugoVersion]
     extended = false
     min      = "0.112.0"

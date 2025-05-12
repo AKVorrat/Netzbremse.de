@@ -1,0 +1,41 @@
+<embla-carousel class="w-full">
+  <div class="embla__viewport">
+    <div class="embla__container pb-4">
+      {{ $testimonials := where .page.Site.RegularPages "Section" "testimonials" }}
+      {{ range $testimonials }}
+      {{ partial "testimonial.html" . }}
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="w-full flex justify-center">
+    <div class="embla__controls flex-grow flex gap-8 justify-between items-center max-w-[98ch] mx-4">
+      <div class="embla__buttons flex gap-2">
+        <button class="embla__button embla__button--prev btn btn-circle btn-sm" type="button">
+          {{ partial "icons/icon" (dict "vendor" "tabler/outline" "name" "chevron-left" "className" "h-5 w-5" )}}
+          <span class="sr-only">{{ T "goToPrevSlide" }}</span>
+        </button>
+        <button class="embla__button embla__button--next btn btn-circle btn-sm" type="button">
+          {{ partial "icons/icon" (dict "vendor" "tabler/outline" "name" "chevron-right" "className" "h-5 w-5")}}
+          <span class="sr-only">{{ T "goToPrevSlide" }}</span>
+        </button>
+        <button class="embla__button embla__button--pause btn btn-circle btn-sm" type="button">
+          {{ partial "icons/icon" (dict "vendor" "tabler/outline" "name" "player-pause" "className" "h-5 w-5")}}
+          <span class="sr-only">{{ T "goToPrevSlide" }}</span>
+        </button>
+        <button class="embla__button embla__button--play btn btn-circle hidden btn-sm" type="button">
+          {{ partial "icons/icon" (dict "vendor" "tabler/outline" "name" "player-play" "className" "h-5 w-5")}}
+          <span class="sr-only">{{ T "goToPrevSlide" }}</span>
+        </button>
+      </div>
+      <div class="embla__dots flex flex-wrap gap-1 content-end">
+        {{ range $index, $item := $testimonials }}
+        <button class="embla__dot btn btn-circle btn-xs [&.selected]:btn-neutral" data-index="{{ $index }}">
+          <span class="sr-only">{{ T "goToItemNr" }}{{ $index }}</span>
+        </button>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+</embla-carousel>

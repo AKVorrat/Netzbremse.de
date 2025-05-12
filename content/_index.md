@@ -64,6 +64,11 @@ params:
     - "Signal: [+43 670 404 98 89](https://signal.me/#p/+436704049889)"
     - "Threema (ID: [BXJMX4R5](https://threema.id/BXJMX4R5?text=))"
 
+  - type: testimonials 
+    id: testimonials
+    title: Testimonials
+    fullW: true
+
   - type: video
 #    bg: light
     id: conference-talk

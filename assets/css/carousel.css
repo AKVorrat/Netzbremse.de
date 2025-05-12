@@ -1,0 +1,17 @@
+embla-carousel {
+    --slide-size: auto;
+    --slide-spacing: clamp(2rem, calc((100vw - 130ch) / 2), 20rem);
+}
+
+.embla__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+    margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+    flex: 0 0 var(--slide-size);
+    min-width: 0;
+    max-width: 100%;
+    padding-left: var(--slide-spacing);
+}

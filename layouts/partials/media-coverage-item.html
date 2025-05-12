@@ -1,0 +1,25 @@
+<div class="media-coverage-item card bg-base-100 shadow-xl prose p-4 pt-0 mt-6 flex-shrink-0 flex snap-center offset">
+  <div class="flex justify-center -m-6">
+    {{ $logo := resources.GetMatch .Params.logo }}
+    <img {{ if eq $logo.MediaType.SubType "svg" }} src="{{ $logo.RelPermalink | safeURL }}" {{ else }}
+      src="{{ ($logo.Fit " 96x48").RelPermalink | safeURL }}" {{ end }}
+      class="h-12 max-w-24 fit-contain m-0 {{ if .Params.logoShadow }} shadow-xl {{ end }}" alt="{{ T " logoOf"
+      (dict "host" .Params.publication) }}">
+  </div>
+
+  <div class="flex-grow mt-8">
+    <div class="flex items-center gap-3 flex-shrink">
+      <h4 class="text-pretty mt-0 line-clamp-3">
+        <a href="{{ .Params.url }}" target="_blank">
+          {{ .Params.title }}
+        </a>
+      </h4>
+    </div>
+
+    {{/*<p class="line-clamp-3 sm:line-clamp-2 mt-0 mb-3">*/}}
+      {{ .Content }}
+      {{/*</p>*/}}
+
+  </div>
+  <a href="{{ .Params.url }}" target="_blank" class="m-0 leading-none">Zum Beitrag von {{ .Params.publication }}</a>
+</div>

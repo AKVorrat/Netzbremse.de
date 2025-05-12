@@ -1,4 +1,5 @@
-<embla-carousel class="w-full">
+<embla-carousel
+  class="w-full max-w-[2000px] [mask-image:_linear-gradient(to_right,transparent_0,_black_16px,_black_calc(100%-16px),transparent_100%)]">
   <div class="embla__viewport">
     <div class="embla__container pb-4">
       {{/* Fallback to default language for things like testimonials */}}
@@ -44,5 +45,9 @@
       </div>
     </div>
   </div>
-
 </embla-carousel>
+
+<div class="mt-2 -mb-8">
+  {{ $coverageURL := "/testimonials" }}
+  <a href="{{ $coverageURL | relLangURL }}">{{ T "listView" }}</a>
+</div>

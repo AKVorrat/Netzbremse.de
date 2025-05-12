@@ -11,8 +11,9 @@ Renders a menu for the given menu ID.
 {{- $menuID := .menuID }}
 
 {{- with index site.Menus $menuID }}
+{{ $rootUrl := "/" }}
 <nav class="navbar shadow-xl flex bg-base-100 text-primary">
-  <a class="btn btn-ghost text-xl flex flex-row align-middle" href="/">
+  <a class="btn btn-ghost text-xl flex flex-row align-middle" href="{{ $rootUrl | relLangURL }}">
     <img src="{{ ((resources.GetMatch $page.Site.Params.logo).Fit `128x128 png Smart`).RelPermalink | safeURL  }}"
       alt="{{ $page.Site.Params.logoAlt }}" class="h-8 w-8">
     {{ $page.Site.Params.shortTitle }}
@@ -52,7 +53,12 @@ Renders a menu for the given menu ID.
 {{- define "partials/inline/menu/walk.html" }}
 {{- $page := .page }}
 {{- range .menuEntries }}
-{{- $attrs := dict "href" .URL }}
+{{- $attrs := dict "href" .URL "test" "abc" }}
+
+{{- if not page.IsHome }}
+{{- $attrs = dict "href" (.URL | relLangURL) "test" "test" }}
+{{- end }}
+
 {{- if $page.IsMenuCurrent .Menu . }}
 {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
 {{- else if $page.HasMenuCurrent .Menu .}}

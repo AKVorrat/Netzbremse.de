@@ -8,4 +8,5 @@ source: "Source"
 openNavigation: "Open navigation"
 emailAddress: "Email address"
 loadVideoFrom: "Load video from <em>{{ .host }}</em>"
-
+logoOf: "Logo of {{ .host }}"
+listView: "Go to List"

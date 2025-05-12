@@ -5,12 +5,12 @@
 {{ range page.Translations }}
 {{ $pages = $pages | lang.Merge .Site.RegularPages }}
 {{ end }}
-{{ $testimonials := where $pages "Section" "testimonials" }}
+{{ $coverages := where $pages "Section" "coverage" }}
 
-<div class="py-4 bg-primary">
-	{{ range $testimonials }}
-	<div class="my-8">
-		{{ partial "testimonial.html" . }}
+<div class="py-4 bg-primary flex flex-col items-center">
+	{{ range $coverages }}
+	<div class="my-4">
+		{{ partial "media-coverage-item.html" . }}
 	</div>
 	{{ end }}
 </div>

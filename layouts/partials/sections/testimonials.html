@@ -3,7 +3,9 @@
     <div class="embla__container pb-4">
       {{ $testimonials := where .page.Site.RegularPages "Section" "testimonials" }}
       {{ range $testimonials }}
-      {{ partial "testimonial.html" . }}
+      <div class="embla__slide flex">
+        {{ partial "testimonial.html" . }}
+      </div>
       {{ end }}
     </div>
   </div>

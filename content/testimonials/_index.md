@@ -1,5 +1,4 @@
 ---
 sitemap:
   disable: true
-outputs: []
 ---

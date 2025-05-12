@@ -47,6 +47,11 @@ params:
     - service: "Facebook"
       url: https://netzbremse.de
 
+  - type: testimonials 
+    id: testimonials
+    title: Testimonials
+    fullW: true
+
   - type: contact-us
     id: contact-us
     title: "How can you help the project?"
@@ -70,11 +75,6 @@ params:
       url: "https://epicenter.works/unterstuetzung"
     - name: "Gesellschaft für Freiheitsrechte"
       url: "https://freiheitsrechte.org/mitmachen/einzelspenden"
-
-  - type: testimonials 
-    id: testimonials
-    title: Testimonials
-    fullW: true
 
   - type: video
     id: conference-talk

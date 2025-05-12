@@ -67,6 +67,12 @@ nav,
   transform: translateX(calc(-50% - 0.5rem));
 }
 
+.media-coverage-item {
+  p {
+    @apply md:line-clamp-3 line-clamp-2 mt-0 mb-3;
+  }
+}
+
 infinite-scroll-x {
   animation: scroll-horizontal 60s linear infinite;
 }

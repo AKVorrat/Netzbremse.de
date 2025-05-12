@@ -2,7 +2,7 @@
   action="{{ .page.Site.Params.newsletter.subscribeURL }}">
   <input class="input input-bordered join-item flex-grow" placeholder="Email" type="email" name="feld_email"
     id="feld_email" required />
-  <label class="label sr-only" for="feld_email">E-Mail Adresse</label>
+  <label class="label sr-only" for="feld_email">{{ T "emailAddress" }}</label>
 
   <input hidden name="dmail_charset" value="UTF-8">
   <input hidden name="gruppe_85778" value="gruppe_85778">

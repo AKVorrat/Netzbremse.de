@@ -1,2 +1,11 @@
 privacy: Privacy
 imprint: Imprint
+goToPrevSlide: "Previous slide"
+goToNextSlide: "Next slide"
+goToItemNr: "Go to slide"
+threadNr: "Thread: "
+source: "Source"
+openNavigation: "Open navigation"
+emailAddress: "Email address"
+loadVideoFrom: "Load video from <em>{{ .host }}</em>"
+

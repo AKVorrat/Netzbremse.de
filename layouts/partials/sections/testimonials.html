@@ -1,7 +1,12 @@
 <embla-carousel class="w-full">
   <div class="embla__viewport">
     <div class="embla__container pb-4">
-      {{ $testimonials := where .page.Site.RegularPages "Section" "testimonials" }}
+      {{/* Fallback to default language for things like testimonials */}}
+      {{ $pages := page.Site.RegularPages }}
+      {{ range page.Translations }}
+      {{ $pages = $pages | lang.Merge .Site.RegularPages }}
+      {{ end }}
+      {{ $testimonials := where $pages "Section" "testimonials" }}
       {{ range $testimonials }}
       <div class="embla__slide flex">
         {{ partial "testimonial.html" . }}

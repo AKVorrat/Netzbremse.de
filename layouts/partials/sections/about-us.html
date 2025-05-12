@@ -1,39 +1,36 @@
-
-<div 
-  class="grid sm:grid-cols-4 grid-cols-1 auto-rows-fr gap-4 justify-items-center justify-center"
->
+<div class="grid sm:grid-cols-4 grid-cols-1 auto-rows-fr gap-4 justify-items-center justify-center">
   {{ range .section.members }}
-    <div class="card bg-base-100 shadow-xl max-w-64 text-center">
-      <div class="card-body flex justify-center items-center">
-        <a href="{{ .url }}" target="_blank" class="text-base-content">
-          {{ if .logo }}
-            <span class="sr-only">{{ .name }}</span>
-            <img 
-              class="m-0"
-              src="{{ ((resources.GetMatch .logo).Fit "200x100").RelPermalink | safeURL }}" 
-              alt="Logo von {{ .name }}"
-            >
-          {{ else }}
-            {{ .name }}
-          {{ end }}
-        </a>
-      </div>
+  <div class="card bg-base-100 shadow-xl max-w-64 text-center">
+    <div class="card-body flex justify-center items-center">
+      <a href="{{ .url }}" target="_blank" class="text-base-content">
+        {{ if .logo }}
+        <span class="sr-only">{{ .name }}</span>
+        <img class="m-0" src="{{ ((resources.GetMatch .logo).Fit " 200x100").RelPermalink | safeURL }}"
+          alt="Logo von {{ .name }}">
+        {{ else }}
+        {{ .name }}
+        {{ end }}
+      </a>
     </div>
+  </div>
   {{ end }}
 </div>
+
+{{/* Moved donation links
 
 <h3 class="text-center">{{ .section.donationTitle }}</h3>
 
 {{ if .section.content }}
-  <p class="prose {{ if .bgPrimary }} !prose-invert {{ end }}">
-    {{ .section.content }}
-  </p>
+<p class="prose {{ if .bgPrimary }} !prose-invert {{ end }}">
+  {{ .section.content }}
+</p>
 {{ end }}
 
 <div class="grid grid-flow-col auto-cols-fr gap-4">
   {{ range .section.members }}
-    {{ if .donationURL }}
-    <a href="{{ .donationURL }}" class="btn btn-neutral px-6" target="_blank">{{ .name }}</a>
-    {{ end }}
+  {{ if .donationURL }}
+  <a href="{{ .donationURL }}" class="btn btn-neutral px-6" target="_blank">{{ .name }}</a>
+  {{ end }}
   {{ end }}
 </div>
+*/}}

@@ -61,6 +61,21 @@ params:
     - "Signal: [+43 670 404 98 89](https://signal.me/#p/+436704049889)"
     - "Threema (ID: [BXJMX4R5](https://threema.id/BXJMX4R5?text=))"
 
+  - type: donate
+    id: donate
+  #  bg: light
+    title: "Donate now for a free internet!Donate now for a free internet!"
+    links:
+    - name: "Epicenter.Works"
+      url: "https://epicenter.works/unterstuetzung"
+    - name: "Gesellschaft für Freiheitsrechte"
+      url: "https://freiheitsrechte.org/mitmachen/einzelspenden"
+
+  - type: testimonials 
+    id: testimonials
+    title: Testimonials
+    fullW: true
+
   - type: video
     id: conference-talk
     title: "Talk at Chaos Communication Congress 38C3"

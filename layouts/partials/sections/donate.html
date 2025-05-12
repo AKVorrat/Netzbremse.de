@@ -1,0 +1,10 @@
+<div class="prose {{ if .bgPrimary }} !prose-invert {{ end }}">
+  {{ .section.content | .page.RenderString }}
+  <div class="grid grid-flow-col auto-cols-fr gap-4">
+    {{ range .section.links }}
+    {{ if .url }}
+    <a href="{{ .url }}" class="btn btn-neutral px-6" target="_blank">{{ .name }}</a>
+    {{ end }}
+    {{ end }}
+  </div>
+</div>

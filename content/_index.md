@@ -50,6 +50,11 @@ params:
     - service: "Facebook"
       url: https://netzbremse.de
 
+  - type: testimonials 
+    id: testimonials
+    title: Testimonials
+    fullW: true
+
   - type: contact-us
     id: contact-us
     title: "Wie kann man dem Projekt helfen?"
@@ -64,13 +69,18 @@ params:
     - "Signal: [+43 670 404 98 89](https://signal.me/#p/+436704049889)"
     - "Threema (ID: [BXJMX4R5](https://threema.id/BXJMX4R5?text=))"
 
-  - type: testimonials 
-    id: testimonials
-    title: Testimonials
-    fullW: true
+  - type: donate
+    id: donate
+  #  bg: light
+    title: "Spende jetzt für ein freies Internet!"
+    links:
+    - name: "Epicenter.Works"
+      url: "https://epicenter.works/unterstuetzung"
+    - name: "Gesellschaft für Freiheitsrechte"
+      url: "https://freiheitsrechte.org/mitmachen/einzelspenden"
 
   - type: video
-#    bg: light
+    bg: light
     id: conference-talk
     title: "Talk beim Chaos Communication Congress 38C3"
     platform: "ccc"

@@ -1,20 +1,30 @@
-<form class="join sm:join-horizontal join-vertical max-w-[65ch] w-full" method="POST"
-  action="{{ .page.Site.Params.newsletter.subscribeURL }}">
-  <input class="input input-bordered join-item flex-grow" placeholder="Email" type="email" name="feld_email"
-    id="feld_email" required />
-  <label class="label sr-only" for="feld_email">{{ T "emailAddress" }}</label>
+<form class="w-full max-w-[65ch]" method="POST" action="{{ .page.Site.Params.newsletter.subscribeURL }}">
 
-  <input hidden name="dmail_charset" value="UTF-8">
-  <input hidden name="gruppe_85778" value="gruppe_85778">
+  <div class="join sm:join-horizontal join-vertical max-w-[65ch] w-full mb-2">
 
-  {{/* Spam protection recommended by Dialog-Mail */}}
-  <input name="last_name" type="text" value="" aria-disabled="true" tabindex="-1"
-    style="display: contents; width: 1px !important; max-width: 1px !important; height: 1px !important; max-height: 1px !important; line-height: 1px !important; padding: 0 !important; margin: 0 !important; background-color: transparent !important; border: 0 !important;" />
+    <input class="input input-bordered join-item flex-grow" placeholder="Email" type="email" name="feld_email"
+      id="feld_email" required />
+    <label class="label sr-only" for="feld_email">{{ T "emailAddress" }}</label>
 
-  <input type="hidden" id="dm4551" name="feld_4551" value="{{ upper page.Site.Language.Lang }}">
+    <input hidden name="dmail_charset" value="UTF-8">
+    <input hidden name="gruppe_85778" value="gruppe_85778">
 
-  <input class="btn btn-primary join-item font-normal text-base" type="submit" submit
-    value="{{ .page.Site.Params.newsletter.subscribeBTN }}" />
+    {{/* Spam protection recommended by Dialog-Mail */}}
+    <input name="last_name" type="text" value="" aria-disabled="true" tabindex="-1"
+      style="display: contents; width: 1px !important; max-width: 1px !important; height: 1px !important; max-height: 1px !important; line-height: 1px !important; padding: 0 !important; margin: 0 !important; background-color: transparent !important; border: 0 !important;" />
+
+    <input type="hidden" id="dm4551" name="feld_4551" value="{{ upper page.Site.Language.Lang }}">
+
+    <input class="btn btn-primary join-item font-normal text-base" type="submit" submit
+      value="{{ .page.Site.Params.newsletter.subscribeBTN }}" />
+
+  </div>
+
+  <label class="label justify-start gap-2">
+    <input class="checkbox checkbox-primary" type="checkbox" id="gruppe_82859" name="gruppe_82859" value="gruppe_82859">
+    <span>{{ .page.Site.Params.newsletter.alsoGetEpW | markdownify }}</span>
+  </label>
+
 </form>
 
 {{ $section := .section }}

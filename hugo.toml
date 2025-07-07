@@ -31,6 +31,7 @@ defaultContentLanguageInSubdir = false
         privacyURL = "https://epicenter.works/en/privacy"
       [languages.en.params.newsletter]
         subscribeBTN = "Subscribe to Updates"
+        alsoGetEpW = "Also subscribe to updates from [epicenter.works](https://epicenter.works/en/)"
 
 [params]
   shortTitle = 'Netzbremse'
@@ -57,6 +58,7 @@ defaultContentLanguageInSubdir = false
 [params.newsletter] 
   subscribeURL = "https://secure.dialog-mail.com/s/dyXMJ"
   subscribeBTN = "Updates Abonieren"
+  alsoGetEpW = "Auch Updates von [epicenter.works](https://epicenter.works/) erhalten"
 
 [params.icons]
   throw_on_error = true

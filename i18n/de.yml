@@ -10,3 +10,5 @@ emailAddress: "E-Mail Adresse"
 loadVideoFrom: "Video von <em>{{ .host }}</em> laden"
 logoOf: "Logo von {{ .host }}"
 listView: "Zur Liste"
+enableJS: Aktiviere JavaScript um diese App zu verwenden.
+

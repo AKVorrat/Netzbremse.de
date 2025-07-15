@@ -130,6 +130,9 @@ defaultContentLanguageInSubdir = false
     source = "static"
     target = "static"
   [[module.mounts]]
+    source = "nb-speedtest/dist"
+    target = "static/nb-speedtest"
+  [[module.mounts]]
     source = "node_modules/@fontsource/roboto/files"
     target = "static/fonts"
     includeFiles = "roboto-latin-*.woff2"

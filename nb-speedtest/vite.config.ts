@@ -9,5 +9,11 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    rollupOptions: {
+      output: {
+        entryFileNames: '[name].js',
+        assetFileNames: '[name].[ext]',
+      }
+    }
   },
 });

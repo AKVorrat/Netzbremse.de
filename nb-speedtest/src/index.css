@@ -10,3 +10,20 @@
   --color-neutral: #3d4451;
   --color-base-100: #FFFFFF;
 }
+@plugin '@tailwindcss/typography';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+.font-title {
+  font-family: "Source Code Pro", 'Courier New', monospace;
+  font-weight: 600;
+}
+
+.prose {
+  line-height: 1.5 !important;
+}

@@ -24,7 +24,7 @@ const NBSpeedTest: Component = () => {
   return (
     <div class="card bg-white shadow-xl">
       <div class="card-body flex items-center justify-center">
-        <h2 class='text-2xl'>{t.speedtest.title()}</h2>
+        <h2 class='text-3xl'>{t.speedtest.title()}</h2>
         <div class='my-3 flex flex-col justify-center items-center'>
           <Switch>
             <Match when={!running()}>

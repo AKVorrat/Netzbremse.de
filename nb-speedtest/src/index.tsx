@@ -6,6 +6,9 @@ import { customElement, noShadowDOM } from 'solid-element';
 import App from './App';
 
 customElement('nb-speedtest', {}, () => {
-  noShadowDOM()
-  return (<App />)
+  //noShadowDOM()
+  return (<>
+      <link rel="stylesheet" href="/nb-speedtest/index.css"/>
+      <App />
+    </>)
 })

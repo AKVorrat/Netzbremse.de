@@ -1,4 +1,8 @@
-<script type="module" crossorigin src="/nb-speedtest/index.js"></script>
-<link rel="stylesheet" crossorigin href="/nb-speedtest/index.css">
+{{ if eq hugo.Environment "development" }}
+  <script type="module" crossorigin src="http://localhost:3000/src/index.tsx"></script>
+{{ else }}
+  <script type="module" crossorigin src="/nb-speedtest/index.js"></script>
+{{ end }}
+<!-- <link rel="stylesheet" crossorigin href="/nb-speedtest/index.css"> -->
 <noscript>{{ T "enableJS" }}</noscript>
 <nb-speedtest></nb-speedtest>

@@ -1,7 +1,12 @@
-{{ $options := dict "inlineImports" true }}
-{{ $styles := resources.Get "css/styles.css" }}
-{{ $styles = $styles | css.PostCSS $options }}
-{{ if hugo.IsProduction }}
-  {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
+{{ with resources.Get "css/styles.css" }}
+{{ $opts := dict "minify" (not hugo.IsDevelopment) }}
+{{ with . | css.TailwindCSS $opts }}
+{{ if hugo.IsDevelopment }}
+<link rel="stylesheet" href="{{ .RelPermalink }}">
+{{ else }}
+{{ with . | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 {{ end }}
-<link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
+{{ end }}
+{{ end }}
+{{ end }}

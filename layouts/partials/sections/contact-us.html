@@ -5,15 +5,17 @@
 {{ $page := .page }}
 {{ $bgPrimary := .bgPrimary }}
 <ul class="px-0 mt-3">
-{{ range $i, $ch := .section.channels }}
-  <li class="md:inline-block text-center prose list-none my-1 px-0 {{ if $bgPrimary }} !prose-invert {{ end }} {{ if $i }} md:before:content-[attr(before)] {{ end }}" before="&nbsp;|&nbsp;">
+  {{ range $i, $ch := .section.channels }}
+  <li
+    class="md:inline-block text-center prose list-none my-1 px-0 {{ if $bgPrimary }} !prose-invert {{ end }} {{ if $i }} md:before:content-[attr(before)] {{ end }}"
+    before="&nbsp;|&nbsp;">
     {{ $ch | $page.RenderString }}
   </li>
-{{ end }}
+  {{ end }}
 </ul>
 
 <div class="chat chat-start">
-  <div class="chat-bubble">
+  <div class="chat-bubble chat-bubble-neutral rounded-2xl">
     {{ .section.msgBubble }}
   </div>
 </div>

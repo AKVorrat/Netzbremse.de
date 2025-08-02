@@ -65,9 +65,13 @@ defaultContentLanguageInSubdir = false
 
 [menus]
   [[menus.main]]
+    name = 'Speedtest'
+    URL = '/speed'
+    weight = 10
+  [[menus.main]]
     name = 'Video'
     URL = '#video'
-    weight = 10
+    weight = 11
   [[menus.main]]
     name = 'Newsletter'
     URL = '#newsletter'
@@ -87,9 +91,13 @@ defaultContentLanguageInSubdir = false
 
 [languages.en.menus]
   [[languages.en.menus.main]]
+    name = 'Speedtest'
+    URL = '/speed'
+    weight = 10
+  [[languages.en.menus.main]]
     name = 'Video'
     URL = '#video'
-    weight = 10
+    weight = 11
   [[languages.en.menus.main]]
     name = 'Newsletter'
     URL = '#newsletter'

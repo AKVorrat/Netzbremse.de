@@ -1,9 +1,9 @@
 <form class="w-full max-w-[65ch]" method="POST" action="{{ .page.Site.Params.newsletter.subscribeURL }}">
 
-  <div class="join sm:join-horizontal join-vertical max-w-[65ch] w-full mb-2">
+  <div class="join sm:join-horizontal join-vertical max-w-[65ch] w-full mb-3">
 
-    <input class="input input-bordered join-item flex-grow" placeholder="Email" type="email" name="feld_email"
-      id="feld_email" required />
+    <input class="input input-bordered join-item flex-grow w-full max-w-full" placeholder="Email" type="email"
+      name="feld_email" id="feld_email" required />
     <label class="label sr-only" for="feld_email">{{ T "emailAddress" }}</label>
 
     <input hidden name="dmail_charset" value="UTF-8">

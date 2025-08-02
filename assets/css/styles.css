@@ -1,10 +1,26 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";
+@config "./tailwind.config.js";
+@source "hugo_stats.json";
+
 @import "fonts.css";
 @import "lite-yt-embed.css";
 @import "carousel.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --color-primary: #e00370;
+  --color-primary-content: #ffffff;
+  --color-neutral: #3d4451;
+  --color-neutral-content: #ffffff;
+  --color-accent: #8d86c9;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --depth: 0;
+  --noise: 0;
+  --size-field: 0.3rem;
+  --size-selectors: 0.3rem;
+}
 
 html {
   scroll-behavior: smooth;

@@ -3,25 +3,37 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "hugo server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run speedtest:build && npm run hugo:start & npm run speedtest:start",
+    "build": "npm run speedtest:build && npm run hugo:build",
+    "hugo:start": "hugo server",
+    "hugo:build": "hugo",
+    "speedtest:start": "cd nb-speedtest && vite",
+    "speedtest:build": "cd nb-speedtest vite build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@cloudflare/speedtest": "^1.5.1",
     "@fontsource/roboto": "^5.1.0",
     "@fontsource/source-code-pro": "^5.1.0",
-    "@tailwindcss/typography": "^0.5.15",
-    "autoprefixer": "^10.4.20",
-    "daisyui": "^4.12.14",
+    "@solid-primitives/i18n": "^2.2.1",
+    "@tailwindcss/cli": "^4.1.11",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.1.11",
+    "daisyui": "^5.0.46",
     "embla-carousel": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-wheel-gestures": "^8.0.2",
     "lite-youtube-embed": "^0.3.3",
-    "postcss": "^8.4.49",
-    "postcss-cli": "^11.0.0",
-    "tailwindcss": "^3.4.16"
+    "rollup-plugin-visualizer": "^6.0.3",
+    "solid-element": "^1.9.1",
+    "solid-icons": "^1.1.0",
+    "solid-js": "^1.9.5",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0",
+    "vite-plugin-solid": "^2.11.6"
   }
 }

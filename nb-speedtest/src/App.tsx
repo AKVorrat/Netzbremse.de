@@ -1,4 +1,4 @@
-import type { Component } from 'solid-js';
+import { For, type Component } from 'solid-js';
 import NBSpeedTest from './SpeedTest';
 import { t } from './i18n/dict';
 import { Faq } from './Faq';
@@ -8,9 +8,13 @@ const App: Component = () => {
     <>
       <div class="bg-primary min-h-[45ch] grid grid-cols-2 items-center gap-40 p-24">
         <div class='max-w-[65ch] justify-self-end'>
-          <h2 class="text-4xl text-primary-content text-balance">{t.title()}</h2>
-          <p class="text-primary-content mt-6! text-xl prose prose-invert">{t.description()}</p>
-          <p class="text-primary-content mt-4! text-xl prose prose-invert">{t.disableAdblocker("#data")}</p>
+          <h2 class="text-4xl text-primary-content text-balance mb-6">{t.title()}</h2>
+          <For each={t.description()}>
+            {(item, index) => (<p class='text-primary-content my-4 text-xl prose prose-invert'>
+              {item()}
+            </p>)
+            }
+          </For>
         </div>
         <div class='max-w-[65ch] justify-self-stretch'>
           <NBSpeedTest></NBSpeedTest>

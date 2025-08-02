@@ -12,6 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.7",
+    "rollup-plugin-visualizer": "^6.0.3",
     "tailwindcss": "^4.0.7",
     "typescript": "^5.7.2",
     "vite": "^6.0.0",
@@ -23,6 +24,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "daisyui": "^5.0.46",
     "solid-element": "^1.9.1",
+    "solid-icons": "^1.1.0",
     "solid-js": "^1.9.5"
   }
 }

@@ -8,6 +8,7 @@ import { SingleTest } from './components/SingleTest';
 import { getTestRuns } from './data/test-runs';
 import { v4 as uuidV4 } from "uuid";
 import { SingleResult } from './components/SingleResult';
+import { Slider } from './components/Slider';
 
 const fetchMetadata = async () => {
   const resp = await fetch("https://speed.cloudflare.com/meta")
@@ -25,7 +26,7 @@ const NBSpeedTest: Component<{ orResultsChange: (r: Results[]) => void }> = (pro
   const [currentTest, setCurrentTest] = createSignal(0)
   const [finished, setFinished] = createSignal(false)
   const [paused, setPaused] = createSignal(false)
-  const [repeat, setRepeat] = createSignal(false)
+  const [repeat, setRepeat] = createSignal(true)
 
   const [metadata] = createResource(fetchMetadata)
 
@@ -55,13 +56,16 @@ const NBSpeedTest: Component<{ orResultsChange: (r: Results[]) => void }> = (pro
   const shouldRun = (index: number) => started() && !paused() && currentTest() === index
 
   return (
-    <div class="card bg-white shadow-xl">
+    <div class="card bg-white shadow-xl min-w-[65ch]">
       <div class="card-body flex items-center justify-center overflow-hidden">
-        <h2 class='text-3xl'>
-          {t.speedtest.title()}
-        </h2>
+        <hgroup class='flex flex-col items-center font-title'>
+          <h2 class='text-3xl'>
+            {t.speedtest.title()}
+          </h2>
+          <p class='text-title text-lg'>Netzbremse x CloudFlare</p>
+        </hgroup>
 
-        <div class='my-3 flex max-w-full flex-col justify-center items-center'>
+        <div class='mt-3 flex max-w-full flex-col justify-center items-center'>
           <Switch>
             <Match when={!started()}>
               <PowerBtn onClick={onStartClick}></PowerBtn>
@@ -73,17 +77,14 @@ const NBSpeedTest: Component<{ orResultsChange: (r: Results[]) => void }> = (pro
 
             <Match when={started() && !finished()}>
               <Stepper step={currentTest()} stepCount={testRuns.length}></Stepper>
-              <div class='w-full overflow-hidden relative'>
-                <div class='inline-flex flex-row items-stretch' style={{ width: `${testRuns.length * 100}%`, transform: `translateX(-${currentTest() * 100 / testRuns.length}%)`, transition: "transform 0.5s ease-in-out" }}>
-                  <Index each={testRuns}>
-                    {(item, index) => (
-                      <div class="flex-shrink-0 flex-grow-0 flex flex-col justify-center items-center px-6 my-5" style={{ flex: `0 0 calc(100% / ${testRuns.length})` }}>
-                        <SingleTest label={item().label} config={item().config} run={shouldRun(index)} onDone={(result) => onDone(index, result)}></SingleTest>
-                      </div>
-                    )}
-                  </Index>
-                </div>
-              </div>
+              <div class='my-2'></div>
+              <Slider currentIndex={currentTest()}>
+                <Index each={testRuns}>
+                  {(item, index) => (
+                    <SingleTest label={item().label} config={item().config} run={shouldRun(index)} onDone={(result) => onDone(index, result)}></SingleTest>
+                  )}
+                </Index>
+              </Slider>
 
               <div class='w-full flex justify-between items-end px-6'>
                 <button class='btn btn-circle btn-soft' onClick={togglePaused}>
@@ -111,11 +112,12 @@ const NBSpeedTest: Component<{ orResultsChange: (r: Results[]) => void }> = (pro
               <For each={results()}>
                 {(result, index) => <SingleResult result={result} label={testRuns[index()].label}></SingleResult>}
               </For>
+              <span>Latency/Jitter unter Last gemessen</span>
             </Match>
           </Switch>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

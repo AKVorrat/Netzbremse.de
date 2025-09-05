@@ -10,8 +10,8 @@ const App: Component = () => {
         <div class='max-w-[65ch] justify-self-end'>
           <h2 class="text-4xl text-primary-content text-balance mb-6">{t.title()}</h2>
           <For each={t.description()}>
-            {(item, index) => (<p class='text-primary-content my-4 text-xl prose prose-invert'>
-              {item()}
+            {(item, index) => (<p class='text-primary-content my-4 text-xl prose-invert'>
+              {typeof item === "function" ? item() : item}
             </p>)
             }
           </For>

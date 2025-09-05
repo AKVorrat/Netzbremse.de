@@ -8,7 +8,7 @@ RUN npm ci
 
 COPY . . 
 
-RUN hugo --baseURL 'https://netzbremse.k1.muehlberger.dev/'
+RUN npm run speedtest:build && hugo --baseURL 'https://netzbremse.k1.muehlberger.dev/'
 
 FROM nginx AS run
 

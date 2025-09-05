@@ -1,3 +1,5 @@
+import { Show } from "solid-js";
+
 export const de = {
 	title: "Was, wie, warum?",
 	description: [
@@ -17,8 +19,14 @@ export const de = {
 		download: "Download",
 		upload: "Upload",
 		testing: (name: string) => `Teste ${name}`,
-		latencyDuringDownload: (n: string) => <><span class="inline-block min-w-[3ch] text-end">{n}</span> ms Latency während des Downloads</>,
-		latencyDuringUpload: (n: string) => <><span class="inline-block min-w-[3ch] text-end">{n}</span> ms Latency während des Uploads</>,
+		latencyDuringDownload: (latency: string, jitter: string) => <>
+			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms Latency während Download
+			<Show when={jitter}> (±{jitter} ms)</Show>
+		</>,
+		latencyDuringUpload: (latency: string, jitter: string) => <>
+			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms Latency während Upload
+			<Show when={jitter}> (±{jitter} ms)</Show>
+		</>,
 	},
 	faqTitle: "Hintergründe zum Speedtest",
 	faq: [

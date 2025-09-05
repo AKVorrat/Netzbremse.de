@@ -7,7 +7,7 @@
     "build": "npm run speedtest:build && npm run hugo:build",
     "hugo:start": "hugo server",
     "hugo:build": "hugo",
-    "speedtest:start": "cd nb-speedtest && vite",
+    "speedtest:start": "cd nb-speedtest && VITE_DISABLE_SHADOW_DOM='true' vite",
     "speedtest:build": "cd nb-speedtest vite build"
   },
   "keywords": [],
@@ -15,7 +15,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@cloudflare/speedtest": "^1.5.1",
+    "@cloudflare/speedtest": "github:tiagoad/speedtest-multisession#main",
     "@fontsource/roboto": "^5.1.0",
     "@fontsource/source-code-pro": "^5.1.0",
     "@solid-primitives/i18n": "^2.2.1",
@@ -33,6 +33,7 @@
     "solid-js": "^1.9.5",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.7.2",
+    "uuid": "^11.1.0",
     "vite": "^6.0.0",
     "vite-plugin-solid": "^2.11.6"
   }

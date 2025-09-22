@@ -1,5 +1,5 @@
 import { ConfigOptions, Results } from '@cloudflare/speedtest';
-import { Component, createResource, createSignal, For, Index, Match, Show, Switch } from "solid-js";
+import { Component, createEffect, createResource, createSignal, For, Index, indexArray, Match, Show, Switch } from "solid-js";
 import { t } from './i18n/dict';
 import { PowerBtn } from './components/PowerBtn';
 import { Stepper } from './components/Stepper';
@@ -16,7 +16,7 @@ const fetchMetadata = async () => {
   return data as { hostname: string, httpProtocol: string, asn: string, asOrganization: string, clientIp: string, colo: string, country: string, city: string, region: string, postalCode: string, latitude: string, longitude: string }
 };
 
-const NBSpeedTest: Component<{ orResultsChange: (r: Results[]) => void }> = (props) => {
+const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessionId?: (id: string) => void }> = (props) => {
   const sessionID = uuidV4()
   const testRuns = getTestRuns(sessionID)
 
@@ -30,6 +30,13 @@ const NBSpeedTest: Component<{ orResultsChange: (r: Results[]) => void }> = (pro
 
   const [metadata] = createResource(fetchMetadata)
 
+  // Pass sessionId to parent component
+  createEffect(() => {
+    if (props.onSessionId) {
+      props.onSessionId(sessionID)
+    }
+  })
+
   const onStartClick = async () => {
     setStarted(true)
   }
@@ -39,9 +46,10 @@ const NBSpeedTest: Component<{ orResultsChange: (r: Results[]) => void }> = (pro
   }
 
   const onDone = (currentIndex: number, result: Results) => {
-    setResults([...results(), result])
-    if (props.orResultsChange) {
-      props.orResultsChange(results())
+    const newResults = [...results(), result]
+    setResults(newResults)
+    if (props.onResultsChange) {
+      props.onResultsChange(newResults)
     }
 
     const nextIndex = currentIndex + 1
@@ -51,6 +59,23 @@ const NBSpeedTest: Component<{ orResultsChange: (r: Results[]) => void }> = (pro
       console.log("All speedtests finished!")
       setFinished(true)
     }
+  }
+
+  const slideIndex = () => {
+    if (!started()) {
+      return 0
+    } else if (!finished()) {
+      return 1
+    } else {
+      return 2
+    }
+  }
+
+  const resultAt = (index: number) => {
+    if (results().length > index) {
+      return results()[index]
+    }
+    return undefined
   }
 
   const shouldRun = (index: number) => started() && !paused() && currentTest() === index
@@ -65,59 +90,59 @@ const NBSpeedTest: Component<{ orResultsChange: (r: Results[]) => void }> = (pro
           <p class='text-title text-lg'>Netzbremse x CloudFlare</p>
         </hgroup>
 
-        <div class='mt-3 flex max-w-full flex-col justify-center items-center'>
-          <Switch>
-            <Match when={!started()}>
+        <Slider currentIndex={slideIndex()}>
+          <div class='h-full flex flex-col'>
+            <div class='my-auto'>
               <PowerBtn onClick={onStartClick}></PowerBtn>
-              <label class="label mt-4">
-                <input type="checkbox" class="checkbox checkbox-primary" checked={repeat()} onChange={(e) => setRepeat(e.currentTarget.checked)} />
-                {t.speedtest.runInBackground()}
-              </label>
-            </Match>
+            </div>
+            <label class="label">
+              <input type="checkbox" class="checkbox checkbox-primary" checked={repeat()} onChange={(e) => setRepeat(e.currentTarget.checked)} />
+              {t.speedtest.runInBackground()}
+            </label>
+          </div>
 
-            <Match when={started() && !finished()}>
-              <Stepper step={currentTest()} stepCount={testRuns.length}></Stepper>
-              <div class='my-2'></div>
-              <Slider currentIndex={currentTest()}>
-                <Index each={testRuns}>
-                  {(item, index) => (
-                    <SingleTest label={item().label} config={item().config} run={shouldRun(index)} onDone={(result) => onDone(index, result)}></SingleTest>
-                  )}
-                </Index>
-              </Slider>
+          <div class='w-full h-full flex flex-col'>
+            <Stepper step={currentTest()} stepCount={testRuns.length}></Stepper>
+            <div class='my-2 mb-auto'></div>
+            <Slider currentIndex={currentTest()}>
+              <Index each={testRuns}>
+                {(item, index) => (
+                  <SingleTest label={item().label} config={item().config} run={shouldRun(index)} onDone={(result) => onDone(index, result)}></SingleTest>
+                )}
+              </Index>
+            </Slider>
 
-              <div class='w-full flex justify-between items-end px-6'>
-                <button class='btn btn-circle btn-soft' onClick={togglePaused}>
-                  <Switch>
-                    <Match when={!paused()}>
-                      <TbPlayerPauseFilled />
-                      <span class='sr-only'>{t.speedtest.pause()}</span>
-                    </Match>
-                    <Match when={paused()}>
-                      <TbPlayerPlayFilled />
-                      <span class='sr-only'>{t.speedtest.resume()}</span>
-                    </Match>
-                  </Switch>
-                </button>
+            <div class='mt-auto w-full flex justify-between items-end px-6'>
+              <button class='btn btn-circle btn-soft' onClick={togglePaused}>
+                <Switch>
+                  <Match when={!paused()}>
+                    <TbPlayerPauseFilled />
+                    <span class='sr-only'>{t.speedtest.pause()}</span>
+                  </Match>
+                  <Match when={paused()}>
+                    <TbPlayerPlayFilled />
+                    <span class='sr-only'>{t.speedtest.resume()}</span>
+                  </Match>
+                </Switch>
+              </button>
 
-                <div>
-                  <Show when={metadata()?.asn && metadata()?.asOrganization}>
-                    <span class='prose'>ASN {metadata().asn} ({metadata().asOrganization})</span>
-                  </Show>
-                </div>
+              <div>
+                <Show when={metadata()?.asn && metadata()?.asOrganization}>
+                  <span class='prose'>ASN {metadata().asn} ({metadata().asOrganization})</span>
+                </Show>
               </div>
-            </Match>
+            </div>
+          </div>
 
-            <Match when={finished()}>
-              <For each={results()}>
-                {(result, index) => <SingleResult result={result} label={testRuns[index()].label}></SingleResult>}
-              </For>
-              <span>Latency/Jitter unter Last gemessen</span>
-            </Match>
-          </Switch>
-        </div>
+          <div>
+            <For each={testRuns}>
+              {(run, index) => <SingleResult result={resultAt(index())} label={run.label}></SingleResult>}
+            </For>
+            <span>Latency/Jitter unter Last gemessen</span>
+          </div>
+        </Slider>
       </div>
-    </div >
+    </div>
   )
 }
 

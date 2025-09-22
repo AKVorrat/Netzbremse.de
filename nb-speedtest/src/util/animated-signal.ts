@@ -32,7 +32,9 @@ export function createAnimatedSignal(initial?: number | null, duration = 1000) {
 			return
 		}
 
-		if (raf) cancelAnimationFrame(raf);
+		if (raf) {
+			cancelAnimationFrame(raf);
+		}
 
 		start = value();   // current displayed value
 		target = newValue; // new target
@@ -40,9 +42,19 @@ export function createAnimatedSignal(initial?: number | null, duration = 1000) {
 		raf = requestAnimationFrame(step);
 	}
 
+	function setInstant(newValue?: number | null) {
+		setValue(newValue)
+		start = newValue
+		if (raf) {
+			cancelAnimationFrame(raf);
+		}
+	}
+
 	onCleanup(() => {
-		if (raf) cancelAnimationFrame(raf);
+		if (raf) {
+			cancelAnimationFrame(raf);
+		}
 	});
 
-	return [value, animateTo] as const;
+	return [value, animateTo, setInstant] as const;
 }

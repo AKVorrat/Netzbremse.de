@@ -24,14 +24,14 @@ const Stat: Component<{ label?: string, bandwidth: number, latency: number, jitt
   </div>
 }
 
-export const SingleResult: Component<{ label: string, result: Results }> = (props) => {
-  const resultSummary = () => props.result.getSummary()
+export const SingleResult: Component<{ label: string, result?: Results }> = (props) => {
+  const resultSummary = () => props.result?.getSummary()
 
   return <div class="stats shadow-md my-1 bg-base-200">
     <div class="stat stat-value flex items-center justify-center">
       <h3 class="text-2xl font-title min-w-[8ch] max-w-[8ch]">{props.label}</h3>
     </div>
-    <Stat bandwidth={resultSummary().download} latency={resultSummary().downLoadedLatency} jitter={resultSummary().downLoadedJitter} icon={<TbDownload />}></Stat>
-    <Stat bandwidth={resultSummary().upload} latency={resultSummary().upLoadedLatency} jitter={resultSummary().downLoadedJitter} icon={<TbUpload />}></Stat>
+    <Stat bandwidth={resultSummary()?.download} latency={resultSummary()?.downLoadedLatency} jitter={resultSummary()?.downLoadedJitter} icon={<TbDownload />}></Stat>
+    <Stat bandwidth={resultSummary()?.upload} latency={resultSummary()?.upLoadedLatency} jitter={resultSummary()?.downLoadedJitter} icon={<TbUpload />}></Stat>
   </div>
 }

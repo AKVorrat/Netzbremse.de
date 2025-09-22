@@ -6,12 +6,12 @@ import { createAnimatedSignal } from "../util/animated-signal"
 export const SingleTest: Component<{
   label: string, run: boolean, config?: ConfigOptions, onDone?: (result: Results) => void
 }> = (props) => {
-  const [download, setDownload] = createAnimatedSignal()
-  const [upload, setUpload] = createAnimatedSignal()
-  const [downLoadedLatency, setDownLoadedLatency] = createAnimatedSignal()
-  const [upLoadedLatency, setUpLoadedLatency] = createAnimatedSignal()
-  const [downLoadedJitter, setDownLoadedJitter] = createAnimatedSignal()
-  const [upLoadedJitter, setUpLoadedJitter] = createAnimatedSignal()
+  const [download, setDownload, setDownloadInstant] = createAnimatedSignal()
+  const [upload, setUpload, setUploadInstant] = createAnimatedSignal()
+  const [downLoadedLatency, setDownLoadedLatency, setDownLoadedLatencyInstant] = createAnimatedSignal()
+  const [upLoadedLatency, setUpLoadedLatency, setUpLoadedLatencyInstant] = createAnimatedSignal()
+  const [downLoadedJitter, setDownLoadedJitter, setDownLoadedJitterInstant] = createAnimatedSignal()
+  const [upLoadedJitter, setUpLoadedJitter, setUpLoadedJitterInstant] = createAnimatedSignal()
 
   const speedTest = new SpeedTest({
     ...props.config,
@@ -43,6 +43,15 @@ export const SingleTest: Component<{
     } else if (!props.run && speedTest.isRunning) {
       console.log("pausing speedtest", label)
       speedTest.pause()
+
+      // End animated values
+      const res = speedTest.results.getSummary()
+      setDownloadInstant(res.download)
+      setDownLoadedLatencyInstant(res.downLoadedLatency)
+      setDownLoadedJitterInstant(res.downLoadedJitter)
+      setUploadInstant(res.upload)
+      setUpLoadedLatencyInstant(res.upLoadedLatency)
+      setUpLoadedJitterInstant(res.upLoadedJitter)
     }
   })
 

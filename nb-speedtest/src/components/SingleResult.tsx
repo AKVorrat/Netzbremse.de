@@ -34,6 +34,6 @@ export const SingleResult: Component<{ label: string, result?: Results }> = (pro
       <h3 class="text-2xl font-title min-w-[8ch] max-w-[8ch]">{props.label}</h3>
     </div>
     <Stat bandwidth={resultSummary()?.download} latency={resultSummary()?.downLoadedLatency} jitter={resultSummary()?.downLoadedJitter} icon={<TbDownload />}></Stat>
-    <Stat bandwidth={resultSummary()?.upload} latency={resultSummary()?.upLoadedLatency} jitter={resultSummary()?.downLoadedJitter} icon={<TbUpload />}></Stat>
+    <Stat bandwidth={resultSummary()?.upload} latency={resultSummary()?.upLoadedLatency} jitter={resultSummary()?.upLoadedJitter} icon={<TbUpload />}></Stat>
   </div>
 }

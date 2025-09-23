@@ -134,10 +134,12 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
             </div>
           </div>
 
-          <div>
-            <For each={testRuns}>
-              {(run, index) => <SingleResult result={resultAt(index())} label={run.label}></SingleResult>}
-            </For>
+          <div >
+            <div class='flex flex-col items-center justify-center'>
+              <For each={testRuns}>
+                {(run, index) => <SingleResult result={resultAt(index())} label={run.label}></SingleResult>}
+              </For>
+            </div>
             <span>Latency/Jitter unter Last gemessen</span>
           </div>
         </Slider>

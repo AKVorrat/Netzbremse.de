@@ -28,6 +28,28 @@ export const de = {
 			<Show when={jitter}> (±{jitter} ms)</Show>
 		</>,
 	},
+	advancedResults: {
+		title: "Detaillierte Testergebnisse",
+		overview: "Übersicht",
+		routesTested: (count: number) => `${count} Routen getestet`,
+		testCompleted: "Test abgeschlossen",
+		sessionId: "Session ID",
+		exportData: "Daten exportieren",
+		rawMetrics: "Messwerte",
+		performanceData: "Leistungsdaten",
+		downloadSpeed: "Download-Geschwindigkeit",
+		uploadSpeed: "Upload-Geschwindigkeit",
+		loadedLatencyDown: "Latenz unter Last (Download)",
+		loadedLatencyUp: "Latenz unter Last (Upload)",
+		idleLatency: "Leere Latenz",
+		jitter: "Jitter",
+		server: "Server",
+		testDuration: "Testdauer",
+		seconds: "Sekunden",
+		mbps: "Mbit/s",
+		ms: "ms",
+		routeComparison: "Routen-Vergleich",
+	},
 	faqTitle: "Hintergründe zum Speedtest",
 	faq: [
 		{

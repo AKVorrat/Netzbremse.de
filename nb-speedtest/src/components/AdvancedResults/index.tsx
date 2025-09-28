@@ -1,7 +1,7 @@
 import { Results } from "@cloudflare/speedtest";
 import { Component, For, Show, createMemo, createSignal } from "solid-js";
 import { t } from "../../i18n/dict";
-import { getTestRuns } from "../../data/test-runs";
+import { TestRun } from "../../data/test-runs";
 import { Chart, registerables } from 'chart.js';
 import { RouteAccordion } from "./RouteAccordion";
 
@@ -9,9 +9,9 @@ Chart.register(...registerables);
 
 export const AdvancedResults: Component<{
   results: Results[],
-  sessionId: string
+  sessionId: string,
+  testRuns: TestRun[]
 }> = (props) => {
-  const testRuns = getTestRuns(props.sessionId);
   const [openAccordions, setOpenAccordions] = createSignal<Set<number>>(new Set());
 
   const toggleAccordion = (index: number) => {
@@ -26,14 +26,19 @@ export const AdvancedResults: Component<{
     });
   };
 
-  const resultSummary = createMemo(() =>
-    props.results.map((result, index) => ({
-      route: testRuns[index]?.label || `Route ${index + 1}`,
-      server: testRuns[index]?.config.downloadApiUrl?.replace('/__down', '') || '',
-      summary: result.getSummary(),
-      result
-    }))
-  );
+  const resultSummary = createMemo(() => {
+    return props.results.map((result, index) => {
+      const testRun = props.testRuns[index];
+      return {
+        route: testRun?.label || `Route ${index + 1}`,
+        server: testRun?.config.downloadApiUrl?.replace('/__down', '') || '',
+        summary: result.getSummary(),
+        result,
+        // Add stable keys for better reconciliation
+        key: `${props.sessionId}-${index}-${testRun?.label || index}`
+      };
+    });
+  });
 
   const exportData = () => {
     const data = {
@@ -62,13 +67,13 @@ export const AdvancedResults: Component<{
 
   return (
     <Show when={props.results.length > 0}>
-      <div class='my-20 mx-20'>
-        <h2 class="text-4xl text-balance mb-6 text-center">
+      <div class='my-10 lg:my-20 mx-6 lg:mx-20'>
+        <h2 class="text-2xl lg:text-4xl text-balance mb-4 lg:mb-6 text-center">
           {t.advancedResults.title()}
         </h2>
 
         {/* Route Results Accordion - Full Width */}
-        <div class="max-w-[130ch] mx-auto space-y-2">
+        <div class="max-w-full lg:max-w-[130ch] mx-auto space-y-2">
           <For each={resultSummary()}>
             {(routeData, index) => (
               <RouteAccordion

@@ -1,8 +1,9 @@
-import { Component } from "solid-js";
+import { Component, onCleanup, createMemo } from "solid-js";
 import { Chart } from 'chart.js';
 import { getLatencyChartConfig, CHART_COLORS } from "../utils/chart-config";
 import { calculateStats } from "../utils/statistics";
 import { StatisticalSummary } from "./StatisticalSummary";
+import { t } from "../../../i18n/dict";
 
 export const LatencyChart: Component<{
   points: number[] | undefined;
@@ -10,9 +11,19 @@ export const LatencyChart: Component<{
   opacity?: number;
 }> = (props) => {
   const opacity = props.opacity ?? 0.8;
+  let chartInstance: Chart | null = null;
+  let resizeObserver: ResizeObserver | null = null;
+
+  const chartData = createMemo(() => {
+    if (!props.points?.length) return null;
+    return props.points.map((latency) => ({ x: latency, y: 1 }));
+  });
+
+  const stats = createMemo(() => calculateStats(props.points));
 
   const createChart = (canvas: HTMLCanvasElement) => {
-    if (!props.points?.length) {
+    const data = chartData();
+    if (!data) {
       const ctx = canvas.getContext('2d');
       if (ctx) {
         ctx.fillStyle = '#666';
@@ -23,9 +34,7 @@ export const LatencyChart: Component<{
       return null;
     }
 
-    const data = props.points.map((latency) => ({ x: latency, y: 1 }));
-
-    return new Chart(canvas, {
+    chartInstance = new Chart(canvas, {
       type: 'scatter',
       data: {
         datasets: [
@@ -39,22 +48,39 @@ export const LatencyChart: Component<{
           }
         ]
       },
-      options: getLatencyChartConfig(props.title)
+      options: getLatencyChartConfig(props.title, t.advancedResults.latencyMs())
     });
+
+    resizeObserver = new ResizeObserver(() => {
+      if (chartInstance) {
+        chartInstance.resize();
+      }
+    });
+    resizeObserver.observe(canvas.parentElement!);
+
+    return chartInstance;
   };
 
-  const stats = calculateStats(props.points);
+  onCleanup(() => {
+    if (chartInstance) {
+      chartInstance.destroy();
+    }
+    if (resizeObserver) {
+      resizeObserver.disconnect();
+    }
+  });
 
   return <>
-    <div class="h-32">
+    <div class="h-32 w-full max-w-full overflow-hidden">
       <canvas
         ref={(el) => {
           if (el) {
             setTimeout(() => createChart(el), 100);
           }
         }}
+        class="w-full h-full max-w-full"
       ></canvas>
     </div>
-    <StatisticalSummary stats={stats} />
+    <StatisticalSummary stats={stats()} />
   </>;
 };

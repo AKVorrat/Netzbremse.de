@@ -7,7 +7,7 @@ export const Stepper: Component<{ step: number, stepCount: number }> = (props) =
     .map(n => t.speedtest.stepN(n)))
 
   return (
-    <ul class="steps">
+    <ul class="steps w-full">
       <For each={steps()}>
         {(item, index) => (
           <li class="step " classList={{ "step-primary": index() <= props.step }}>

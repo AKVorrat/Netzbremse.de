@@ -5,7 +5,7 @@ import { PowerBtn } from './components/PowerBtn';
 import { Stepper } from './components/Stepper';
 import { TbPlayerPauseFilled, TbPlayerPlayFilled } from 'solid-icons/tb';
 import { SingleTest } from './components/SingleTest';
-import { getTestRuns } from './data/test-runs';
+import { getTestRuns, TestRun } from './data/test-runs';
 import { v4 as uuidV4 } from "uuid";
 import { SingleResult } from './components/SingleResult';
 import { Slider } from './components/Slider';
@@ -16,7 +16,7 @@ const fetchMetadata = async () => {
   return data as { hostname: string, httpProtocol: string, asn: string, asOrganization: string, clientIp: string, colo: string, country: string, city: string, region: string, postalCode: string, latitude: string, longitude: string }
 };
 
-const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessionId?: (id: string) => void }> = (props) => {
+const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessionId?: (id: string) => void, onTestRunsChange?: (runs: TestRun[]) => void }> = (props) => {
   const sessionID = uuidV4()
   const testRuns = getTestRuns(sessionID)
 
@@ -30,12 +30,9 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
 
   const [metadata] = createResource(fetchMetadata)
 
-  // Pass sessionId to parent component
-  createEffect(() => {
-    if (props.onSessionId) {
-      props.onSessionId(sessionID)
-    }
-  })
+  // Pass sessionId and testRuns to parent component
+  props.onSessionId?.(sessionID)
+  props.onTestRunsChange?.(testRuns)
 
   const onStartClick = async () => {
     setStarted(true)
@@ -81,7 +78,7 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
   const shouldRun = (index: number) => started() && !paused() && currentTest() === index
 
   return (
-    <div class="card bg-white shadow-xl min-w-[65ch]">
+    <div class="card bg-white shadow-xl">
       <div class="card-body flex items-center justify-center overflow-hidden">
         <hgroup class='flex flex-col items-center font-title'>
           <h2 class='text-3xl'>

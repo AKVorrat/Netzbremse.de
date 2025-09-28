@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: light;
+}
 @config "./tailwind.config.js";
 @source "hugo_stats.json";
 

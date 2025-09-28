@@ -14,34 +14,52 @@ export const getBaseChartOptions = (title: string) => ({
   }
 });
 
-export const getBandwidthChartConfig = (title: string): Partial<ChartConfiguration['options']> => ({
+export const getBandwidthChartConfig = (title: string, xAxisLabel: string, yAxisLabel: string): Partial<ChartConfiguration['options']> => ({
   ...getBaseChartOptions(title),
+  plugins: {
+    ...getBaseChartOptions(title).plugins,
+    tooltip: {
+      callbacks: {
+        title: () => '',
+        label: (context) => `${context.parsed.y.toFixed(2)} Mbit/s`
+      }
+    }
+  },
   scales: {
     x: {
       type: 'linear' as const,
       title: {
         display: true,
-        text: 'Zeit (Sekunden)'
+        text: xAxisLabel
       }
     },
     y: {
       beginAtZero: true,
       title: {
         display: true,
-        text: 'Geschwindigkeit (Mbit/s)'
+        text: yAxisLabel
       }
     }
   }
 });
 
-export const getLatencyChartConfig = (title: string): Partial<ChartConfiguration['options']> => ({
+export const getLatencyChartConfig = (title: string, xAxisLabel: string): Partial<ChartConfiguration['options']> => ({
   ...getBaseChartOptions(title),
+  plugins: {
+    ...getBaseChartOptions(title).plugins,
+    tooltip: {
+      callbacks: {
+        title: () => '',
+        label: (context) => `${context.parsed.x.toFixed(2)} ms`
+      }
+    }
+  },
   scales: {
     x: {
       beginAtZero: true,
       title: {
         display: true,
-        text: 'Latenz (ms)'
+        text: xAxisLabel
       }
     },
     y: {

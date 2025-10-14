@@ -3,6 +3,7 @@ import { ChartConfiguration } from 'chart.js';
 export const getBaseChartOptions = (title: string) => ({
   responsive: true,
   maintainAspectRatio: false,
+  animation: false as false,
   plugins: {
     title: {
       display: true,

@@ -27,6 +27,7 @@ export const de = {
 			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms Latency während Upload
 			<Show when={jitter}> (±{jitter} ms)</Show>
 		</>,
+		restart: "Neustart",
 	},
 	advancedResults: {
 		title: "Detaillierte Testergebnisse",
@@ -41,6 +42,7 @@ export const de = {
 		uploadSpeed: "Upload-Geschwindigkeit",
 		loadedLatencyDown: "Latenz unter Last (Download)",
 		loadedLatencyUp: "Latenz unter Last (Upload)",
+		noLatencyData: "Keine Latenz-Daten verfügbar",
 		idleLatency: "Leere Latenz",
 		jitter: "Jitter",
 		server: "Server",
@@ -61,8 +63,8 @@ export const de = {
 			title: "Wieso soll ich meinen Adblocker deaktivieren?",
 			body: () => (<>
 				<p>
-					Wir sammeln die anonymisierten Messergebnisse von deinem Browser mittels Cloudflare Endpunkten ein. Diese Schnittstelle 
-					verwenden auch Werbenetzwerke und deshalb wird sie von Werbeblockern oft blockiert. Der Test funktioniert mit Adblocker 
+					Wir sammeln die anonymisierten Messergebnisse von deinem Browser mittels Cloudflare Endpunkten ein. Diese Schnittstelle
+					verwenden auch Werbenetzwerke und deshalb wird sie von Werbeblockern oft blockiert. Der Test funktioniert mit Adblocker
 					einwandfrei, nur werden deine Ergebnisse nicht an uns zurück gemeldet und helfen der Kampagne nicht.
 				</p>
 			</>),
@@ -71,12 +73,12 @@ export const de = {
 			title: "Warum dauert der Test so lange?",
 			body: () => (<>
 				<p>
-					Dieser Test misst Engpässe zwischen verschiedenen Teilen des Internets (sogenannten Transit-Betreibern) und deinem 
-					Internetanschluss. Anders als andere Speedtests messen wir nicht die Verbindung von deinem Anschluss zu anderen Teilen 
+					Dieser Test misst Engpässe zwischen verschiedenen Teilen des Internets (sogenannten Transit-Betreibern) und deinem
+					Internetanschluss. Anders als andere Speedtests messen wir nicht die Verbindung von deinem Anschluss zu anderen Teilen
 					des Netzes, sondern in die Gegenrichtung vom Internet zu deinem Internetanbieter und deinem Anschluss.
 				</p>
 				<p>
-					Der Test misst verschiedene Verbindungen (Transit-Betreiber) nacheinander. Deshalb dauert er länger als normale 
+					Der Test misst verschiedene Verbindungen (Transit-Betreiber) nacheinander. Deshalb dauert er länger als normale
 					Speedtests. Bitte lass den Test trotzdem bis zum Ende durchlaufen, um aussagekräftige Ergebnisse zu erhalten.
 				</p>
 			</>),
@@ -85,7 +87,7 @@ export const de = {
 			title: "Warum kann ich diesen Test im Hintergrund laufen lassen?",
 			body: () => (<>
 				<p>
-					Wenn du die Checkbox unter dem Testknopf aktivierst, wiederholen wir den Test, bis du diese Seite verlässt. 
+					Wenn du die Checkbox unter dem Testknopf aktivierst, wiederholen wir den Test, bis du diese Seite verlässt.
 					Dabei werden alle Transitbetreiber nacheinander wiederholt getestet und jedes Mal eine neue Testreihe erstellt.
 				</p>
 				<p>
@@ -101,20 +103,20 @@ export const de = {
 			title: "Was ist eure Datenschutzpolicy?",
 			body: () => (<>
 				<p>
-					Tl;dr: wir speichern keine personenbezogenen Daten. Wir können und wollen nicht herausfinden, wer du bist. 
+					Tl;dr: wir speichern keine personenbezogenen Daten. Wir können und wollen nicht herausfinden, wer du bist.
 					Deine Teilnahme am Test bleibt anonym.
 				</p>
 				<p>
-					Dieser Test speichert lediglich den Netzwerkteil deiner IP-Adresse, aber nicht deine konkrete Anschlusskennung. 
+					Dieser Test speichert lediglich den Netzwerkteil deiner IP-Adresse, aber nicht deine konkrete Anschlusskennung.
 					Bei IPv4 Adressen speichern wir also nur die ersten drei Zahlenblöcke (Oktetts).
 				</p>
 				<p>
-					Wenn du eine Netzwerkmessung durchführst, werden alle dazu gehörigen Messungen im Datenpool zusammen gespeichert. 
-					So können wir erkennen, dass diese Messungen von demselben Anschluss aus durchgeführt wurden, ohne dass wir deinen 
+					Wenn du eine Netzwerkmessung durchführst, werden alle dazu gehörigen Messungen im Datenpool zusammen gespeichert.
+					So können wir erkennen, dass diese Messungen von demselben Anschluss aus durchgeführt wurden, ohne dass wir deinen
 					Anschluss identifizieren können.
 				</p>
 				<p>
-					Für alle übrigen Funktionen der Webseite verweisen wir auf die generelle 
+					Für alle übrigen Funktionen der Webseite verweisen wir auf die generelle
 					<a href="https://epicenter.works/datenschutz" target="_blank">Datenschutzpolicy</a> von epicenter.works.
 				</p>
 			</>),
@@ -126,7 +128,7 @@ export const de = {
 					Bitte führe den Test ohne VPN durch. Nur so können wir Missstände aufdecken und beheben.
 				</p>
 				<p>
-					VPNs können massive Auswirkungen auf die Ergebnisse der Netzwerkmessung haben. Weil ein VPN deinen gesamten Internetverkehr 
+					VPNs können massive Auswirkungen auf die Ergebnisse der Netzwerkmessung haben. Weil ein VPN deinen gesamten Internetverkehr
 					über eine andere Route leitet, werden mögliche Engpässe zwischen deinem Internetanbieter und Transit-Betreibern umgangen.<br />
 					Ein VPN kann deshalb ein guter Weg sein, um das Problem im Alltag zu lösen. Deshalb verhindert ein VPN eine sinnvolle Messung des Problems.
 				</p>

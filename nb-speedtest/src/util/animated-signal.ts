@@ -6,6 +6,7 @@ export function createAnimatedSignal(initial?: number | null, duration = 1000) {
 	let start = initial;
 	let startTime: number | null = null;
 	let raf: number | null = null;
+	let isPaused = false;
 
 	function step(timestamp: number) {
 		if (startTime === null) startTime = timestamp;
@@ -18,6 +19,7 @@ export function createAnimatedSignal(initial?: number | null, duration = 1000) {
 		if (progress < 1) {
 			raf = requestAnimationFrame(step);
 		} else {
+			setValue(target);
 			raf = null;
 		}
 	}
@@ -39,14 +41,23 @@ export function createAnimatedSignal(initial?: number | null, duration = 1000) {
 		start = value();   // current displayed value
 		target = newValue; // new target
 		startTime = null;
+		isPaused = false;
 		raf = requestAnimationFrame(step);
 	}
 
-	function setInstant(newValue?: number | null) {
-		setValue(newValue)
-		start = newValue
-		if (raf) {
-			cancelAnimationFrame(raf);
+	function setPaused(paused: boolean = true) {
+		if (paused && !isPaused) {
+			isPaused = true;
+			if (raf) {
+				cancelAnimationFrame(raf);
+				raf = null;
+			}
+		} else if (!paused && isPaused) {
+			isPaused = false;
+			if (target != null && start != null) {
+				startTime = null;
+				raf = requestAnimationFrame(step);
+			}
 		}
 	}
 
@@ -56,5 +67,5 @@ export function createAnimatedSignal(initial?: number | null, duration = 1000) {
 		}
 	});
 
-	return [value, animateTo, setInstant] as const;
+	return [value, animateTo, setPaused] as const;
 }

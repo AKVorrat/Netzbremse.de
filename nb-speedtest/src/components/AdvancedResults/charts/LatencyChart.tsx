@@ -1,4 +1,4 @@
-import { Component, onCleanup, createMemo } from "solid-js";
+import { Component, onCleanup, createMemo, Show } from "solid-js";
 import { Chart } from 'chart.js';
 import { getLatencyChartConfig, CHART_COLORS } from "../utils/chart-config";
 import { calculateStats } from "../utils/statistics";
@@ -24,14 +24,7 @@ export const LatencyChart: Component<{
   const createChart = (canvas: HTMLCanvasElement) => {
     const data = chartData();
     if (!data) {
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.fillStyle = '#666';
-        ctx.font = '16px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('Keine Latenz-Daten verfügbar', canvas.width / 2, canvas.height / 2);
-      }
-      return null;
+      return
     }
 
     chartInstance = new Chart(canvas, {
@@ -72,14 +65,19 @@ export const LatencyChart: Component<{
 
   return <>
     <div class="h-32 w-full max-w-full overflow-hidden">
-      <canvas
-        ref={(el) => {
-          if (el) {
-            setTimeout(() => createChart(el), 100);
-          }
-        }}
-        class="w-full h-full max-w-full"
-      ></canvas>
+      <Show when={chartData()}>
+        <canvas
+          ref={(el) => {
+            if (el) {
+              setTimeout(() => createChart(el), 100);
+            }
+          }}
+          class="w-full h-full max-w-full"
+        ></canvas>
+      </Show>
+      <Show when={!chartData()}>
+        <span>{t.advancedResults.noLatencyData()}</span>
+      </Show>
     </div>
     <StatisticalSummary stats={stats()} />
   </>;

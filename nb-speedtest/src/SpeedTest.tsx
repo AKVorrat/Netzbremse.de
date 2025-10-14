@@ -1,14 +1,17 @@
-import { ConfigOptions, Results } from '@cloudflare/speedtest';
-import { Component, createEffect, createResource, createSignal, For, Index, indexArray, Match, Show, Switch } from "solid-js";
+import { Results } from '@cloudflare/speedtest';
+import { Component, createEffect, createResource, createSignal, For, Match, Show, Switch, onCleanup } from "solid-js";
 import { t } from './i18n/dict';
 import { PowerBtn } from './components/PowerBtn';
 import { Stepper } from './components/Stepper';
-import { TbPlayerPauseFilled, TbPlayerPlayFilled } from 'solid-icons/tb';
+import { TbPlayerPauseFilled, TbPlayerPlayFilled, TbRotate2 } from 'solid-icons/tb';
 import { SingleTest } from './components/SingleTest';
 import { getTestRuns, TestRun } from './data/test-runs';
 import { v4 as uuidV4 } from "uuid";
 import { SingleResult } from './components/SingleResult';
 import { Slider } from './components/Slider';
+import { differenceInSeconds } from "date-fns";
+import { config } from './data/config';
+import { AllResults } from './components/Results';
 
 const fetchMetadata = async () => {
   const resp = await fetch("https://speed.cloudflare.com/meta")
@@ -18,21 +21,43 @@ const fetchMetadata = async () => {
 
 const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessionId?: (id: string) => void, onTestRunsChange?: (runs: TestRun[]) => void }> = (props) => {
   const sessionID = uuidV4()
-  const testRuns = getTestRuns(sessionID)
+  const [testRuns, setTestRuns] = createSignal(getTestRuns(sessionID))
 
   const [results, setResults] = createSignal<Results[]>([])
 
   const [started, setStarted] = createSignal(false)
   const [currentTest, setCurrentTest] = createSignal(0)
-  const [finished, setFinished] = createSignal(false)
+  const [finished, setFinished] = createSignal<null | Date>(null)
   const [paused, setPaused] = createSignal(false)
   const [repeat, setRepeat] = createSignal(true)
+  const [now, setNow] = createSignal(new Date())
 
-  const [metadata] = createResource(fetchMetadata)
+  const interval = setInterval(() => {
+    setNow(new Date())
+  }, 1000)
 
-  // Pass sessionId and testRuns to parent component
+  onCleanup(() => {
+    clearInterval(interval)
+  })
+
+  // const [metadata] = createResource(fetchMetadata)
+
+  const restart = () => {
+    setTestRuns(getTestRuns(sessionID))
+    setResults([])
+    setCurrentTest(0)
+    setFinished(null)
+    setPaused(false)
+    setStarted(true)
+  }
+
   props.onSessionId?.(sessionID)
-  props.onTestRunsChange?.(testRuns)
+  createEffect(() =>
+    props.onTestRunsChange?.(testRuns())
+  )
+  createEffect(() =>
+    props.onResultsChange?.(results())
+  )
 
   const onStartClick = async () => {
     setStarted(true)
@@ -45,16 +70,14 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
   const onDone = (currentIndex: number, result: Results) => {
     const newResults = [...results(), result]
     setResults(newResults)
-    if (props.onResultsChange) {
-      props.onResultsChange(newResults)
-    }
 
     const nextIndex = currentIndex + 1
-    if (nextIndex < testRuns.length) {
+    if (nextIndex < testRuns().length) {
       setCurrentTest(nextIndex)
     } else {
       console.log("All speedtests finished!")
-      setFinished(true)
+      setFinished(new Date())
+      setTimeout(restart, config.repeatIntervalSec * 1000)
     }
   }
 
@@ -68,17 +91,31 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
     }
   }
 
-  const resultAt = (index: number) => {
-    if (results().length > index) {
-      return results()[index]
+  const autoRestartInFormatted = (): string | undefined => {
+    if (!finished()) {
+      return undefined
     }
-    return undefined
+    const secSinceFinished = differenceInSeconds(now(), finished())
+    let timeToRestart = config.repeatIntervalSec - secSinceFinished
+    if (timeToRestart < 0) {
+      return undefined
+    }
+    const seconds = timeToRestart % 60
+    timeToRestart = Math.floor(timeToRestart / 60)
+    const minutes = timeToRestart % 60
+    const hours = Math.floor(timeToRestart / 60)
+    const f = Intl.NumberFormat(undefined, { minimumIntegerDigits: 2 })
+    return hours ?
+      `${hours}:${f.format(minutes)}:${f.format(seconds)}` :
+      `${f.format(minutes)}:${f.format(seconds)}`
   }
+
+  const labels = () => testRuns().map(r => r.label)
 
   const shouldRun = (index: number) => started() && !paused() && currentTest() === index
 
-  return (
-    <div class="card bg-white shadow-xl">
+  return (<>
+    <div class="card bg-white shadow-xl @container">
       <div class="card-body flex items-center justify-center overflow-hidden">
         <hgroup class='flex flex-col items-center font-title'>
           <h2 class='text-3xl'>
@@ -99,14 +136,14 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
           </div>
 
           <div class='w-full h-full flex flex-col'>
-            <Stepper step={currentTest()} stepCount={testRuns.length}></Stepper>
+            <Stepper step={currentTest()} stepCount={testRuns().length}></Stepper>
             <div class='my-2 mb-auto'></div>
             <Slider currentIndex={currentTest()}>
-              <Index each={testRuns}>
+              <For each={testRuns()}>
                 {(item, index) => (
-                  <SingleTest label={item().label} config={item().config} run={shouldRun(index)} onDone={(result) => onDone(index, result)}></SingleTest>
+                  <SingleTest label={item.label} config={item.config} run={shouldRun(index())} onDone={(result) => onDone(index(), result)}></SingleTest>
                 )}
-              </Index>
+              </For>
             </Slider>
 
             <div class='mt-auto w-full flex justify-between items-end px-6'>
@@ -123,26 +160,31 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
                 </Switch>
               </button>
 
-              <div>
+              { /* <div>
                 <Show when={metadata()?.asn && metadata()?.asOrganization}>
                   <span class='prose'>ASN {metadata().asn} ({metadata().asOrganization})</span>
                 </Show>
-              </div>
+              </div> */ }
             </div>
           </div>
 
-          <div >
-            <div class='flex flex-col items-center justify-center'>
-              <For each={testRuns}>
-                {(run, index) => <SingleResult result={resultAt(index())} label={run.label}></SingleResult>}
-              </For>
-            </div>
-            <span>Latency/Jitter unter Last gemessen</span>
-          </div>
+          <AllResults results={results()} labels={labels()}></AllResults>
         </Slider>
       </div>
     </div>
-  )
+    <div class='flex flex-row justify-center items-center mt-3 min-h-10 text-primary-content'>
+      <Show when={!!finished()}>
+        <button title={t.speedtest.restart()} class='btn btn-circle btn-ghost hover:text-primary focus:text-primary focus:bg-primary-content text-3xl mr-3' onclick={restart}>
+          <TbRotate2></TbRotate2>
+          <span class='sr-only'>{t.speedtest.restart()}</span>
+        </button>
+        <Show when={autoRestartInFormatted() && repeat()}>
+          Test started automatisch neu in
+          <span class='ml-2 min-w-12'>{autoRestartInFormatted()}</span>
+        </Show>
+      </Show>
+    </div>
+  </>)
 }
 
 export default NBSpeedTest

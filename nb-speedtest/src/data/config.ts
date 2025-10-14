@@ -1,3 +1,4 @@
 export const config = {
-	repeatInterval: 60 * 60 * 1000,
+	// 59 min, 59 sec
+	repeatIntervalSec: 60 * 60 - 1,
 }

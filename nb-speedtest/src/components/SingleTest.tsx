@@ -1,22 +1,24 @@
-import { Component, createEffect, createSignal, Show, Signal, untrack } from "solid-js"
+import { Component, createEffect, createSignal, on, onCleanup, Show, Signal, untrack } from "solid-js"
 import { SpeedStat } from "./SpeedStat"
 import SpeedTest, { ConfigOptions, Results } from "@cloudflare/speedtest"
 import { createAnimatedSignal } from "../util/animated-signal"
+import { TbPlayerPauseFilled } from "solid-icons/tb"
 
 export const SingleTest: Component<{
   label: string, run: boolean, config?: ConfigOptions, onDone?: (result: Results) => void
 }> = (props) => {
-  const [download, setDownload, setDownloadInstant] = createAnimatedSignal()
-  const [upload, setUpload, setUploadInstant] = createAnimatedSignal()
-  const [downLoadedLatency, setDownLoadedLatency, setDownLoadedLatencyInstant] = createAnimatedSignal()
-  const [upLoadedLatency, setUpLoadedLatency, setUpLoadedLatencyInstant] = createAnimatedSignal()
-  const [downLoadedJitter, setDownLoadedJitter, setDownLoadedJitterInstant] = createAnimatedSignal()
-  const [upLoadedJitter, setUpLoadedJitter, setUpLoadedJitterInstant] = createAnimatedSignal()
+  const [download, setDownload, setDownloadPaused] = createAnimatedSignal()
+  const [upload, setUpload, setUploadPuased] = createAnimatedSignal()
+  const [downLoadedLatency, setDownLoadedLatency, setDownLoadedLatencyPaused] = createAnimatedSignal()
+  const [upLoadedLatency, setUpLoadedLatency, setUpLoadedLatencyPaused] = createAnimatedSignal()
+  const [downLoadedJitter, setDownLoadedJitter, setDownLoadedJitterPaused] = createAnimatedSignal()
+  const [upLoadedJitter, setUpLoadedJitter, setUpLoadedJitterPaused] = createAnimatedSignal()
 
-  const speedTest = new SpeedTest({
-    ...props.config,
-    autoStart: false,
-  })
+  const speedTest =
+    new SpeedTest({
+      ...props.config,
+      autoStart: false,
+    })
   speedTest.onResultsChange = (r) => {
     const res = speedTest.results.getSummary()
     setDownload(res.download)
@@ -25,6 +27,16 @@ export const SingleTest: Component<{
     setUpload(res.upload)
     setUpLoadedLatency(res.upLoadedLatency)
     setUpLoadedJitter(res.upLoadedJitter)
+    console.log(`Updated Stats: Down ${res.download}, Down Lat ${res.downLoadedLatency}, Down Jit ${res.downLoadedJitter}, Up ${res.upload}, Up Lat ${res.upLoadedLatency}, Up Jit ${res.upLoadedLatency}`)
+  }
+  speedTest.onRunningChange = (running) => {
+    console.log("SpeedTest Running Change", running)
+    setDownloadPaused(!running)
+    setDownLoadedLatencyPaused(!running)
+    setDownLoadedJitterPaused(!running)
+    setUploadPuased(!running)
+    setUpLoadedLatencyPaused(!running)
+    setUpLoadedJitterPaused(!running)
   }
   speedTest.onFinish = () => {
     if (props.onDone) {
@@ -34,6 +46,10 @@ export const SingleTest: Component<{
   speedTest.onError = (error) => {
     console.error("Speedtest error", error)
   }
+  onCleanup(() => {
+    speedTest?.pause()
+  })
+  console.log("SpeedTest Component initialized!", props.label)
 
   createEffect(() => {
     const label = untrack(() => props.label);
@@ -43,15 +59,6 @@ export const SingleTest: Component<{
     } else if (!props.run && speedTest.isRunning) {
       console.log("pausing speedtest", label)
       speedTest.pause()
-
-      // End animated values
-      const res = speedTest.results.getSummary()
-      setDownloadInstant(res.download)
-      setDownLoadedLatencyInstant(res.downLoadedLatency)
-      setDownLoadedJitterInstant(res.downLoadedJitter)
-      setUploadInstant(res.upload)
-      setUpLoadedLatencyInstant(res.upLoadedLatency)
-      setUpLoadedJitterInstant(res.upLoadedJitter)
     }
   })
 
@@ -59,6 +66,11 @@ export const SingleTest: Component<{
     <div class='flex items-center justify-center gap-3 mb-2'>
       <Show when={props.run}>
         <span class="loading loading-ring loading-md text-primary"></span>
+      </Show>
+      <Show when={!props.run}>
+        <span class="aspect-square w-6 text-primary/75 flex justify-center items-center text-lg">
+          <TbPlayerPauseFilled />
+        </span>
       </Show>
       <h3 class='text-2xl'>{props.label}</h3>
     </div>

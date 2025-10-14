@@ -8,7 +8,7 @@
     "hugo:start": "hugo server",
     "hugo:build": "hugo",
     "speedtest:start": "cd nb-speedtest && VITE_DISABLE_SHADOW_DOM='true' vite",
-    "speedtest:build": "cd nb-speedtest && vite build"
+    "speedtest:build": "cd nb-speedtest && tsc --noEmit --skipLibCheck && vite build"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +24,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "chart.js": "^4.5.0",
     "daisyui": "^5.0.46",
+    "date-fns": "^4.1.0",
     "embla-carousel": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-wheel-gestures": "^8.0.2",

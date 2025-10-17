@@ -22,7 +22,7 @@ Renders a menu for the given menu ID.
   <div class="flex-auto"></div>
 
   <div class="dropdown flex justify-end">
-    <div tabindex="0" role="button" class="btn btn-ghost lg:!hidden">
+    <div tabindex="0" role="button" class="btn btn-ghost xl:!hidden">
       <span class="sr-only">{{ T "openNavigation" }}</span>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
@@ -38,7 +38,7 @@ Renders a menu for the given menu ID.
     </ul>
   </div>
 
-  <div class="hidden lg:flex">
+  <div class="hidden xl:flex">
     <ul class="menu menu-horizontal text-xl">
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
       {{ if gt (site.Languages | len) 1 }}

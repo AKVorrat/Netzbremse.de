@@ -4,7 +4,7 @@ import { FaqItem } from "./FaqItem";
 
 export const Faq: Component = () => {
   return (
-    <div>
+    <div class="flex flex-col gap-4">
       <For each={t.faq()}>
         {(item) => (
           <FaqItem title={item.title}>

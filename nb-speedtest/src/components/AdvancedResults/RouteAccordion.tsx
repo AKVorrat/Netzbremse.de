@@ -8,30 +8,24 @@ import { LatencyChart } from "./charts/LatencyChart";
 
 type RouteData = {
   route: string;
-  server: string;
-  summary: any;
   result: Results;
 };
 
 export const RouteAccordion: Component<{
   routeData: RouteData;
-  index: number;
-  isOpen: boolean;
-  onToggle: () => void;
 }> = (props) => {
   const downloadPoints = createMemo(() => props.routeData.result.getDownloadBandwidthPoints());
   const uploadPoints = createMemo(() => props.routeData.result.getUploadBandwidthPoints());
   const unloadedLatencyPoints = createMemo(() => props.routeData.result.getUnloadedLatencyPoints());
   const downLoadedLatencyPoints = createMemo(() => props.routeData.result.getDownLoadedLatencyPoints());
   const upLoadedLatencyPoints = createMemo(() => props.routeData.result.getUpLoadedLatencyPoints());
+  const summary = createMemo(() => props.routeData.result.getSummary());
 
   return (
     <div class="collapse collapse-arrow bg-base-200">
       <input
         type="checkbox"
         class="peer"
-        checked={props.isOpen}
-        onChange={props.onToggle}
       />
       <div class="collapse-title text-lg font-medium peer-checked:bg-base-300 peer-checked:text-base-content">
         <div class="flex flex-row flex-wrap items-center justify-between gap-2">
@@ -39,19 +33,19 @@ export const RouteAccordion: Component<{
           <div class="text-xs lg:text-sm opacity-70 flex flex-wrap items-center justify-center gap-2 lg:gap-4">
             <span class="flex items-center gap-1">
               <TbDownload class="w-4 h-4" />
-              {formatSpeed(props.routeData.summary.download)} {t.advancedResults.mbps()}
+              {formatSpeed(summary()?.download)} {t.advancedResults.mbps()}
             </span>
             <span class="flex items-center gap-1">
               <TbClock class="w-4 h-4" />
-              {formatLatency(Math.max(props.routeData.summary.downLoadedLatency || 0))} {t.advancedResults.ms()}
+              {formatLatency(Math.max(summary()?.downLoadedLatency || 0))} {t.advancedResults.ms()}
             </span>
             <span class="flex items-center gap-1">
               <TbUpload class="w-4 h-4" />
-              {formatSpeed(props.routeData.summary.upload)} {t.advancedResults.mbps()}
+              {formatSpeed(summary()?.upload)} {t.advancedResults.mbps()}
             </span>
             <span class="flex items-center gap-1">
               <TbClock class="w-4 h-4" />
-              {formatLatency(Math.max(props.routeData.summary.upLoadedLatency || 0))} {t.advancedResults.ms()}
+              {formatLatency(Math.max(summary()?.upLoadedLatency || 0))} {t.advancedResults.ms()}
             </span>
           </div>
         </div>
@@ -64,41 +58,41 @@ export const RouteAccordion: Component<{
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4">
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.downloadSpeed()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatSpeed(props.routeData.summary.download)} {t.advancedResults.mbps()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatSpeed(summary()?.download)} {t.advancedResults.mbps()}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.uploadSpeed()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatSpeed(props.routeData.summary.upload)} {t.advancedResults.mbps()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatSpeed(summary()?.upload)} {t.advancedResults.mbps()}</span>
               </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4">
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.loadedLatencyDown()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(props.routeData.summary.downLoadedLatency)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.downLoadedLatency)} {t.advancedResults.ms()}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.jitter()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(props.routeData.summary.downLoadedJitter)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.downLoadedJitter)} {t.advancedResults.ms()}</span>
               </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4">
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.loadedLatencyUp()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(props.routeData.summary.upLoadedLatency)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.upLoadedLatency)} {t.advancedResults.ms()}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.jitter()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(props.routeData.summary.upLoadedJitter)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.upLoadedJitter)} {t.advancedResults.ms()}</span>
               </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4">
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.idleLatency()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(props.routeData.summary.latency)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.latency)} {t.advancedResults.ms()}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.jitter()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(props.routeData.summary.jitter)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.jitter)} {t.advancedResults.ms()}</span>
               </div>
             </div>
           </div>

@@ -100,6 +100,20 @@ export const de = {
 			body: "Du solltest, während der Test läuft, keine bandbreitenintensiven Anwendungen wie Videostreaming oder Filesharing über denselben Internetanschluss laufen lassen. Auch rechenintensive Aufgaben auf demselben Gerät könnten den Test verfälschen. Bestenfalls lässt du den Test auf deinem Browser laufen, während du den Computer gerade nicht verwendest.",
 		},
 		{
+			title: "Wie kann ich möglichst genaue Messergebnisse erzielen?",
+			body: () => (<>
+				<p>
+					Führe den Speedtest nach Möglichkeit mit einer stabilen Verbindung durch - am besten mit einem Computer, der per LAN-Kabel direkt mit dem Router verbunden ist.
+				</p>
+				<p>
+					Wenn du den Test über WLAN machst, achte darauf, dass sich dein Endgerät in unmittelbarer Nähe des Routers befindet und keine Hindernisse (z. B. Wände) die Verbindung stören.
+				</p>
+				<p>
+					So stellst du sicher, dass mögliche Geschwindigkeitseinbußen tatsächlich vom Internetanschluss herrühren und nicht durch dein Heimnetzwerk verursacht werden.
+				</p>
+			</>),
+		},
+		{
 			title: "Was ist eure Datenschutzpolicy?",
 			body: () => (<>
 				<p>

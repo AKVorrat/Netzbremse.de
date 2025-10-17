@@ -115,8 +115,8 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
   const shouldRun = (index: number) => started() && !paused() && currentTest() === index
 
   return (<>
-    <div class="card bg-white shadow-xl @container">
-      <div class="card-body flex items-center justify-center overflow-hidden">
+    <div class="card bg-white shadow-xl max-[32rem]:-mx-5">
+      <div class="card-body flex items-center justify-center overflow-hidden max-[32rem]:px-2">
         <hgroup class='flex flex-col items-center font-title'>
           <h2 class='text-3xl'>
             {t.speedtest.title()}
@@ -147,7 +147,7 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
             </Slider>
 
             <div class='mt-auto w-full flex justify-between items-end px-6'>
-              <button class='btn btn-circle btn-soft' onClick={togglePaused}>
+              <button class='btn btn-circle btn-soft mb-1' onClick={togglePaused}>
                 <Switch>
                   <Match when={!paused()}>
                     <TbPlayerPauseFilled />
@@ -172,6 +172,7 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
         </Slider>
       </div>
     </div>
+
     <div class='flex flex-row justify-center items-center mt-3 min-h-10 text-primary-content'>
       <Show when={!!finished()}>
         <button title={t.speedtest.restart()} class='btn btn-circle btn-ghost hover:text-primary focus:text-primary focus:bg-primary-content text-3xl mr-3' onclick={restart}>

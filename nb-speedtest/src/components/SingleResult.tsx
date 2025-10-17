@@ -29,7 +29,7 @@ const Stat: Component<{ label?: string, bandwidth: number, latency: number, jitt
 export const SingleResult: Component<{ result?: Results }> = (props) => {
   const resultSummary = () => props.result?.getSummary()
 
-  return <div class="stats shadow-md my-1 bg-base-200 px-2">
+  return <div class="stats shadow-md my-1 bg-base-200 px-2 overflow-x-hidden max-[25tem]:stats-vertical">
     <Stat bandwidth={resultSummary()?.download} latency={resultSummary()?.downLoadedLatency} jitter={resultSummary()?.downLoadedJitter} icon={<TbDownload />}></Stat>
     <Stat bandwidth={resultSummary()?.upload} latency={resultSummary()?.upLoadedLatency} jitter={resultSummary()?.upLoadedJitter} icon={<TbUpload />}></Stat>
   </div>

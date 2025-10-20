@@ -1,0 +1,51 @@
+backend:
+  name: github
+  repo: AKVorrat/Netzbremse.de
+  branch: main
+
+media_folder: "static/img"
+public_folder: "/img"
+
+collections:
+  # Coverage/Media articles
+  - name: "coverage"
+    label: "Media Coverage"
+    folder: "content/coverage"
+    create: true
+    slug: "{{weight | string | rjust:3:0}}-{{slug}}"
+    fields:
+      - {label: "Weight (for ordering)", name: "weight", widget: "number", default: 100, value_type: "int"}
+      - {label: "Title", name: "title", widget: "string"}
+      - label: "Parameters"
+        name: "params"
+        widget: "object"
+        fields:
+          - {label: "Publication Name", name: "publication", widget: "string"}
+          - {label: "Logo Path", name: "logo", widget: "image", required: false}
+          - {label: "Article URL", name: "url", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  # Testimonials
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{weight | string | rjust:3:0}}"
+    fields:
+      - {label: "Weight (for ordering)", name: "weight", widget: "number", default: 100, value_type: "int"}
+      - label: "Parameters"
+        name: "params"
+        widget: "object"
+        fields:
+          - {label: "Thread Number", name: "thread", widget: "number", required: false}
+          - {label: "Source URL", name: "sourceURL", widget: "string"}
+          - {label: "Archive URL", name: "archiveURL", widget: "string", required: false}
+          - {label: "Username", name: "username", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
+      - label: "Sitemap"
+        name: "sitemap"
+        widget: "object"
+        fields:
+          - {label: "Disable in sitemap", name: "disable", widget: "boolean", default: true}
+      - {label: "Testimonial Content", name: "body", widget: "markdown"}

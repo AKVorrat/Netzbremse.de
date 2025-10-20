@@ -4,6 +4,7 @@ backend:
   branch: main
   auth_type: implicit
   app_id: Iv23lihzHEr2zwEJbhcH
+  base_url: https://github.com
 
 media_folder: "static/img"
 public_folder: "/img"

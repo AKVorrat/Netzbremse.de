@@ -2,6 +2,8 @@ backend:
   name: github
   repo: AKVorrat/Netzbremse.de
   branch: main
+  auth_type: implicit
+  app_id: Iv23lihzHEr2zwEJbhcH
 
 media_folder: "static/img"
 public_folder: "/img"

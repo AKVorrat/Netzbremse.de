@@ -82,9 +82,26 @@ export function createFakeSpeedtest(config: ConfigOptions, callbacks: SpeedTestC
 			unloadedLatencyPoints.push(unloadedLatency)
 		}, 100)
 
-		// Finish after 3-5 seconds
+		// Use provided timeout or default to 10 seconds
+		const timeoutDuration = callbacks.timeoutMs || 10000
 		simulationTimeout = setTimeout(() => {
 			if (simulationInterval) clearInterval(simulationInterval)
+			setIsRunning(false)
+			setIsFinished(true)
+
+			// Always trigger timeout error when timeout duration is reached
+			if (callbacks.onError) {
+				callbacks.onError(new Error("Test timeout"))
+			}
+			return
+		}, timeoutDuration)
+
+		// Finish successfully after 3-5 seconds if no timeout
+		const successTimeout = setTimeout(() => {
+			if (!isRunning()) return // Already finished/paused
+
+			if (simulationInterval) clearInterval(simulationInterval)
+			if (simulationTimeout) clearTimeout(simulationTimeout)
 			setIsRunning(false)
 			setIsFinished(true)
 
@@ -120,7 +137,7 @@ export function createFakeSpeedtest(config: ConfigOptions, callbacks: SpeedTestC
 				} as Results
 				callbacks.onDone(mockResults)
 			}
-		}, 3000 + Math.random() * 2000)
+		}, 3000 + Math.random() * 2000) // 3-5 seconds
 	}
 
 	const pause = () => {

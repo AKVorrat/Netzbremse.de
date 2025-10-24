@@ -20,7 +20,12 @@ const fetchMetadata = async () => {
   return data as { hostname: string, httpProtocol: string, asn: string, asOrganization: string, clientIp: string, colo: string, country: string, city: string, region: string, postalCode: string, latitude: string, longitude: string }
 };
 
-const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessionId?: (id: string) => void, onTestRunsChange?: (runs: TestRun[]) => void }> = (props) => {
+type SpeedTestState = {
+  allResults: TestResult[];
+  sessionId: string;
+}
+
+const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }> = (props) => {
   const sessionID = uuidV4()
   const [testRuns, setTestRuns] = createSignal(getTestRuns(sessionID))
 
@@ -52,12 +57,11 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
     setStarted(true)
   }
 
-  props.onSessionId?.(sessionID)
   createEffect(() =>
-    props.onTestRunsChange?.(testRuns())
-  )
-  createEffect(() =>
-    props.onResultsChange?.(results().filter((r): r is { success: true; result: Results } => r.success).map(r => r.result))
+    props.onStateChange?.({
+      allResults: results(),
+      sessionId: sessionID
+    })
   )
 
   const onStartClick = async () => {
@@ -111,7 +115,6 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
       `${f.format(minutes)}:${f.format(seconds)}`
   }
 
-  const labels = () => testRuns().map(r => r.label)
 
   const shouldRun = (index: number) => started() && !paused() && currentTest() === index
 
@@ -169,7 +172,7 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
             </div>
           </div>
 
-          <AllResults results={results().filter((r): r is { success: true; result: Results } => r.success).map(r => r.result)} labels={labels()}></AllResults>
+          <AllResults results={results()}></AllResults>
         </Slider>
       </div>
     </div>

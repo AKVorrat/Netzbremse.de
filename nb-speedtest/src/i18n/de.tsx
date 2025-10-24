@@ -28,6 +28,7 @@ export const de = {
 			<Show when={jitter}> (±{jitter} ms)</Show>
 		</>,
 		restart: "Neustart",
+		error: "Fehler",
 	},
 	advancedResults: {
 		title: "Detaillierte Testergebnisse",

@@ -1,25 +1,20 @@
 import { Component, createMemo } from "solid-js";
-import { Results } from "@cloudflare/speedtest";
 import { TbDownload, TbUpload, TbClock } from "solid-icons/tb";
 import { t } from "../../i18n/dict";
 import { formatSpeed, formatLatency } from "./utils/formatting";
 import { BandwidthChart } from "./charts/BandwidthChart";
 import { LatencyChart } from "./charts/LatencyChart";
-
-type RouteData = {
-  route: string;
-  result: Results;
-};
+import { TestResult } from "../../types/test-result";
 
 export const RouteAccordion: Component<{
-  routeData: RouteData;
+  testResult: TestResult & { success: true };
 }> = (props) => {
-  const downloadPoints = createMemo(() => props.routeData.result.getDownloadBandwidthPoints());
-  const uploadPoints = createMemo(() => props.routeData.result.getUploadBandwidthPoints());
-  const unloadedLatencyPoints = createMemo(() => props.routeData.result.getUnloadedLatencyPoints());
-  const downLoadedLatencyPoints = createMemo(() => props.routeData.result.getDownLoadedLatencyPoints());
-  const upLoadedLatencyPoints = createMemo(() => props.routeData.result.getUpLoadedLatencyPoints());
-  const summary = createMemo(() => props.routeData.result.getSummary());
+  const downloadPoints = createMemo(() => props.testResult.result.getDownloadBandwidthPoints());
+  const uploadPoints = createMemo(() => props.testResult.result.getUploadBandwidthPoints());
+  const unloadedLatencyPoints = createMemo(() => props.testResult.result.getUnloadedLatencyPoints());
+  const downLoadedLatencyPoints = createMemo(() => props.testResult.result.getDownLoadedLatencyPoints());
+  const upLoadedLatencyPoints = createMemo(() => props.testResult.result.getUpLoadedLatencyPoints());
+  const summary = createMemo(() => props.testResult.result.getSummary());
 
   return (
     <div class="collapse collapse-arrow bg-base-200">
@@ -29,7 +24,7 @@ export const RouteAccordion: Component<{
       />
       <div class="collapse-title text-lg font-medium peer-checked:bg-base-300 peer-checked:text-base-content">
         <div class="flex flex-row flex-wrap items-center justify-between gap-2">
-          <span class="text-base lg:text-lg">{props.routeData.route}</span>
+          <span class="text-base lg:text-lg">{props.testResult.label}</span>
           <div class="text-xs lg:text-sm opacity-70 flex flex-wrap items-center justify-center gap-2 lg:gap-4">
             <span class="flex items-center gap-1">
               <TbDownload class="w-4 h-4" />
@@ -108,7 +103,7 @@ export const RouteAccordion: Component<{
                 </div>
                 <BandwidthChart
                   points={downloadPoints()}
-                  title={`${t.advancedResults.download()} - ${props.routeData.route}`}
+                  title={`${t.advancedResults.download()} - ${props.testResult.label}`}
                   type="download"
                 />
               </div>
@@ -120,7 +115,7 @@ export const RouteAccordion: Component<{
                 </div>
                 <BandwidthChart
                   points={uploadPoints()}
-                  title={`${t.advancedResults.upload()} - ${props.routeData.route}`}
+                  title={`${t.advancedResults.upload()} - ${props.testResult.label}`}
                   type="upload"
                 />
               </div>
@@ -135,7 +130,7 @@ export const RouteAccordion: Component<{
                 </div>
                 <LatencyChart
                   points={unloadedLatencyPoints()}
-                  title={`${t.advancedResults.latency()} - ${props.routeData.route}`}
+                  title={`${t.advancedResults.latency()} - ${props.testResult.label}`}
                   opacity={0.8}
                 />
               </div>
@@ -147,7 +142,7 @@ export const RouteAccordion: Component<{
                 </div>
                 <LatencyChart
                   points={downLoadedLatencyPoints()}
-                  title={`${t.advancedResults.loadedLatencyDown()} - ${props.routeData.route}`}
+                  title={`${t.advancedResults.loadedLatencyDown()} - ${props.testResult.label}`}
                   opacity={0.8}
                 />
               </div>
@@ -159,7 +154,7 @@ export const RouteAccordion: Component<{
                 </div>
                 <LatencyChart
                   points={upLoadedLatencyPoints()}
-                  title={`${t.advancedResults.loadedLatencyUp()} - ${props.routeData.route}`}
+                  title={`${t.advancedResults.loadedLatencyUp()} - ${props.testResult.label}`}
                   opacity={0.6}
                 />
               </div>

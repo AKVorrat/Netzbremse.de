@@ -3,15 +3,14 @@ import NBSpeedTest from './SpeedTest';
 import { t } from './i18n/dict';
 import { Faq } from './Faq';
 import { AdvancedResults } from './components/AdvancedResults';
-import { Results } from '@cloudflare/speedtest';
-import { TestRun } from './data/test-runs';
+import { TestResult } from './types/test-result';
 import { ColsLayout } from './layouts/ColsLayout';
 import { Container } from './layouts/Container';
 
 const App: Component = () => {
-  const [results, setResults] = createSignal<Results[]>([]);
+  const [allResults, setAllResults] = createSignal<TestResult[]>([]);
   const [sessionId, setSessionId] = createSignal<string>('');
-  const [testRuns, setTestRuns] = createSignal<TestRun[]>([]);
+
 
   return (
     <>
@@ -29,9 +28,10 @@ const App: Component = () => {
             </div>
             <div class=''>
               <NBSpeedTest
-                onResultsChange={setResults}
-                onSessionId={setSessionId}
-                onTestRunsChange={setTestRuns}
+                onStateChange={(state) => {
+                  setAllResults(state.allResults);
+                  setSessionId(state.sessionId);
+                }}
               />
             </div>
           </ColsLayout>
@@ -40,15 +40,14 @@ const App: Component = () => {
 
       {/* Advanced Results Section */}
 
-      <Show when={results()?.length > 0}>
+      <Show when={allResults()?.length > 0}>
         <Container>
           <h2 class="text-2xl lg:text-4xl text-balance mb-4 lg:mb-6 text-center">
             {t.advancedResults.title()}
           </h2>
           <AdvancedResults
-            results={results()}
+            results={allResults()}
             sessionId={sessionId()}
-            testRuns={testRuns()}
           />
         </Container>
       </Show>

@@ -2,7 +2,6 @@ import { Component, createEffect, createSignal, on, onCleanup, Show, Signal, unt
 import { SpeedStat } from "./SpeedStat"
 import SpeedTest, { ConfigOptions, Results } from "@cloudflare/speedtest"
 import { TestResult } from "../types/test-result"
-import { createAnimatedSignal } from "../util/animated-signal"
 import { TbPlayerPauseFilled } from "solid-icons/tb"
 import { createSpeedtest } from "../util/create-speedtest"
 import { createFakeSpeedtest } from "../util/create-fake-speedtest"
@@ -15,13 +14,13 @@ export const SingleTest: Component<{
 
   const st = useFakeSpeedtest
     ? createFakeSpeedtest(props.config, {
-        onDone: (result) => props.onComplete?.({ success: true, result })
+        onDone: (result) => props.onComplete?.({ success: true, result, label: props.label })
       })
     : createSpeedtest(props.config, {
-        onDone: (result) => props.onComplete?.({ success: true, result }),
+        onDone: (result) => props.onComplete?.({ success: true, result, label: props.label }),
         onError: (error) => {
           console.error(`Speedtest ${props.label} error:`, error)
-          props.onComplete?.({ success: false, error })
+          props.onComplete?.({ success: false, error, label: props.label })
         }
       })
   console.log("SpeedTest Component initialized!", props.label)

@@ -8,8 +8,8 @@ export type TestRun = {
 
 export function getTestRuns(sessionID: string): TestRun[] {
 	const data = [
-		//{ label: "Route A", uri: "https://custom-t0.speed.cloudflare.com" },
-		{ label: "Route A", uri: "https://custom-t1.speed.cloudflare.com" },
+		{ label: "Route A", uri: "https://custom-t0.speed.cloudflare.com" },
+		//{ label: "Route A", uri: "https://custom-t1.speed.cloudflare.com" },
 		{ label: "Route B", uri: "https://custom-t1.speed.cloudflare.com" },
 		{ label: "Route C", uri: "https://custom-t2.speed.cloudflare.com" },
 		{ label: "Route D", uri: "https://custom-t3.speed.cloudflare.com" },
@@ -22,7 +22,6 @@ export function getTestRuns(sessionID: string): TestRun[] {
 			downloadApiUrl: `${d.uri}/__down`,
 			uploadApiUrl: `${d.uri}/__up`,
 			// @ts-ignore
-			logMeasurementApiUrl: `${d.uri}/__log`,
 			sessionId: sessionID,
 			turnServerCredsApiUrl: `${d.uri}/__turn`,
 			turnServerUri: "turn.cloudflare.com:3478",

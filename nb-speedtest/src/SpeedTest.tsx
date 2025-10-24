@@ -1,4 +1,5 @@
 import { Results } from '@cloudflare/speedtest';
+import { TestResult } from './types/test-result';
 import { Component, createEffect, createResource, createSignal, For, Match, Show, Switch, onCleanup } from "solid-js";
 import { t } from './i18n/dict';
 import { PowerBtn } from './components/PowerBtn';
@@ -23,7 +24,7 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
   const sessionID = uuidV4()
   const [testRuns, setTestRuns] = createSignal(getTestRuns(sessionID))
 
-  const [results, setResults] = createSignal<Results[]>([])
+  const [results, setResults] = createSignal<TestResult[]>([])
 
   const [started, setStarted] = createSignal(false)
   const [currentTest, setCurrentTest] = createSignal(0)
@@ -56,7 +57,7 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
     props.onTestRunsChange?.(testRuns())
   )
   createEffect(() =>
-    props.onResultsChange?.(results())
+    props.onResultsChange?.(results().filter((r): r is { success: true; result: Results } => r.success).map(r => r.result))
   )
 
   const onStartClick = async () => {
@@ -67,8 +68,8 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
     setPaused(!paused())
   }
 
-  const onDone = (currentIndex: number, result: Results) => {
-    const newResults = [...results(), result]
+  const onComplete = (currentIndex: number, outcome: TestResult) => {
+    const newResults = [...results(), outcome]
     setResults(newResults)
 
     const nextIndex = currentIndex + 1
@@ -141,7 +142,7 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
             <Slider currentIndex={currentTest()}>
               <For each={testRuns()}>
                 {(item, index) => (
-                  <SingleTest label={item.label} config={item.config} run={shouldRun(index())} onDone={(result) => onDone(index(), result)}></SingleTest>
+                  <SingleTest label={item.label} config={item.config} run={shouldRun(index())} onComplete={(outcome) => onComplete(index(), outcome)}></SingleTest>
                 )}
               </For>
             </Slider>
@@ -168,7 +169,7 @@ const NBSpeedTest: Component<{ onResultsChange?: (r: Results[]) => void, onSessi
             </div>
           </div>
 
-          <AllResults results={results()} labels={labels()}></AllResults>
+          <AllResults results={results().filter((r): r is { success: true; result: Results } => r.success).map(r => r.result)} labels={labels()}></AllResults>
         </Slider>
       </div>
     </div>

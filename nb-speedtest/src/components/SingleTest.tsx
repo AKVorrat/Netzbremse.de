@@ -1,6 +1,7 @@
 import { Component, createEffect, createSignal, on, onCleanup, Show, Signal, untrack } from "solid-js"
 import { SpeedStat } from "./SpeedStat"
 import SpeedTest, { ConfigOptions, Results } from "@cloudflare/speedtest"
+import { TestResult } from "../types/test-result"
 import { createAnimatedSignal } from "../util/animated-signal"
 import { TbPlayerPauseFilled } from "solid-icons/tb"
 import { createSpeedtest } from "../util/create-speedtest"
@@ -8,13 +9,21 @@ import { createFakeSpeedtest } from "../util/create-fake-speedtest"
 import { parseEnvBoolean } from "../util/env"
 
 export const SingleTest: Component<{
-  label: string, run: boolean, config: ConfigOptions, onDone?: (result: Results) => void
+  label: string, run: boolean, config: ConfigOptions, onComplete?: (outcome: TestResult) => void
 }> = (props) => {
   const useFakeSpeedtest = parseEnvBoolean(import.meta.env.VITE_FAKE_SPEEDTEST)
 
   const st = useFakeSpeedtest
-    ? createFakeSpeedtest(props.config, { onDone: props.onDone })
-    : createSpeedtest(props.config, { onDone: props.onDone })
+    ? createFakeSpeedtest(props.config, {
+        onDone: (result) => props.onComplete?.({ success: true, result })
+      })
+    : createSpeedtest(props.config, {
+        onDone: (result) => props.onComplete?.({ success: true, result }),
+        onError: (error) => {
+          console.error(`Speedtest ${props.label} error:`, error)
+          props.onComplete?.({ success: false, error })
+        }
+      })
   console.log("SpeedTest Component initialized!", props.label)
 
   createEffect(on(() => props.run, (shouldRun, prev) => {

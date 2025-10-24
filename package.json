@@ -15,7 +15,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@cloudflare/speedtest": "github:tiagoad/speedtest-multisession#main",
+    "@cloudflare/speedtest": "^1.7.0",
     "@fontsource/roboto": "^5.1.0",
     "@fontsource/source-code-pro": "^5.1.0",
     "@solid-primitives/i18n": "^2.2.1",

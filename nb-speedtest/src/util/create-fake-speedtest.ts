@@ -3,6 +3,8 @@ import { createSignal, onCleanup } from "solid-js"
 
 type SpeedTestCallbacks = {
 	onDone?: (results: Results) => void
+	onError?: (error: Error) => void
+	timeoutMs?: number
 }
 
 export function createFakeSpeedtest(config: ConfigOptions, callbacks: SpeedTestCallbacks) {

@@ -29,6 +29,11 @@ export const de = {
 		</>,
 		restart: "Neustart",
 		error: "Fehler",
+		loggingBlocked: {
+			title: "Daten können nicht übertragen werden",
+			message: "Für die Netzbremse-Kampagne sammeln wir anonyme Testergebnisse. Die Datenübertragung scheint blockiert zu sein (möglicherweise durch einen Adblocker). Du kannst den Test trotzdem durchführen. Wenn du der Kampagne helfen möchtest, deaktiviere bitte den Adblocker für diese Seite und starte den Test neu.",
+			dismiss: "Verstanden",
+		},
 	},
 	advancedResults: {
 		title: "Detaillierte Testergebnisse",

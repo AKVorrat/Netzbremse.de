@@ -13,6 +13,8 @@ import { Slider } from './components/Slider';
 import { differenceInSeconds } from "date-fns";
 import { config } from './data/config';
 import { AllResults } from './components/Results';
+import { testLogEndpointReachability } from './util/log-endpoint-test';
+import { AdblockWarning } from './components/AdblockWarning';
 
 const fetchMetadata = async () => {
   const resp = await fetch("https://speed.cloudflare.com/meta")
@@ -37,6 +39,7 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
   const [paused, setPaused] = createSignal(false)
   const [repeat, setRepeat] = createSignal(true)
   const [now, setNow] = createSignal(new Date())
+  const [showAdblockWarning, setShowAdblockWarning] = createSignal(false)
 
   const interval = setInterval(() => {
     setNow(new Date())
@@ -66,6 +69,12 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
 
   const onStartClick = async () => {
     setStarted(true)
+
+    // Test log endpoint reachability
+    const isReachable = await testLogEndpointReachability()
+    if (!isReachable) {
+      setShowAdblockWarning(true)
+    }
   }
 
   const togglePaused = () => {
@@ -119,6 +128,9 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
   const shouldRun = (index: number) => started() && !paused() && currentTest() === index
 
   return (<>
+    <AdblockWarning
+      open={showAdblockWarning()}
+    />
     <div class="card bg-white shadow-xl max-[32rem]:-mx-5">
       <div class="card-body flex items-center justify-center overflow-hidden max-[32rem]:px-2">
         <hgroup class='flex flex-col items-center font-title'>

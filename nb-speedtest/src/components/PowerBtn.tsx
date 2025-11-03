@@ -1,9 +1,10 @@
 import { Component } from "solid-js";
 import { JSX } from "solid-js/h/jsx-runtime";
-import { t } from "../i18n/dict";
+import { useTranslation } from "../i18n/context";
 import { TbPower } from "solid-icons/tb";
 
 export const PowerBtn: Component<{ onClick?: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent> }> = (props) => {
+  const { t } = useTranslation();
   return (
     <div class="p-8 bg-primary/5 rounded-full aspect-square">
       <div class="p-8 bg-primary/10 rounded-full aspect-square border border-primary/20">

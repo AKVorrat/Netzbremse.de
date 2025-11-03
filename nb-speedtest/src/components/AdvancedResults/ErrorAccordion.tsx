@@ -1,11 +1,12 @@
 import { Component } from "solid-js";
 import { TbExclamationCircle } from "solid-icons/tb";
-import { t } from "../../i18n/dict";
+import { useTranslation } from "../../i18n/context";
 import { TestResult } from "../../types/test-result";
 
 export const ErrorAccordion: Component<{
   testResult: TestResult & { success: false };
 }> = (props) => {
+  const { t } = useTranslation();
   return (
     <div class="collapse collapse-arrow bg-base-200">
       <input

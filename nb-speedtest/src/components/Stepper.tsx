@@ -1,8 +1,9 @@
 import { Component, createMemo, For, Show } from "solid-js";
 import { createRange } from "../util/arrays";
-import { t } from "../i18n/dict";
+import { useTranslation } from "../i18n/context";
 
 export const Stepper: Component<{ step: number, stepCount: number }> = (props) => {
+  const { t } = useTranslation();
   const steps = createMemo(() => createRange(1, props.stepCount)
     .map(n => t.speedtest.stepN(n)))
 

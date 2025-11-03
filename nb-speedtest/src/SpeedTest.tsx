@@ -1,7 +1,7 @@
 import { Results } from '@cloudflare/speedtest';
 import { TestResult } from './types/test-result';
 import { Component, createEffect, createResource, createSignal, For, Match, Show, Switch, onCleanup } from "solid-js";
-import { t } from './i18n/dict';
+import { useTranslation } from './i18n/context';
 import { PowerBtn } from './components/PowerBtn';
 import { Stepper } from './components/Stepper';
 import { TbPlayerPauseFilled, TbPlayerPlayFilled, TbRotate2 } from 'solid-icons/tb';
@@ -28,6 +28,7 @@ type SpeedTestState = {
 }
 
 const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }> = (props) => {
+  const { t } = useTranslation();
   const sessionID = uuidV4()
   const [testRuns, setTestRuns] = createSignal(getTestRuns(sessionID))
 

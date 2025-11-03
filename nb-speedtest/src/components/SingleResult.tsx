@@ -2,11 +2,12 @@ import { Results } from "@cloudflare/speedtest";
 import { TbDownload, TbUpload, TbExclamationCircle } from "solid-icons/tb";
 import { Component, Show, type JSX } from "solid-js";
 import { TestResult } from "../types/test-result";
-import { t } from "../i18n/dict";
+import { useTranslation } from "../i18n/context";
 
 const statPadding = "py-2 px-2"
 
 const Stat: Component<{ label?: string, bandwidth: number, latency: number, jitter: number, icon?: JSX.Element }> = (props) => {
+  const { t } = useTranslation();
   const bandwdth = () => props.bandwidth ? (props.bandwidth / 1e6).toLocaleString(undefined, { minimumSignificantDigits: 3, maximumSignificantDigits: 3 }) : props.bandwidth
   const latency = () => props.latency?.toLocaleString(undefined, { maximumFractionDigits: 0 })
   const jitter = () => props.jitter?.toLocaleString(undefined, { maximumFractionDigits: 0 })
@@ -28,6 +29,7 @@ const Stat: Component<{ label?: string, bandwidth: number, latency: number, jitt
 }
 
 const ErrorDisplay: Component<{ error: Error }> = (props) => {
+  const { t } = useTranslation();
   return <div class="stats shadow-md my-1 bg-base-200 px-2 overflow-x-hidden max-[25tem]:stats-vertical">
     <div class={`stat text-primary ${statPadding}`}>
       <div class="stat-figure text-3xl" title="Error">

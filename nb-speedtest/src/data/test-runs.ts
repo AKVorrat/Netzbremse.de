@@ -1,6 +1,6 @@
 import { ConfigOptions } from "@cloudflare/speedtest";
 import { shuffleArray } from "../util/arrays";
-import { t } from "../i18n/dict";
+import { useTranslation } from "../i18n/context";
 
 const alphabet = ['A', 'B', 'C', 'D', 'E']
 
@@ -10,6 +10,7 @@ export type TestRun = {
 }
 
 export function getTestRuns(sessionID: string): TestRun[] {
+	const { t } = useTranslation();
 	const data = [
 		{ label: undefined, uri: "https://custom-t0.speed.cloudflare.com" },
 		{ label: undefined, uri: "https://custom-t1.speed.cloudflare.com" },

@@ -1,8 +1,9 @@
 import { Component, For } from "solid-js";
-import { t } from "./i18n/dict";
+import { useTranslation } from "./i18n/context";
 import { FaqItem } from "./FaqItem";
 
 export const Faq: Component = () => {
+  const { t } = useTranslation();
   return (
     <div class="flex flex-col gap-4">
       <For each={t.faq()}>

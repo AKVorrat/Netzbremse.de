@@ -1,8 +1,9 @@
 import { TbDownload, TbUpload } from "solid-icons/tb";
 import { Component, Show } from "solid-js";
-import { t } from "../i18n/dict";
+import { useTranslation } from "../i18n/context";
 
 export const SpeedStat: Component<{ speed?: number, latency?: number, jitter?: number, direction: "upload" | "download" }> = (props) => {
+  const { t } = useTranslation();
   const roundingOptions: Intl.NumberFormatOptions = { minimumSignificantDigits: 2 }
   const latency = () => props.latency ? props.latency.toLocaleString(undefined, { maximumFractionDigits: 0 }).padStart(3, " ") : '  -'
   const speed = () => props.speed ? (props.speed / 1e6).toLocaleString(undefined, { minimumSignificantDigits: 3, maximumSignificantDigits: 3 }).padStart(3, " ") : '  -'

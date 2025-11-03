@@ -1,6 +1,6 @@
 import { For, type Component, createSignal, Show } from 'solid-js';
 import NBSpeedTest from './SpeedTest';
-import { t } from './i18n/dict';
+import { useTranslation } from './i18n/context';
 import { Faq } from './Faq';
 import { AdvancedResults } from './components/AdvancedResults';
 import { TestResult } from './types/test-result';
@@ -8,9 +8,9 @@ import { ColsLayout } from './layouts/ColsLayout';
 import { Container } from './layouts/Container';
 
 const App: Component = () => {
+  const { t } = useTranslation();
   const [allResults, setAllResults] = createSignal<TestResult[]>([]);
   const [sessionId, setSessionId] = createSignal<string>('');
-
 
   return (
     <>
@@ -37,8 +37,6 @@ const App: Component = () => {
           </ColsLayout>
         </Container>
       </div>
-
-      {/* Advanced Results Section */}
 
       <Show when={allResults()?.length > 0}>
         <Container>

@@ -3,13 +3,14 @@ import { Chart } from 'chart.js';
 import { getLatencyChartConfig, CHART_COLORS } from "../utils/chart-config";
 import { calculateStats } from "../utils/statistics";
 import { StatisticalSummary } from "./StatisticalSummary";
-import { t } from "../../../i18n/dict";
+import { useTranslation } from "../../../i18n/context";
 
 export const LatencyChart: Component<{
   points: number[] | undefined;
   title: string;
   opacity?: number;
 }> = (props) => {
+  const { t } = useTranslation();
   const opacity = props.opacity ?? 0.8;
   let chartInstance: Chart | null = null;
   let resizeObserver: ResizeObserver | null = null;

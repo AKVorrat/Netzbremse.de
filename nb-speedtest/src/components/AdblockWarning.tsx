@@ -1,11 +1,12 @@
 import { Component, createEffect, onCleanup } from 'solid-js';
-import { t } from '../i18n/dict';
+import { useTranslation } from '../i18n/context';
 
 type AdblockWarningProps = {
 	open: boolean;
 };
 
 export const AdblockWarning: Component<AdblockWarningProps> = (props) => {
+	const { t } = useTranslation();
 	let dialogRef: HTMLDialogElement;
 
 	createEffect(() => {

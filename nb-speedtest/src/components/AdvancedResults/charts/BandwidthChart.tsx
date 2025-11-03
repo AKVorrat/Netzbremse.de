@@ -1,13 +1,14 @@
 import { Component, onCleanup, createMemo } from "solid-js";
 import { Chart } from 'chart.js';
 import { getBandwidthChartConfig, CHART_COLORS } from "../utils/chart-config";
-import { t } from "../../../i18n/dict";
+import { useTranslation } from "../../../i18n/context";
 
 export const BandwidthChart: Component<{
   points: any[] | undefined;
   title: string;
   type: 'download' | 'upload';
 }> = (props) => {
+  const { t } = useTranslation();
   let chartInstance: Chart | null = null;
   let resizeObserver: ResizeObserver | null = null;
 

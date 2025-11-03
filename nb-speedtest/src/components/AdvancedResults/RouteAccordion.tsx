@@ -1,6 +1,6 @@
 import { Component, createMemo } from "solid-js";
 import { TbDownload, TbUpload, TbClock } from "solid-icons/tb";
-import { t } from "../../i18n/dict";
+import { useTranslation } from "../../i18n/context";
 import { formatSpeed, formatLatency } from "./utils/formatting";
 import { BandwidthChart } from "./charts/BandwidthChart";
 import { LatencyChart } from "./charts/LatencyChart";
@@ -9,6 +9,7 @@ import { TestResult } from "../../types/test-result";
 export const RouteAccordion: Component<{
   testResult: TestResult & { success: true };
 }> = (props) => {
+  const { t } = useTranslation();
   const downloadPoints = createMemo(() => props.testResult.result.getDownloadBandwidthPoints());
   const uploadPoints = createMemo(() => props.testResult.result.getUploadBandwidthPoints());
   const unloadedLatencyPoints = createMemo(() => props.testResult.result.getUnloadedLatencyPoints());

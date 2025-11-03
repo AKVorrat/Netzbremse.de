@@ -30,7 +30,7 @@ export const AdblockWarning: Component<AdblockWarningProps> = (props) => {
 			aria-describedby="logging-warning-message"
 		>
 			<div class="modal-box">
-				<h3 id="logging-warning-title text-primary" class="font-bold text-lg mb-4">
+				<h3 id="logging-warning-title text-primary" class="font-bold text-lg mb-4 text-primary">
 					{t.speedtest.loggingBlocked.title()}
 				</h3>
 				<p id="logging-warning-message" class="">

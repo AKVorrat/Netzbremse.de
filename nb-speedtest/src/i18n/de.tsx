@@ -18,6 +18,7 @@ export const de = {
 		resume: "Fortsetzen",
 		download: "Download",
 		upload: "Upload",
+		route: (letter: string) => `Route ${letter}`,
 		testing: (name: string) => `Teste ${name}`,
 		latencyDuringDownload: (latency: string, jitter: string) => <>
 			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms Latency während Download

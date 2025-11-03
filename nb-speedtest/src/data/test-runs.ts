@@ -1,5 +1,8 @@
 import { ConfigOptions } from "@cloudflare/speedtest";
 import { shuffleArray } from "../util/arrays";
+import { t } from "../i18n/dict";
+
+const alphabet = ['A', 'B', 'C', 'D', 'E']
 
 export type TestRun = {
 	label: string,
@@ -8,16 +11,14 @@ export type TestRun = {
 
 export function getTestRuns(sessionID: string): TestRun[] {
 	const data = [
-		{ label: "Route A", uri: "https://custom-t0.speed.cloudflare.com" },
-		//{ label: "Route A", uri: "https://custom-t1.speed.cloudflare.com" },
-		{ label: "Route B", uri: "https://custom-t1.speed.cloudflare.com" },
-		{ label: "Route C", uri: "https://custom-t2.speed.cloudflare.com" },
-		{ label: "Route D", uri: "https://custom-t3.speed.cloudflare.com" },
-		{ label: "Route E", uri: "https://custom-t4.speed.cloudflare.com" },
+		{ label: undefined, uri: "https://custom-t0.speed.cloudflare.com" },
+		{ label: undefined, uri: "https://custom-t1.speed.cloudflare.com" },
+		{ label: undefined, uri: "https://custom-t2.speed.cloudflare.com" },
+		{ label: undefined, uri: "https://custom-t3.speed.cloudflare.com" },
+		{ label: undefined, uri: "https://custom-t4.speed.cloudflare.com" },
 	]
 
-	const runs = data.map((d): TestRun => ({
-		label: d.label,
+	let runs = data.map((d, i): TestRun => ({
 		config: {
 			downloadApiUrl: `${d.uri}/__down`,
 			uploadApiUrl: `${d.uri}/__up`,
@@ -38,6 +39,13 @@ export function getTestRuns(sessionID: string): TestRun[] {
 		}
 	}))
 
-	return shuffleArray(runs)
+	runs = shuffleArray(runs)
+
+	for (const [index, run] of runs.entries()) {
+		const letter = alphabet[index % alphabet.length]
+		run.label = t.speedtest.route(letter)
+	}
+
+	return runs
 }
 

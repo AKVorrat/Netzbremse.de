@@ -52,7 +52,7 @@ export const de = {
 		loadedLatencyDown: "Latenz unter Last (Download)",
 		loadedLatencyUp: "Latenz unter Last (Upload)",
 		noLatencyData: "Keine Latenz-Daten verfügbar",
-		idleLatency: "Latenz",
+		idleLatency: "Latenz (Idle)",
 		jitter: "Jitter",
 		server: "Server",
 		testDuration: "Testdauer",

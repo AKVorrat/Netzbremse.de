@@ -3,16 +3,16 @@ import { Show } from "solid-js";
 export const en = {
 	title: "What, how, why?",
 	description: [
-		"With this speed test, you can check whether your internet connection is affected by bottlenecks at the entry point to your provider's network that could slow down certain websites and services. By doing so, you help the Netzbremse campaign to better document the problem with data. The test takes longer because 5 speed tests are performed consecutively.",
+		"With this speedtest, you can check whether your internet connection is being slowed down by bottlenecks at the point where it connects to your provider’s network. This can affect certain websites and online services. By running the test, you help the Netzbremse campaign collect data that makes the issue more visible. The test takes a little longer because it runs 5 speedtests in a row.",
 		() => (<>
-			Important: Please <strong>disable your adblocker for this page</strong>. This is the only way we can collect and analyze your anonymized test results. Thank you!
+			Important: Please <strong>disable your ad blocker for this page</strong>. Only then can we collect and analyze your anonymized test results. Thank you!
 		</>),
-		"Tests in the evening and on weekends are particularly meaningful, as problems occur especially frequently at these times.",
+		"Tests in the evening and on weekends are especially useful, as that’s when performance problems occur most frequently.",
 	],
 	speedtest: {
-		title: "Speed Test",
+		title: "Speedtest",
 		startBtn: "Start",
-		runInBackground: "Repeat test in background",
+		runInBackground: "Repeat test in the background",
 		stepN: (n: number) => `Step ${n}`,
 		pause: "Pause",
 		resume: "Resume",
@@ -21,11 +21,11 @@ export const en = {
 		route: (letter: string) => `Route ${letter}`,
 		testing: (name: string) => `Testing ${name}`,
 		latencyDuringDownload: (latency: string, jitter: string) => <>
-			<span class="inline-block min-w-[4ch] text-end">{latency}</span> ms Latency during download
+			<span class="inline-block min-w-[4ch] text-end">{latency}</span> ms latency while downloading
 			<Show when={jitter}> (±{jitter} ms)</Show>
 		</>,
 		latencyDuringUpload: (latency: string, jitter: string) => <>
-			<span class="inline-block min-w-[4ch] text-end">{latency}</span> ms Latency during upload
+			<span class="inline-block min-w-[4ch] text-end">{latency}</span> ms latency while uploading
 			<Show when={jitter}> (±{jitter} ms)</Show>
 		</>,
 		restart: "Restart",
@@ -34,7 +34,7 @@ export const en = {
 		unknownError: "Unknown error",
 		loggingBlocked: {
 			title: "Data cannot be transmitted",
-			message: "For the Netzbremse campaign, we collect anonymous test results. Data transmission seems to be blocked (possibly by an adblocker). You can still run the test. If you want to help the campaign, please disable the adblocker for this page and restart the test.",
+			message: "We collect anonymous test data for the Netzbremse campaign. It looks like data transmission is being blocked (likely by an ad blocker). You can still run the test, but if you want to support the campaign, please disable the ad blocker for this page and restart the test.",
 			dismiss: "Understood",
 		},
 	},
@@ -49,8 +49,8 @@ export const en = {
 		performanceData: "Performance data",
 		downloadSpeed: "Download speed",
 		uploadSpeed: "Upload speed",
-		loadedLatencyDown: "Latency under load (Download)",
-		loadedLatencyUp: "Latency under load (Upload)",
+		loadedLatencyDown: "Latency under load (download)",
+		loadedLatencyUp: "Latency under load (upload)",
 		noLatencyData: "No latency data available",
 		idleLatency: "Idle latency",
 		jitter: "Jitter",
@@ -75,15 +75,13 @@ export const en = {
 			noDataAvailable: (type: string) => `No ${type} data available`,
 		},
 	},
-	faqTitle: "Background on the Speed Test",
+	faqTitle: "Background on the Speedtest",
 	faq: [
 		{
-			title: "Why should I disable my adblocker?",
+			title: "Why should I disable my ad blocker?",
 			body: () => (<>
 				<p>
-					We collect the anonymized measurement results from your browser via Cloudflare endpoints. This interface
-					is also used by advertising networks and is therefore often blocked by ad blockers. The test works fine with an adblocker,
-					but your results won't be reported back to us and won't help the campaign.
+					We collect anonymized measurement data from your browser using Cloudflare endpoints. Because the same interface is also used by advertising networks, it is often blocked by ad blockers. The speedtest itself will still work, but your results will not be sent to us and therefore won’t support the campaign.
 				</p>
 			</>),
 		},
@@ -91,43 +89,39 @@ export const en = {
 			title: "Why does the test take so long?",
 			body: () => (<>
 				<p>
-					This test measures bottlenecks between different parts of the Internet (so-called transit providers) and your
-					internet connection. Unlike other speed tests, we don't measure the connection from your connection to other parts
-					of the network, but in the opposite direction from the Internet to your Internet provider and your connection.
+					This test identifies bottlenecks between different parts of the internet (so-called transit providers) and your internet connection. Unlike most speedtests, we don’t measure from your device outward — we measure in the opposite direction: from the internet toward your provider and finally to your connection.
 				</p>
 				<p>
-					The test measures different connections (transit providers) one after another. That's why it takes longer than normal
-					speed tests. Please let the test run to completion anyway to get meaningful results.
+					Each transit provider is tested one after another, which is why the full run takes longer than a normal speedtest. Please let the test finish so the results are meaningful.
 				</p>
 			</>),
 		},
 		{
-			title: "Why can I run this test in the background?",
+			title: "Why can I let the test run in the background?",
 			body: () => (<>
 				<p>
-					If you activate the checkbox below the test button, we will repeat the test until you leave this page.
-					All transit operators are tested one after another repeatedly and a new test series is created each time.
+					If you enable the checkbox below the start button, the test will automatically repeat until you leave this page. All transit providers are tested in sequence, and each run creates a new dataset.
 				</p>
 				<p>
-					You help us collect more data and thus make more reliable statements.
+					This helps us collect more data and produce more reliable results.
 				</p>
 			</>),
 		},
 		{
-			title: "Can I do other things while the test is running?",
-			body: "While the test is running, you should not run bandwidth-intensive applications such as video streaming or file sharing over the same internet connection. Computationally intensive tasks on the same device could also distort the test. Ideally, let the test run on your browser while you're not using the computer.",
+			title: "Can I use my device while the test is running?",
+			body: "While the test is running, you should avoid bandwidth-heavy activities like video streaming or file sharing on the same connection. CPU-intensive tasks on the same device may also affect the results. Ideally, let the test run in your browser while you are not actively using the computer.",
 		},
 		{
-			title: "How can I get the most accurate test results?",
+			title: "How can I get the most accurate results?",
 			body: () => (<>
 				<p>
-					If possible, run the speed test with a stable connection - ideally with a computer that is directly connected to the router via LAN cable.
+					If possible, run the speedtest using a stable connection — ideally on a computer connected to the router via LAN cable.
 				</p>
 				<p>
-					If you run the test via WiFi, make sure that your device is in the immediate vicinity of the router and that no obstacles (e.g. walls) are interfering with the connection.
+					If you’re using Wi-Fi, make sure your device is close to the router and that there are no obstacles (e.g. walls) weakening the signal.
 				</p>
 				<p>
-					This ensures that any speed losses are actually due to the internet connection and are not caused by your home network.
+					This ensures that any slowdown is caused by your internet connection, not by your home network.
 				</p>
 			</>),
 		},
@@ -135,20 +129,16 @@ export const en = {
 			title: "What is your privacy policy?",
 			body: () => (<>
 				<p>
-					Tl;dr: we don't store any personal data. We cannot and do not want to find out who you are.
-					Your participation in the test remains anonymous.
+					Tl;dr: we don’t store personal data. We can’t and don’t want to know who you are. Your participation is anonymous.
 				</p>
 				<p>
-					This test only stores the network part of your IP address, but not your specific connection identifier.
-					For IPv4 addresses, we only store the first three number blocks (octets).
+					The test only stores the network part of your IP address, not the full identifier. For IPv4, we only keep the first three octets.
 				</p>
 				<p>
-					When you perform a network measurement, all associated measurements are stored together in the data pool.
-					This allows us to recognize that these measurements were performed from the same connection without being able to
-					identify your connection.
+					All measurements from a single run are grouped together so we can see they came from the same connection, without being able to identify you.
 				</p>
 				<p>
-					For all other functions of the website, we refer to the general
+					For all other functions of this website, please refer to the general
 					<a href="https://epicenter.works/datenschutz" target="_blank">privacy policy</a> of epicenter.works.
 				</p>
 			</>),
@@ -157,24 +147,23 @@ export const en = {
 			title: "How does a VPN affect the measurement?",
 			body: () => (<>
 				<p>
-					Please run the test without a VPN. This is the only way we can uncover and address issues.
+					Please run the test without a VPN. Only then can we detect and address real-world issues.
 				</p>
 				<p>
-					VPNs can have massive effects on the results of the network measurement. Because a VPN routes all your internet traffic
-					through a different route, potential bottlenecks between your internet provider and transit operators are bypassed.<br />
-					A VPN can therefore be a good way to solve the problem in everyday life. Therefore, a VPN prevents a meaningful measurement of the problem.
+					A VPN can significantly distort the results because it reroutes all of your traffic through a different path, bypassing potential bottlenecks between your provider and the transit operators. A VPN may help in everyday use, but it prevents a meaningful measurement of the actual problem.
 				</p>
 			</>),
 		},
 		{
 			title: "Why are you working with Cloudflare?",
 			body: () => (<>
-				The Netzbremse campaign is supported by civil society. Without Cloudflare's support, we would not have the technical capabilities to provide such a complex measurement tool. Like many other network and website operators, Cloudflare has already <a href="https://blog.cloudflare.com/eu-network-usage-fees/" target="_blank">taken a position on the Netzbremse issue</a>.
+				The Netzbremse campaign is run by civil society. Without Cloudflare’s support, we wouldn’t have the technical resources to provide such a complex measurement tool. Like many network and hosting providers, Cloudflare has already <a href="https://blog.cloudflare.com/eu-network-usage-fees/" target="_blank">publicly commented on the Netzbremse issue</a>.
 			</>),
 		},
 		{
-			title: "What happens with the measurement results?",
-			body: "We first need to collect sufficient data to enable meaningful statistical analysis. Only with enough data can we make reliable statements. As part of this analysis, we will also hand over the data to the Federal Network Agency so that they can independently verify our results.",
+			title: "What happens with the test results?",
+			body: "We first need to collect enough data to allow meaningful statistical analysis. Only with a sufficient data set can we draw reliable conclusions. As part of this process, we will also provide the data to the Federal Network Agency so they can independently verify our results.",
 		},
 	]
 }
+

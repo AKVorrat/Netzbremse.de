@@ -33,7 +33,7 @@ export const BandwidthChart: Component<{
         ctx.fillStyle = '#666';
         ctx.font = '16px sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(`Keine ${props.type === 'download' ? 'Download' : 'Upload'}-Daten verfügbar`, canvas.width / 2, canvas.height / 2);
+        ctx.fillText(t.advancedResults.chart.noDataAvailable(props.type === 'download' ? t.advancedResults.download() : t.advancedResults.upload()), canvas.width / 2, canvas.height / 2);
       }
       return null;
     }
@@ -43,7 +43,7 @@ export const BandwidthChart: Component<{
       data: {
         datasets: [
           {
-            label: `${props.type === 'download' ? 'Download' : 'Upload'} (Mbit/s)`,
+            label: `${props.type === 'download' ? t.advancedResults.download() : t.advancedResults.upload()} (${t.advancedResults.mbps()})`,
             data: data,
             borderColor: CHART_COLORS.primary,
             backgroundColor: CHART_COLORS.primaryRgba(0.1),
@@ -54,7 +54,7 @@ export const BandwidthChart: Component<{
           }
         ]
       },
-      options: getBandwidthChartConfig(props.title, t.advancedResults.timeSeconds(), t.advancedResults.speedMbps())
+      options: getBandwidthChartConfig(props.title, t.advancedResults.timeSeconds(), t.advancedResults.speedMbps(), t.advancedResults.mbps())
     });
 
     resizeObserver = new ResizeObserver(() => {

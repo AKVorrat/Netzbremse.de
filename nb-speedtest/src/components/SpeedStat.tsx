@@ -23,7 +23,7 @@ export const SpeedStat: Component<{ speed?: number, latency?: number, jitter?: n
     <div class="stat-value text-primary font-title">
       <span class="inline-block min-w-[3ch] text-end">{speed()}</span>
       &nbsp;
-      <span>Mbit</span>
+      <span>{t.advancedResults.mbps()}</span>
     </div>
     <div class="stat-desc font-title col-span-2 min-w-[45ch]">
       <Show when={props.direction === "upload"} fallback={t.speedtest.latencyDuringDownload(latency(), jitter())}>

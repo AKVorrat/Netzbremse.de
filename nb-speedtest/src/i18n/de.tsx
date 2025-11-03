@@ -5,7 +5,7 @@ export const de = {
 	description: [
 		"Mit diesem Speedtest kannst du überprüfen, ob Dein Internetanschluss von Engpässen am Eingang ins Netz Deines Anbieters betroffen ist, die bestimmte Webseiten und Dienste verlangsamen könnten. Damit hilfst du der Netzbremse Kampagne, das Problem noch besser mit Daten zu belegen. Der Test dauert länger, weil 5 Speedtests nacheinander durchgeführt werden.",
 		() => (<>
-			Wichtig: Bitte <strong>deaktiviere deinen Adblocker für diese Seite</strong> Nur so können wir deine anonymisierten Testergebnisse sammeln und auswerten. Danke!
+			Wichtig: Bitte <strong>deaktiviere deinen Adblocker für diese Seite.</strong> Nur so können wir deine anonymisierten Testergebnisse sammeln und auswerten. Danke!
 		</>),
 		"Tests am Abend und am Wochenende sind besonders aussagekräftig, weil zu diesen Zeiten besonders häufig Probleme auftreten.",
 	],
@@ -30,6 +30,8 @@ export const de = {
 		</>,
 		restart: "Neustart",
 		error: "Fehler",
+		subtitle: "Netzbremse x Cloudflare",
+		unknownError: "Unbekannter Fehler",
 		loggingBlocked: {
 			title: "Daten können nicht übertragen werden",
 			message: "Für die Netzbremse-Kampagne sammeln wir anonyme Testergebnisse. Die Datenübertragung scheint blockiert zu sein (möglicherweise durch einen Adblocker). Du kannst den Test trotzdem durchführen. Wenn du der Kampagne helfen möchtest, deaktiviere bitte den Adblocker für diese Seite und starte den Test neu.",
@@ -50,7 +52,7 @@ export const de = {
 		loadedLatencyDown: "Latenz unter Last (Download)",
 		loadedLatencyUp: "Latenz unter Last (Upload)",
 		noLatencyData: "Keine Latenz-Daten verfügbar",
-		idleLatency: "Leere Latenz",
+		idleLatency: "Latenz",
 		jitter: "Jitter",
 		server: "Server",
 		testDuration: "Testdauer",
@@ -63,6 +65,15 @@ export const de = {
 		timeSeconds: "Zeit (Sekunden)",
 		speedMbps: "Geschwindigkeit (Mbit/s)",
 		latencyMs: "Latenz (ms)",
+		stats: {
+			min: "Min",
+			max: "Max",
+			median: "Median",
+			average: "Durchschnitt",
+		},
+		chart: {
+			noDataAvailable: (type: string) => `Keine ${type}-Daten verfügbar`,
+		},
 	},
 	faqTitle: "Hintergründe zum Speedtest",
 	faq: [

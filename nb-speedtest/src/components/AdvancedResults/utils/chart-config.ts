@@ -15,14 +15,14 @@ export const getBaseChartOptions = (title: string) => ({
   }
 });
 
-export const getBandwidthChartConfig = (title: string, xAxisLabel: string, yAxisLabel: string): Partial<ChartConfiguration['options']> => ({
+export const getBandwidthChartConfig = (title: string, xAxisLabel: string, yAxisLabel: string, mbpsUnit: string): Partial<ChartConfiguration['options']> => ({
   ...getBaseChartOptions(title),
   plugins: {
     ...getBaseChartOptions(title).plugins,
     tooltip: {
       callbacks: {
         title: () => '',
-        label: (context) => `${context.parsed.y.toFixed(2)} Mbit/s`
+        label: (context) => `${context.parsed.y.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${mbpsUnit}`
       }
     }
   },
@@ -44,14 +44,14 @@ export const getBandwidthChartConfig = (title: string, xAxisLabel: string, yAxis
   }
 });
 
-export const getLatencyChartConfig = (title: string, xAxisLabel: string): Partial<ChartConfiguration['options']> => ({
+export const getLatencyChartConfig = (title: string, xAxisLabel: string, msUnit: string): Partial<ChartConfiguration['options']> => ({
   ...getBaseChartOptions(title),
   plugins: {
     ...getBaseChartOptions(title).plugins,
     tooltip: {
       callbacks: {
         title: () => '',
-        label: (context) => `${context.parsed.x.toFixed(2)} ms`
+        label: (context) => `${context.parsed.x.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${msUnit}`
       }
     }
   },

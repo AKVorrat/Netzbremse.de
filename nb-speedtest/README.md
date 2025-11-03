@@ -1,1 +1,1 @@
-# Netzbremse x CloudFlare Speedtest
+# Netzbremse x Cloudflare Speedtest

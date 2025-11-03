@@ -138,7 +138,7 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
           <h2 class='text-3xl'>
             {t.speedtest.title()}
           </h2>
-          <p class='text-title text-lg'>Netzbremse x CloudFlare</p>
+          <p class='text-title text-lg'>{t.speedtest.subtitle()}</p>
         </hgroup>
 
         <Slider currentIndex={slideIndex()}>

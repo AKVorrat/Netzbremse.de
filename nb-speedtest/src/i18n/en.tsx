@@ -3,7 +3,7 @@ import { Show } from "solid-js";
 export const en = {
 	title: "What, how, why?",
 	description: [
-		"With this speed test, you can check whether your internet connection is affected by bottlenecks at the entry point to your provider's network that could slow down certain websites and services. By doing so, you help the Net Brake campaign to better document the problem with data. The test takes longer because 5 speed tests are performed consecutively.",
+		"With this speed test, you can check whether your internet connection is affected by bottlenecks at the entry point to your provider's network that could slow down certain websites and services. By doing so, you help the Netzbremse campaign to better document the problem with data. The test takes longer because 5 speed tests are performed consecutively.",
 		() => (<>
 			Important: Please <strong>disable your adblocker for this page</strong>. This is the only way we can collect and analyze your anonymized test results. Thank you!
 		</>),
@@ -21,18 +21,20 @@ export const en = {
 		route: (letter: string) => `Route ${letter}`,
 		testing: (name: string) => `Testing ${name}`,
 		latencyDuringDownload: (latency: string, jitter: string) => <>
-			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms Latency during download
+			<span class="inline-block min-w-[4ch] text-end">{latency}</span> ms Latency during download
 			<Show when={jitter}> (±{jitter} ms)</Show>
 		</>,
 		latencyDuringUpload: (latency: string, jitter: string) => <>
-			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms Latency during upload
+			<span class="inline-block min-w-[4ch] text-end">{latency}</span> ms Latency during upload
 			<Show when={jitter}> (±{jitter} ms)</Show>
 		</>,
 		restart: "Restart",
 		error: "Error",
+		subtitle: "Netzbremse x Cloudflare",
+		unknownError: "Unknown error",
 		loggingBlocked: {
 			title: "Data cannot be transmitted",
-			message: "For the Net Brake campaign, we collect anonymous test results. Data transmission seems to be blocked (possibly by an adblocker). You can still run the test. If you want to help the campaign, please disable the adblocker for this page and restart the test.",
+			message: "For the Netzbremse campaign, we collect anonymous test results. Data transmission seems to be blocked (possibly by an adblocker). You can still run the test. If you want to help the campaign, please disable the adblocker for this page and restart the test.",
 			dismiss: "Understood",
 		},
 	},
@@ -63,6 +65,15 @@ export const en = {
 		timeSeconds: "Time (seconds)",
 		speedMbps: "Speed (Mbps)",
 		latencyMs: "Latency (ms)",
+		stats: {
+			min: "Min",
+			max: "Max",
+			median: "Median",
+			average: "Average",
+		},
+		chart: {
+			noDataAvailable: (type: string) => `No ${type} data available`,
+		},
 	},
 	faqTitle: "Background on the Speed Test",
 	faq: [
@@ -80,12 +91,12 @@ export const en = {
 			title: "Why does the test take so long?",
 			body: () => (<>
 				<p>
-					This test measures bottlenecks between different parts of the Internet (so-called transit operators) and your
+					This test measures bottlenecks between different parts of the Internet (so-called transit providers) and your
 					internet connection. Unlike other speed tests, we don't measure the connection from your connection to other parts
 					of the network, but in the opposite direction from the Internet to your Internet provider and your connection.
 				</p>
 				<p>
-					The test measures different connections (transit operators) one after another. That's why it takes longer than normal
+					The test measures different connections (transit providers) one after another. That's why it takes longer than normal
 					speed tests. Please let the test run to completion anyway to get meaningful results.
 				</p>
 			</>),
@@ -158,7 +169,7 @@ export const en = {
 		{
 			title: "Why are you working with Cloudflare?",
 			body: () => (<>
-				The Net Brake campaign is supported by civil society. Without Cloudflare's support, we would not have the technical capabilities to provide such a complex measurement tool. Like many other network and website operators, Cloudflare has already <a href="https://blog.cloudflare.com/eu-network-usage-fees/" target="_blank">taken a position on the net brake problem</a>.
+				The Netzbremse campaign is supported by civil society. Without Cloudflare's support, we would not have the technical capabilities to provide such a complex measurement tool. Like many other network and website operators, Cloudflare has already <a href="https://blog.cloudflare.com/eu-network-usage-fees/" target="_blank">taken a position on the Netzbremse issue</a>.
 			</>),
 		},
 		{

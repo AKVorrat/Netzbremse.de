@@ -22,9 +22,9 @@ const Stat: Component<{ label?: string, bandwidth: number, latency: number, jitt
     <div class="stat-value font-title leading-none">
       {bandwdth()}
       <span class="sr-only">&nbsp;</span>
-      <span class="ms-1 text-sm">Mbit</span>
+      <span class="ms-1 text-sm">{t.advancedResults.mbps()}</span>
     </div>
-    <div class="stat-desc col-span-2 min-w-[25ch] mt-1">Latency: {latency()} ms | Jitter: {jitter()} ms</div>
+    <div class="stat-desc col-span-2 min-w-[25ch] mt-1">{t.advancedResults.latency()}: {latency()} {t.advancedResults.ms()} | {t.advancedResults.jitter()}: {jitter()} {t.advancedResults.ms()}</div>
   </div>
 }
 
@@ -32,7 +32,7 @@ const ErrorDisplay: Component<{ error: Error }> = (props) => {
   const { t } = useTranslation();
   return <div class="stats shadow-md my-1 bg-base-200 px-2 overflow-x-hidden max-[25tem]:stats-vertical">
     <div class={`stat text-primary ${statPadding}`}>
-      <div class="stat-figure text-3xl" title="Error">
+      <div class="stat-figure text-3xl" title={t.speedtest.error()}>
         <TbExclamationCircle />
       </div>
       <div class="stat-value font-title leading-none">
@@ -45,7 +45,7 @@ const ErrorDisplay: Component<{ error: Error }> = (props) => {
 export const SingleResult: Component<{ result?: TestResult }> = (props) => {
   return <Show
     when={props.result?.success !== false}
-    fallback={<ErrorDisplay error={props.result?.success === false ? props.result.error : new Error("Unknown error")} />}
+    fallback={<ErrorDisplay error={props.result?.success === false ? props.result.error : new Error(t.speedtest.unknownError())} />}
   >
     <div class="stats shadow-md my-1 bg-base-200 px-2 overflow-x-hidden max-[25tem]:stats-vertical">
       <Stat bandwidth={props.result?.success ? props.result.result.getSummary()?.download : 0} latency={props.result?.success ? props.result.result.getSummary()?.downLoadedLatency : 0} jitter={props.result?.success ? props.result.result.getSummary()?.downLoadedJitter : 0} icon={<TbDownload />}></Stat>

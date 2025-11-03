@@ -1,20 +1,19 @@
 import { createContext, useContext, createMemo, createSignal, JSX } from "solid-js";
 import { de } from "./de";
 import { chainedTranslator, flatten, resolveTemplate, translator } from "@solid-primitives/i18n";
-import { dicts, Dict, Locale } from "./dict";
+import { dicts, Dict, Locale, resolveLocale } from "./dict";
 
 const defaultDict = de;
 
 type TranslationContextType = {
   locale: () => Locale;
-  setLocale: (locale: Locale) => void;
   t: ReturnType<typeof chainedTranslator<Dict, string>>;
 };
 
 const TranslationContext = createContext<TranslationContextType>();
 
-export const TranslationProvider = (props: { children: JSX.Element }) => {
-  const [locale, setLocale] = createSignal<Locale>("de");
+export const TranslationProvider = (props: { children: JSX.Element; locale?: string }) => {
+  const locale = createMemo(() => resolveLocale(props.locale));
 
   const flatDict = createMemo(() => flatten(dicts[locale()]) as Dict);
 
@@ -24,7 +23,6 @@ export const TranslationProvider = (props: { children: JSX.Element }) => {
 
   const contextValue: TranslationContextType = {
     locale,
-    setLocale,
     t,
   };
 

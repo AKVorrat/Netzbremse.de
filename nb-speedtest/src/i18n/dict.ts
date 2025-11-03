@@ -9,3 +9,18 @@ export const dicts: Record<Locale, Dict> = {
 	en: en,
 };
 
+export function resolveLocale(langAttribute?: string): Locale {
+	if (langAttribute && isValidLocale(langAttribute)) {
+		return langAttribute;
+	}
+	const envDefault = import.meta.env.VITE_DEFAULT_LANG;
+	if (envDefault && isValidLocale(envDefault)) {
+		return envDefault;
+	}
+	return "de";
+}
+
+function isValidLocale(locale: string): locale is Locale {
+	return locale in dicts;
+}
+

@@ -42,7 +42,7 @@ export const LatencyChart: Component<{
           }
         ]
       },
-      options: getLatencyChartConfig(props.title, t.advancedResults.latencyMs())
+      options: getLatencyChartConfig(props.title, t.advancedResults.latencyMs(), t.advancedResults.ms())
     });
 
     resizeObserver = new ResizeObserver(() => {

@@ -5,4 +5,4 @@
 {{ end }}
 <link rel="stylesheet" crossorigin href="/nb-speedtest/index.css">
 <noscript>{{ T "enableJS" }}</noscript>
-<nb-speedtest></nb-speedtest>
+<nb-speedtest{{- if .Get "lang" }} lang="{{ .Get "lang" }}"{{- end }}></nb-speedtest>

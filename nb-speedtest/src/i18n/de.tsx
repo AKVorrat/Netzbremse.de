@@ -88,7 +88,7 @@ export const de = {
 			</>),
 		},
 		{
-			title: "Warum dauert der Test so lange?",
+			title: "Was misst der Test? Warum dauert es so lange?",
 			body: () => (<>
 				<p>
 					Dieser Test misst Engpässe zwischen verschiedenen Teilen des Internets (sogenannten Transit-Betreibern) und deinem
@@ -102,11 +102,12 @@ export const de = {
 			</>),
 		},
 		{
-			title: "Warum kann ich diesen Test im Hintergrund laufen lassen?",
+			title: "Warum soll ich diesen Test im Hintergrund laufen lassen?",
 			body: () => (<>
 				<p>
 					Wenn du die Checkbox unter dem Testknopf aktivierst, wiederholen wir den Test, bis du diese Seite verlässt.
-					Dabei werden alle Transitbetreiber nacheinander wiederholt getestet und jedes Mal eine neue Testreihe erstellt.
+					Dabei werden alle Transitbetreiber nacheinander wiederholt getestet und jedes Mal eine neue Testreihe erstellt. 
+					Die Reihenfolge der Transit-Betreiber ist immer zufällig.
 				</p>
 				<p>
 					Du hilfst uns damit, mehr Daten zu sammeln und dadurch zuverlässigere Aussagen zu treffen.

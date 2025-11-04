@@ -34,7 +34,7 @@ export const en = {
 		unknownError: "Unknown error",
 		loggingBlocked: {
 			title: "Data cannot be transmitted",
-			message: "We collect anonymous test data for the Netzbremse campaign. It looks like data transmission is being blocked (likely by an ad blocker). You can still run the test, but if you want to support the campaign, please disable the ad blocker for this page and restart the test.",
+			message: "We collect anonymous test data for the Netzbremse campaign. It looks like data transmission is being blocked (likely by an ad blocker). You can still run the test, but if you want to support the campaign, please disable the ad blocker for this page, reload and restart the test.",
 			dismiss: "Understood",
 		},
 	},
@@ -86,7 +86,7 @@ export const en = {
 			</>),
 		},
 		{
-			title: "Why does the test take so long?",
+			title: "Why does the test take so long? How does it work?",
 			body: () => (<>
 				<p>
 					This test identifies bottlenecks between different parts of the internet (so-called transit providers) and your internet connection. Unlike most speedtests, we don’t measure from your device outward — we measure in the opposite direction: from the internet toward your provider and finally to your connection.
@@ -97,10 +97,10 @@ export const en = {
 			</>),
 		},
 		{
-			title: "Why can I let the test run in the background?",
+			title: "Why should I let the test run in the background?",
 			body: () => (<>
 				<p>
-					If you enable the checkbox below the start button, the test will automatically repeat until you leave this page. All transit providers are tested in sequence, and each run creates a new dataset.
+					If you enable the checkbox below the start button, the test will automatically repeat until you leave this page. All transit providers are tested in sequence, and each run creates a new dataset. The order is always randomised. 
 				</p>
 				<p>
 					This helps us collect more data and produce more reliable results.
@@ -162,7 +162,7 @@ export const en = {
 		},
 		{
 			title: "What happens with the test results?",
-			body: "We first need to collect enough data to allow meaningful statistical analysis. Only with a sufficient data set can we draw reliable conclusions. As part of this process, we will also provide the data to the Federal Network Agency so they can independently verify our results.",
+			body: "We first need to collect enough data to allow meaningful statistical analysis. Only with a sufficient data set can we draw reliable conclusions. As part of this process, we will also provide the data to the Federal Network Agency (BNetzA) so they can independently verify our results.",
 		},
 	]
 }

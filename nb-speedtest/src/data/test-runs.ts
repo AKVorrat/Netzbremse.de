@@ -20,11 +20,12 @@ export function getTestRuns(sessionID: string): TestRun[] {
 	]
 
 	let runs = data.map((d, i): TestRun => ({
+		label: d.label,
 		config: {
 			downloadApiUrl: `${d.uri}/__down`,
 			uploadApiUrl: `${d.uri}/__up`,
 			// @ts-ignore
-			sessionId: sessionID,
+			sessionId: `session=${sessionID}&target=${new URL(d.uri).hostname.split('.')[0]}`,
 			turnServerCredsApiUrl: `${d.uri}/__turn`,
 			turnServerUri: "turn.cloudflare.com:3478",
 			includeCredentials: false,
@@ -44,7 +45,7 @@ export function getTestRuns(sessionID: string): TestRun[] {
 
 	for (const [index, run] of runs.entries()) {
 		const letter = alphabet[index % alphabet.length]
-		run.label = t.speedtest.route(letter)
+		run.label = t.speedtest.route(letter, run.label)
 	}
 
 	return runs

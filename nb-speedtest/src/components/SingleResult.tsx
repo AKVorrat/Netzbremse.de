@@ -43,6 +43,7 @@ const ErrorDisplay: Component<{ error: Error }> = (props) => {
 }
 
 export const SingleResult: Component<{ result?: TestResult }> = (props) => {
+  const { t } = useTranslation();
   return <Show
     when={props.result?.success !== false}
     fallback={<ErrorDisplay error={props.result?.success === false ? props.result.error : new Error(t.speedtest.unknownError())} />}

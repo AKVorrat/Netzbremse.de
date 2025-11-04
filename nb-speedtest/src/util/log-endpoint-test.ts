@@ -5,9 +5,6 @@ export async function testLogEndpointReachability(): Promise<boolean> {
 
 		await fetch('https://aim.cloudflare.com/__log', {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
 			body: JSON.stringify({ test: true }),
 			signal: controller.signal,
 		});

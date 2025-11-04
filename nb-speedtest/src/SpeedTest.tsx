@@ -185,7 +185,7 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
             </div>
           </div>
 
-          <AllResults results={results()}></AllResults>
+          <AllResults results={results()} totalCount={testRuns().length}></AllResults>
         </Slider>
       </div>
     </div>

@@ -18,7 +18,7 @@ export const en = {
 		resume: "Resume",
 		download: "Download",
 		upload: "Upload",
-		route: (letter: string) => `Route ${letter}`,
+		route: (letter: string, label?: string) => label ? `Route ${letter} (${label})` : `Route ${letter}`,
 		testing: (name: string) => `Testing ${name}`,
 		latencyDuringDownload: (latency: string, jitter: string) => <>
 			<span class="inline-block min-w-[4ch] text-end">{latency}</span> ms latency while downloading
@@ -100,7 +100,7 @@ export const en = {
 			title: "Why should I let the test run in the background?",
 			body: () => (<>
 				<p>
-					If you enable the checkbox below the start button, the test will automatically repeat until you leave this page. All transit providers are tested in sequence, and each run creates a new dataset. The order is always randomised. 
+					If you enable the checkbox below the start button, the test will automatically repeat until you leave this page. All transit providers are tested in sequence, and each run creates a new dataset. The order is always randomised.
 				</p>
 				<p>
 					This helps us collect more data and produce more reliable results.

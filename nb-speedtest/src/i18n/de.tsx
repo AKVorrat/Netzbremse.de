@@ -18,7 +18,7 @@ export const de = {
 		resume: "Fortsetzen",
 		download: "Download",
 		upload: "Upload",
-		route: (letter: string) => `Route ${letter}`,
+		route: (letter: string, label?: string) => label ? `Route ${letter} (${label})` : `Route ${letter}`,
 		testing: (name: string) => `Teste ${name}`,
 		latencyDuringDownload: (latency: string, jitter: string) => <>
 			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms Latency während Download
@@ -106,7 +106,7 @@ export const de = {
 			body: () => (<>
 				<p>
 					Wenn du die Checkbox unter dem Testknopf aktivierst, wiederholen wir den Test, bis du diese Seite verlässt.
-					Dabei werden alle Transitbetreiber nacheinander wiederholt getestet und jedes Mal eine neue Testreihe erstellt. 
+					Dabei werden alle Transitbetreiber nacheinander wiederholt getestet und jedes Mal eine neue Testreihe erstellt.
 					Die Reihenfolge der Transit-Betreiber ist immer zufällig.
 				</p>
 				<p>

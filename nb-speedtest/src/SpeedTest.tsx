@@ -1,6 +1,6 @@
 import { Results } from '@cloudflare/speedtest';
 import { TestResult } from './types/test-result';
-import { Component, createEffect, createResource, createSignal, For, Match, Show, Switch, onCleanup } from "solid-js";
+import { Component, createEffect, createResource, createSignal, For, Match, Show, Switch, on } from "solid-js";
 import { useTranslation } from './i18n/context';
 import { PowerBtn } from './components/PowerBtn';
 import { Stepper } from './components/Stepper';
@@ -15,6 +15,7 @@ import { config } from './data/config';
 import { AllResults } from './components/Results';
 import { testLogEndpointReachability } from './util/log-endpoint-test';
 import { AdblockWarning } from './components/AdblockWarning';
+import { createTimeSignal } from './util/time-signal';
 
 const fetchMetadata = async () => {
   const resp = await fetch("https://speed.cloudflare.com/meta")
@@ -29,8 +30,8 @@ type SpeedTestState = {
 
 const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }> = (props) => {
   const { t } = useTranslation();
-  const sessionID = uuidV4()
-  const [testRuns, setTestRuns] = createSignal(getTestRuns(sessionID))
+  const [sessionID, setSessionID] = createSignal(uuidV4())
+  const [testRuns, setTestRuns] = createSignal(getTestRuns(sessionID()))
 
   const [results, setResults] = createSignal<TestResult[]>([])
 
@@ -39,21 +40,15 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
   const [finished, setFinished] = createSignal<null | Date>(null)
   const [paused, setPaused] = createSignal(false)
   const [repeat, setRepeat] = createSignal(true)
-  const [now, setNow] = createSignal(new Date())
   const [showAdblockWarning, setShowAdblockWarning] = createSignal(false)
 
-  const interval = setInterval(() => {
-    setNow(new Date())
-  }, 1000)
-
-  onCleanup(() => {
-    clearInterval(interval)
-  })
+  const now = createTimeSignal(1000)
 
   // const [metadata] = createResource(fetchMetadata)
 
   const restart = () => {
-    setTestRuns(getTestRuns(sessionID))
+    setSessionID(uuidV4())
+    setTestRuns(getTestRuns(sessionID()))
     setResults([])
     setCurrentTest(0)
     setFinished(null)
@@ -61,11 +56,11 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
     setStarted(true)
   }
 
-  createEffect(() =>
+  createEffect(on(results, (results) =>
     props.onStateChange?.({
-      allResults: results(),
-      sessionId: sessionID
-    })
+      allResults: results,
+      sessionId: sessionID(),
+    }))
   )
 
   const onStartClick = async () => {

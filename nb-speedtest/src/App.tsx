@@ -6,6 +6,7 @@ import { AdvancedResults } from './components/AdvancedResults';
 import { TestResult } from './types/test-result';
 import { ColsLayout } from './layouts/ColsLayout';
 import { Container } from './layouts/Container';
+import { PeakHoursInfo } from './components/PeakHoursInfo';
 
 const App: Component = () => {
   const { t } = useTranslation();
@@ -25,6 +26,7 @@ const App: Component = () => {
                 </p>)
                 }
               </For>
+              <PeakHoursInfo />
             </div>
             <div class=''>
               <NBSpeedTest

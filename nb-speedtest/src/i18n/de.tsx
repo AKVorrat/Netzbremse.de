@@ -37,6 +37,9 @@ export const de = {
 			message: "Für die Netzbremse-Kampagne sammeln wir anonyme Testergebnisse. Die Datenübertragung scheint blockiert zu sein (möglicherweise durch einen Adblocker). Du kannst den Test trotzdem durchführen. Wenn du der Kampagne helfen möchtest, deaktiviere bitte den Adblocker für diese Seite und starte den Test neu.",
 			dismiss: "Verstanden",
 		},
+		peakHoursInfo: () => <>
+			<strong>Hinweis:</strong> Messungen zu <a href="https://radar.cloudflare.com/traffic/de" target="_blank">Stoßzeiten</a> (zB Abends) sind hilfreicher für uns.
+		</>
 	},
 	advancedResults: {
 		title: "Detaillierte Testergebnisse",

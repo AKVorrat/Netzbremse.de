@@ -19,6 +19,7 @@
     "@fontsource/roboto": "^5.1.0",
     "@fontsource/source-code-pro": "^5.1.0",
     "@solid-primitives/i18n": "^2.2.1",
+    "@tabler/icons-solidjs": "^3.35.0",
     "@tailwindcss/cli": "^4.1.11",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",

@@ -37,6 +37,9 @@ export const en = {
 			message: "We collect anonymous test data for the Netzbremse campaign. It looks like data transmission is being blocked (likely by an ad blocker). You can still run the test, but if you want to support the campaign, please disable the ad blocker for this page, reload and restart the test.",
 			dismiss: "Understood",
 		},
+		peakHoursInfo: () => <>
+			<strong>Note:</strong> Measurements taken during <a href="https://radar.cloudflare.com/traffic/de" target="_blank">peak hours</a> (e.g. in the evening) are especially helpful for us.
+		</>
 	},
 	advancedResults: {
 		title: "Detailed Test Results",

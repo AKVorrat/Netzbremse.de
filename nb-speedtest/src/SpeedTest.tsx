@@ -141,7 +141,7 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
             <div class='my-auto'>
               <PowerBtn onClick={onStartClick}></PowerBtn>
             </div>
-            <label class="label">
+            <label class="label mb-1">
               <input type="checkbox" class="checkbox checkbox-primary" checked={repeat()} onChange={(e) => setRepeat(e.currentTarget.checked)} />
               {t.speedtest.runInBackground()}
             </label>

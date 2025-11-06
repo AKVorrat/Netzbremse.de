@@ -1,10 +1,16 @@
 # Netzbremse.de
 
-Source code for [netzbremse.de](https://netzbremse.de) - a campaign website documenting Deutsche Telekom's peering plicies.
+Source code for [netzbremse.de](https://netzbremse.de) - a campaign website documenting Deutsche Telekom's peering policies.
 
 ## Tech
 
-This page uses **Hugo**, **SolidJS**, **TailwindCSS** and **daisyUI**
+- **Hugo** - Static site generator
+- **SolidJS + TypeScript** - Interactive speedtest component (`nb-speedtest/`)
+- **[Cloudflare Speedtest API](https://github.com/cloudflare/speedtest/)** - Network measurement backend
+- **Vite** - Build tool for SolidJS components
+- **TailwindCSS v4** - CSS framework
+- **daisyUI** - Component library
+- **Chart.js** - Data visualization
 
 ## Running locally
 
@@ -13,7 +19,7 @@ This page uses **Hugo**, **SolidJS**, **TailwindCSS** and **daisyUI**
 - [npm](https://www.npmjs.com/)
 - [Hugo](https://gohugo.io/)
 
-To install dependencies and run the local development server run: 
+To install dependencies and run the local development server run:
 
 ```bash
 npm install

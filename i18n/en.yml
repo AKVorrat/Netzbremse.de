@@ -11,3 +11,4 @@ loadVideoFrom: "Load video from <em>{{ .host }}</em>"
 logoOf: "Logo of {{ .host }}"
 listView: "Go to List"
 enableJS: You need to enable JavaScript to run this app.
+loadingSpeedTest: Loading speed test...

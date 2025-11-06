@@ -5,4 +5,9 @@
 {{ end }}
 <link rel="stylesheet" crossorigin href="/nb-speedtest/index.css">
 <noscript>{{ T "enableJS" }}</noscript>
-<nb-speedtest{{- if .Get "lang" }} lang="{{ .Get "lang" }}"{{- end }}></nb-speedtest>
+<nb-speedtest{{- if .Get "lang" }} lang="{{ .Get "lang" }}"{{- end }}>
+  <div class="flex flex-col items-center justify-center p-8 gap-4 min-h-96">
+    <span class="loading loading-spinner loading-lg text-primary"></span>
+    <p class="text-lg font-medium">{{ T "loadingSpeedTest" }}</p>
+  </div>
+</nb-speedtest>

@@ -1,10 +1,10 @@
 # Netzbremse.de
 
-*A campaign to enforce net neutrality against Deutsche Telekom*
+Source code for [netzbremse.de](https://netzbremse.de) - a campaign website documenting Deutsche Telekom's peering plicies.
 
 ## Tech
 
-This page uses **Hugo**, **TailwindCSS** and **daisyUI**
+This page uses **Hugo**, **SolidJS**, **TailwindCSS** and **daisyUI**
 
 ## Running locally
 
@@ -17,11 +17,5 @@ To install dependencies and run the local development server run:
 
 ```bash
 npm install
-hugo server
+npm start
 ```
-
-## Staging Server 
-
-- **https://netzbremse.k1.muehlberger.dev**
-- **Username:** netzbremse
-- **Password:** 1Y154mUfUfQQDSnF38HpJ5stcRVBNf9W

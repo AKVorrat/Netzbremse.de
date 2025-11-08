@@ -31,6 +31,8 @@ export const de = {
 		restart: "Neustart",
 		error: "Fehler",
 		subtitle: "Netzbremse x Cloudflare",
+		testsCompleted: (count: number) => `${count} Tests abgeschlossen`,
+		restartIn: "Neustart in",
 		unknownError: "Unbekannter Fehler",
 		loggingBlocked: {
 			title: "Daten können nicht übertragen werden",

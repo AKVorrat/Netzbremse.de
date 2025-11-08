@@ -6,7 +6,7 @@ Source code for [netzbremse.de](https://netzbremse.de) - a campaign website docu
 
 - **Hugo** - Static site generator
 - **SolidJS + TypeScript** - Interactive speedtest component (`nb-speedtest/`)
-- **[Cloudflare Speedtest API](https://github.com/cloudflare/speedtest/)** - Network measurement backend
+- **[Cloudflare Speedtest](https://github.com/cloudflare/speedtest/)** - Network measurement backend
 - **Vite** - Build tool for SolidJS components
 - **TailwindCSS v4** - CSS framework
 - **daisyUI** - Component library

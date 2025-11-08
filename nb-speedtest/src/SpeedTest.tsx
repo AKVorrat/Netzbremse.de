@@ -31,7 +31,7 @@ type SpeedTestState = {
 const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }> = (props) => {
   const { t } = useTranslation();
   const [sessionID, setSessionID] = createSignal(uuidV4())
-  const [testRuns, setTestRuns] = createSignal(getTestRuns(sessionID()))
+  const [testRuns, setTestRuns] = createSignal(getTestRuns(sessionID(), t.speedtest.route))
 
   const [results, setResults] = createSignal<TestResult[]>([])
 
@@ -41,6 +41,7 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
   const [paused, setPaused] = createSignal(false)
   const [repeat, setRepeat] = createSignal(true)
   const [showAdblockWarning, setShowAdblockWarning] = createSignal(false)
+  const [testRunCount, setTestRunCount] = createSignal(0)
 
   const now = createTimeSignal(1000)
 
@@ -48,7 +49,7 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
 
   const restart = () => {
     setSessionID(uuidV4())
-    setTestRuns(getTestRuns(sessionID()))
+    setTestRuns(getTestRuns(sessionID(), t.speedtest.route))
     setResults([])
     setCurrentTest(0)
     setFinished(null)
@@ -86,6 +87,7 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
       setCurrentTest(nextIndex)
     } else {
       console.log("All speedtests finished!")
+      setTestRunCount(prev => prev + 1)
       setFinished(new Date())
       setTimeout(restart, config.repeatIntervalSec * 1000)
     }
@@ -187,12 +189,15 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
 
     <div class='flex flex-row justify-center items-center mt-3 min-h-10 text-primary-content'>
       <Show when={!!finished()}>
-        <button title={t.speedtest.restart()} class='btn btn-circle btn-ghost hover:text-primary focus:text-primary focus:bg-primary-content text-3xl mr-3' onclick={restart}>
+        <Show when={testRunCount() >= 2 && repeat()}>
+          {t.speedtest.testsCompleted(testRunCount())}
+        </Show>
+        <button title={t.speedtest.restart()} class='btn btn-circle btn-ghost hover:text-primary focus:text-primary focus:bg-primary-content text-3xl mx-3' onclick={restart}>
           <TbRotate2></TbRotate2>
           <span class='sr-only'>{t.speedtest.restart()}</span>
         </button>
         <Show when={autoRestartInFormatted() && repeat()}>
-          Test started automatisch neu in
+          {t.speedtest.restartIn()}
           <span class='ml-2 min-w-12'>{autoRestartInFormatted()}</span>
         </Show>
       </Show>

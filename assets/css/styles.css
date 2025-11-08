@@ -1,8 +1,10 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
 @plugin "daisyui" {
   themes: light;
 }
+
 @plugin 'daisyui/theme' {
   name: "light";
   default: true;
@@ -20,6 +22,7 @@
   --size-field: 0.3rem;
   --size-selectors: 0.3rem;
 }
+
 @config "./tailwind.config.js";
 @source "hugo_stats.json";
 
@@ -30,11 +33,13 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: var(--color-primary);
 }
 
 body {
   font-family: Roboto;
   overflow-x: hidden;
+  background-color: white;
 }
 
 h1,

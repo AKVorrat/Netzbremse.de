@@ -31,6 +31,8 @@ export const en = {
 		restart: "Restart",
 		error: "Error",
 		subtitle: "Netzbremse x Cloudflare",
+		testsCompleted: (count: number) => `${count} tests completed`,
+		restartIn: "Restart in",
 		unknownError: "Unknown error",
 		loggingBlocked: {
 			title: "Data cannot be transmitted",

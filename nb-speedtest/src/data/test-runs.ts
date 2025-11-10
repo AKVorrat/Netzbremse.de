@@ -28,14 +28,15 @@ export function getTestRuns(sessionID: string, routeLabeler: (letter: string, la
 			turnServerUri: "turn.cloudflare.com:3478",
 			includeCredentials: false,
 			measurements: [
-				{ type: "download", bytes: 1e5, count: 2 },
-				{ type: "upload", bytes: 1e5, count: 2 },
-				{ type: "download", bytes: 1e7, count: 2 },
-				{ type: "upload", bytes: 1e7, count: 2 },
-				{ type: "download", bytes: 2.5e7, count: 2 },
-				{ type: "upload", bytes: 2.5e7, count: 2 },
-				{ type: "latency", numPackets: 20 },
+				{ type: "download", bytes: 100_000, count: 2 },
+				{ type: "upload", bytes: 100_000, count: 2 },
+				{ type: "download", bytes: 10_000_000, count: 2 },
+				{ type: "upload", bytes: 5_000_000, count: 2 },
+				{ type: "download", bytes: 25_000_000, count: 2 },
+				{ type: "upload", bytes: 10_000_000, count: 2 },
+				{ type: "latency", numPackets: 40 },
 			],
+			loadedLatencyThrottle: 300,
 		}
 	}))
 

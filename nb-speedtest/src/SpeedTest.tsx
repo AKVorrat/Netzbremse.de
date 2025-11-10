@@ -16,6 +16,8 @@ import { AllResults } from './components/Results';
 import { testLogEndpointReachability } from './util/log-endpoint-test';
 import { AdblockWarning } from './components/AdblockWarning';
 import { createTimeSignal } from './util/time-signal';
+import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
+import { isPrivacyPolicyAccepted, acceptPrivacyPolicy } from './util/privacy-policy';
 
 const fetchMetadata = async () => {
   const resp = await fetch("https://speed.cloudflare.com/meta")
@@ -41,6 +43,7 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
   const [paused, setPaused] = createSignal(false)
   const [repeat, setRepeat] = createSignal(true)
   const [showAdblockWarning, setShowAdblockWarning] = createSignal(false)
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = createSignal(false)
   const [testRunCount, setTestRunCount] = createSignal(0)
 
   const now = createTimeSignal(1000)
@@ -65,6 +68,12 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
   )
 
   const onStartClick = async () => {
+    // Check privacy policy acceptance first
+    if (!isPrivacyPolicyAccepted()) {
+      setShowPrivacyPolicy(true)
+      return
+    }
+
     setStarted(true)
 
     // Test log endpoint reachability
@@ -123,9 +132,20 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
   }
 
 
+  const handlePrivacyPolicyAccept = async () => {
+    acceptPrivacyPolicy()
+    setShowPrivacyPolicy(false)
+    await onStartClick()
+  }
+
   const shouldRun = (index: number) => started() && !paused() && currentTest() === index
 
   return (<>
+    <PrivacyPolicyModal
+      open={showPrivacyPolicy()}
+      onAccept={handlePrivacyPolicyAccept}
+      onClose={() => setShowPrivacyPolicy(false)}
+    />
     <AdblockWarning
       open={showAdblockWarning()}
     />

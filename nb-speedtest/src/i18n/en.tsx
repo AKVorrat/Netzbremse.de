@@ -80,6 +80,36 @@ export const en = {
 			noDataAvailable: (type: string) => `No ${type} data available`,
 		},
 	},
+	privacyPolicy: {
+		title: "Privacy Policy",
+		content: () => (
+			<p>
+				When you run Speed Test, your IP address will be shared with Cloudflare and processed in accordance with our <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">privacy policy</a>.
+			</p>
+		),
+		summary: "Learn More",
+		details: () => (<>
+			<p>
+				When you use Speed Test, Cloudflare receives the IP address you use to connect to Cloudflare's Speed Test service. Cloudflare uses your IP address to estimate your geolocation (at the country and city levels) and to identify the Autonomous System Number (ASN) associated with your IP address.
+			</p>
+			<p>
+				Cloudflare will share such information with our non-profit partner, Epicenter Works. Cloudflare will also share anonymized measurement information (e.g., the estimated geolocation, ASN associated with your Speed Test, etc.) with our measurement partners as part of Cloudflare's contribution to a shared Internet performance database. We do not share your IP address with our measurement partners. Once our analysis is complete, the following information will also be published to Measurement Lab's public BigQuery database.
+			</p>
+			<p>
+				As a part of this Speed Test, Cloudflare receives the following information:
+			</p>
+			<ul>
+				<li>Your IP address;</li>
+				<li>An estimate of your location (Country, City);</li>
+				<li>The Autonomous System Number of your ISP (ASN).</li>
+			</ul>
+			<p>
+				Cloudflare truncates your IP address that it receives as part of your use of the Speed Test to /24 and /48 for IPv4 and IPv6 addresses, respectively.
+			</p>
+		</>),
+		acceptButton: "Accept and Start Test",
+		dataUsageNote: "Note: A speed test can consume up to 200MB of data.",
+	},
 	faqTitle: "Background on the Speedtest",
 	faq: [
 		{

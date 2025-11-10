@@ -16,6 +16,8 @@ export function createFakeSpeedtest(config: ConfigOptions, callbacks: SpeedTestC
 	const [upLoadedLatency, setUpLoadedLatency] = createSignal(0)
 	const [downLoadedJitter, setDownLoadedJitter] = createSignal(0)
 	const [upLoadedJitter, setUpLoadedJitter] = createSignal(0)
+	const [idleLatency, setIdleLatency] = createSignal(0)
+	const [idleJitter, setIdleJitter] = createSignal(0)
 
 	let simulationInterval: number | undefined
 	let simulationTimeout: number | undefined
@@ -52,6 +54,8 @@ export function createFakeSpeedtest(config: ConfigOptions, callbacks: SpeedTestC
 			setUpLoadedLatency(upLatency)
 			setDownLoadedJitter(downJitter)
 			setUpLoadedJitter(upJitter)
+			setIdleLatency(unloadedLatency)
+			setIdleJitter(2 + Math.random() * 3)
 
 			// Store data points
 			const currentTime = Date.now()
@@ -165,5 +169,7 @@ export function createFakeSpeedtest(config: ConfigOptions, callbacks: SpeedTestC
 		upLoadedLatency,
 		downLoadedJitter,
 		upLoadedJitter,
+		idleLatency,
+		idleJitter,
 	}
 }

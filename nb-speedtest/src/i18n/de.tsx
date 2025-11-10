@@ -28,6 +28,9 @@ export const de = {
 			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms Latency während Upload
 			<Show when={jitter}> (±{jitter} ms)</Show>
 		</>,
+		idleLatencyDisplay: (latency: string, jitter: string) => <>
+			Latenz (Idle): <span class="inline-block min-w-[3ch] text-end">{latency}</span>&nbsp;ms | Jitter: <span class="inline-block min-w-[3ch] text-end">{jitter}</span>&nbsp;ms
+		</>,
 		restart: "Neustart",
 		error: "Fehler",
 		subtitle: "Netzbremse x Cloudflare",

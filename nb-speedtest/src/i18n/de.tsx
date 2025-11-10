@@ -84,30 +84,30 @@ export const de = {
 		},
 	},
 	privacyPolicy: {
-		title: "Privacy Policy",
+		title: "Datenschutzerklärung",
 		content: () => (
 			<p>
-				When you run Speed Test, your IP address will be shared with Cloudflare and processed in accordance with our <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">privacy policy</a>.
+				Wenn du den Speedtest ausführst, wird deine IP-Adresse mit Cloudflare geteilt und gemäß unserer <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank">Privay Policy</a> verarbeitet.
 			</p>
 		),
-		summary: "Learn More",
+		summary: "Mehr erfahren",
 		details: () => (<>
 			<p>
-				When you use Speed Test, Cloudflare receives the IP address you use to connect to Cloudflare's Speed Test service. Cloudflare uses your IP address to estimate your geolocation (at the country and city levels) and to identify the Autonomous System Number (ASN) associated with your IP address.
+				Wenn du den Speedtest verwendest, erhält Cloudflare die IP-Adresse, mit der du eine Verbindung zum Speedtest-Dienst von Cloudflare herstellst. Cloudflare nutzt deine IP-Adresse, um deine ungefähre geografische Position (auf Länder- und Stadtebene) zu bestimmen und die „Autonomous System Number“ (ASN) zu identifizieren, die mit deiner IP-Adresse verknüpft ist.
 			</p>
 			<p>
-				Cloudflare will share such information with our non-profit partner, Epicenter Works. Cloudflare will also share anonymized measurement information (e.g., the estimated geolocation, ASN associated with your Speed Test, etc.) with our measurement partners as part of Cloudflare's contribution to a shared Internet performance database. We do not share your IP address with our measurement partners. Once our analysis is complete, the following information will also be published to Measurement Lab's public BigQuery database.
+				Cloudflare teilt diese Informationen mit unserem gemeinnützigen Partner Epicenter Works. Außerdem teilt Cloudflare anonymisierte Messdaten (z. B. die geschätzte Position, die mit deinem Speedtest verbundene ASN usw.) mit unseren Messpartnern, als Teil von Cloudflares Beitrag zu einer gemeinsamen Datenbank für Internetleistungsmessungen. Deine IP-Adresse wird dabei nicht an unsere Messpartner weitergegeben. Nach Abschluss unserer Analyse werden die folgenden Informationen zusätzlich in der öffentlichen BigQuery-Datenbank von Measurement Lab veröffentlicht.
 			</p>
 			<p>
-				As a part of this Speed Test, Cloudflare receives the following information:
+				Im Rahmen dieses Speedtest erhält Cloudflare folgende Informationen:
 			</p>
 			<ul>
-				<li>Your IP address;</li>
-				<li>An estimate of your location (Country, City);</li>
-				<li>The Autonomous System Number of your ISP (ASN).</li>
+				<li>Deine IP-Adresse;</li>
+				<li>Eine Schätzung deines Standorts (Land, Stadt);</li>
+				<li>Die „Autonomous System Number“ (ASN) deines Internetanbieters (ISP).</li>
 			</ul>
 			<p>
-				Cloudflare truncates your IP address that it receives as part of your use of the Speed Test to /24 and /48 for IPv4 and IPv6 addresses, respectively.
+				Cloudflare kürzt die IP-Adresse, die im Rahmen deiner Nutzung des Speedtests übermittelt wird, auf /24 für IPv4- und /48 für IPv6-Adressen.
 			</p>
 		</>),
 		acceptButton: "Akzeptieren und Test starten",
@@ -119,10 +119,10 @@ export const de = {
 			title: "Wieso soll ich meinen Adblocker deaktivieren?",
 			body: () => (<>
 				<p>
-					Wir sammeln die anonymisierten Messergebnisse von deinem Browser mittels Cloudflare Endpunkten ein. Diese Schnittstelle
-					verwenden auch Werbenetzwerke und deshalb wird sie von Werbeblockern oft blockiert. Der Test funktioniert mit Adblocker
+					Wir sammeln die anonymisierten Messergebnisse von deinem Browser mittels Cloudflare Endpunkten ein.Diese Schnittstelle
+					verwenden auch Werbenetzwerke und deshalb wird sie von Werbeblockern oft blockiert.Der Test funktioniert mit Adblocker
 					einwandfrei, nur werden deine Ergebnisse nicht an uns zurück gemeldet und helfen der Kampagne nicht.
-				</p>
+				</p >
 			</>),
 		},
 		{

@@ -26,9 +26,13 @@ defaultContentLanguageInSubdir = false
         [[languages.en.params.hero.links]]
           text = 'Press release'
           url = 'https://www.vzbv.de/pressemitteilungen/keine-zweiklassengesellschaft-im-internet-buendnis-reicht-beschwerde-gegen'
+        [[languages.en.params.hero.links]]
+          text = 'Measurement'
+          url = '/en/speed'
       [languages.en.params.footer]
         imprintURL = "https://epicenter.works/en/contact"
         privacyURL = "https://epicenter.works/en/privacy"
+        githubURL = "https://github.com/AKVorrat/Netzbremse.de/"
       [languages.en.params.newsletter]
         subscribeBTN = "Subscribe to Updates"
         alsoGetEpW = "Also subscribe to updates from [epicenter.works](https://epicenter.works/en/)"
@@ -50,10 +54,14 @@ defaultContentLanguageInSubdir = false
   [[params.hero.links]]
     text = 'Presseerklärung'
     url = 'https://www.vzbv.de/pressemitteilungen/keine-zweiklassengesellschaft-im-internet-buendnis-reicht-beschwerde-gegen'
+  [[params.hero.links]]
+    text = 'Messung'
+    url = '/speed'
 
 [params.footer]
   imprintURL = "https://epicenter.works/kontakt"
   privacyURL = "https://epicenter.works/datenschutz"
+  githubURL = "https://github.com/AKVorrat/Netzbremse.de/"
 
 [params.newsletter] 
   subscribeURL = "https://secure.dialog-mail.com/s/dyXMJ"
@@ -92,7 +100,7 @@ defaultContentLanguageInSubdir = false
 [languages.en.menus]
   [[languages.en.menus.main]]
     name = 'Speedtest'
-    URL = '/speed'
+    URL = '/en/speed'
     weight = 10
   [[languages.en.menus.main]]
     name = 'Video'

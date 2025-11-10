@@ -45,9 +45,7 @@ jobs:
           HUGO_ENVIRONMENT: production
           TZ: Europe/Vienna
         run: |
-          hugo \
-            --gc \
-            --minify
+          npm run build
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

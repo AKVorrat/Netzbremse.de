@@ -6,7 +6,7 @@
     "start": "npm run speedtest:build && npm run hugo:start & npm run speedtest:start",
     "build": "npm run speedtest:build && npm run hugo:build",
     "hugo:start": "hugo server",
-    "hugo:build": "hugo",
+    "hugo:build": "hugo --minify --gc",
     "speedtest:start": "cd nb-speedtest && VITE_DISABLE_SHADOW_DOM='true' vite",
     "speedtest:build": "cd nb-speedtest && tsc --noEmit --skipLibCheck && vite build"
   },

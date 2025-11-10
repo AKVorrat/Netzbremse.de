@@ -3,14 +3,15 @@ import { TbDownload, TbUpload, TbExclamationCircle } from "solid-icons/tb";
 import { Component, Show, type JSX } from "solid-js";
 import { TestResult } from "../types/test-result";
 import { useTranslation } from "../i18n/context";
+import { formatLatencyDisplay } from "../util/format-latency";
 
 const statPadding = "py-2 px-2"
 
 const Stat: Component<{ label?: string, bandwidth: number, latency: number, jitter: number, icon?: JSX.Element }> = (props) => {
   const { t } = useTranslation();
   const bandwdth = () => props.bandwidth ? (props.bandwidth / 1e6).toLocaleString(undefined, { minimumSignificantDigits: 3, maximumSignificantDigits: 3 }) : props.bandwidth
-  const latency = () => props.latency?.toLocaleString(undefined, { maximumFractionDigits: 0 })
-  const jitter = () => props.jitter?.toLocaleString(undefined, { maximumFractionDigits: 0 })
+  const latency = () => formatLatencyDisplay(props.latency)
+  const jitter = () => formatLatencyDisplay(props.jitter)
 
   return <div class={`stat text-primary pt-3 ${statPadding}`}>
     <div class="stat-figure text-3xl " title={t.speedtest.download()}>
@@ -49,8 +50,8 @@ export const SingleResult: Component<{ result?: TestResult }> = (props) => {
     fallback={<ErrorDisplay error={props.result?.success === false ? props.result.error : new Error(t.speedtest.unknownError())} />}
   >
     <div class="stats shadow-md my-1 bg-base-200 px-2 overflow-x-hidden max-[25tem]:stats-vertical">
-      <Stat bandwidth={props.result?.success ? props.result.result.getSummary()?.download : 0} latency={props.result?.success ? props.result.result.getSummary()?.downLoadedLatency : 0} jitter={props.result?.success ? props.result.result.getSummary()?.downLoadedJitter : 0} icon={<TbDownload />}></Stat>
-      <Stat bandwidth={props.result?.success ? props.result.result.getSummary()?.upload : 0} latency={props.result?.success ? props.result.result.getSummary()?.upLoadedLatency : 0} jitter={props.result?.success ? props.result.result.getSummary()?.upLoadedJitter : 0} icon={<TbUpload />}></Stat>
+      <Stat bandwidth={props.result?.success ? props.result.result.getSummary()?.download : 0} latency={props.result?.success ? props.result.result.getSummary()?.downLoadedLatency : undefined} jitter={props.result?.success ? props.result.result.getSummary()?.downLoadedJitter : undefined} icon={<TbDownload />}></Stat>
+      <Stat bandwidth={props.result?.success ? props.result.result.getSummary()?.upload : 0} latency={props.result?.success ? props.result.result.getSummary()?.upLoadedLatency : undefined} jitter={props.result?.success ? props.result.result.getSummary()?.upLoadedJitter : undefined} icon={<TbUpload />}></Stat>
     </div>
   </Show>
 }

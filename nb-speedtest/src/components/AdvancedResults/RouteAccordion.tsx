@@ -1,7 +1,8 @@
 import { Component, createMemo } from "solid-js";
 import { TbDownload, TbUpload, TbClock } from "solid-icons/tb";
 import { useTranslation } from "../../i18n/context";
-import { formatSpeed, formatLatency } from "./utils/formatting";
+import { formatSpeed } from "./utils/formatting";
+import { formatLatencyDisplay } from "../../util/format-latency";
 import { BandwidthChart } from "./charts/BandwidthChart";
 import { LatencyChart } from "./charts/LatencyChart";
 import { TestResult } from "../../types/test-result";
@@ -33,7 +34,7 @@ export const RouteAccordion: Component<{
             </span>
             <span class="flex items-center gap-1">
               <TbClock class="w-4 h-4" />
-              {formatLatency(Math.max(summary()?.downLoadedLatency || 0))} {t.advancedResults.ms()}
+              {formatLatencyDisplay(summary()?.downLoadedLatency)} {t.advancedResults.ms()}
             </span>
             <span class="flex items-center gap-1">
               <TbUpload class="w-4 h-4" />
@@ -41,7 +42,7 @@ export const RouteAccordion: Component<{
             </span>
             <span class="flex items-center gap-1">
               <TbClock class="w-4 h-4" />
-              {formatLatency(Math.max(summary()?.upLoadedLatency || 0))} {t.advancedResults.ms()}
+              {formatLatencyDisplay(summary()?.upLoadedLatency)} {t.advancedResults.ms()}
             </span>
           </div>
         </div>
@@ -64,31 +65,31 @@ export const RouteAccordion: Component<{
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4">
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.loadedLatencyDown()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.downLoadedLatency)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatencyDisplay(summary()?.downLoadedLatency)} {t.advancedResults.ms()}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.jitter()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.downLoadedJitter)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatencyDisplay(summary()?.downLoadedJitter)} {t.advancedResults.ms()}</span>
               </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4">
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.loadedLatencyUp()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.upLoadedLatency)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatencyDisplay(summary()?.upLoadedLatency)} {t.advancedResults.ms()}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.jitter()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.upLoadedJitter)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatencyDisplay(summary()?.upLoadedJitter)} {t.advancedResults.ms()}</span>
               </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4">
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.idleLatency()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.latency)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatencyDisplay(summary()?.latency)} {t.advancedResults.ms()}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-sm lg:text-base">{t.advancedResults.jitter()}:</span>
-                <span class="font-mono text-sm lg:text-base">{formatLatency(summary()?.jitter)} {t.advancedResults.ms()}</span>
+                <span class="font-mono text-sm lg:text-base">{formatLatencyDisplay(summary()?.jitter)} {t.advancedResults.ms()}</span>
               </div>
             </div>
           </div>

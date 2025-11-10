@@ -21,12 +21,15 @@ export const en = {
 		route: (letter: string, label?: string) => label ? `Route ${letter} (${label})` : `Route ${letter}`,
 		testing: (name: string) => `Testing ${name}`,
 		latencyDuringDownload: (latency: string, jitter: string) => <>
-			<span class="inline-block min-w-[4ch] text-end">{latency}</span> ms latency while downloading
+			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms latency while downloading
 			<Show when={jitter}> (±{jitter} ms)</Show>
 		</>,
 		latencyDuringUpload: (latency: string, jitter: string) => <>
-			<span class="inline-block min-w-[4ch] text-end">{latency}</span> ms latency while uploading
+			<span class="inline-block min-w-[3ch] text-end">{latency}</span> ms latency while uploading
 			<Show when={jitter}> (±{jitter} ms)</Show>
+		</>,
+		idleLatencyDisplay: (latency: string, jitter: string) => <>
+			Idle latency: <span class="inline-block min-w-[3ch] text-end">{latency}</span>&nbsp;ms | Jitter: <span class="inline-block min-w-[3ch] text-end">{jitter}</span>&nbsp;ms
 		</>,
 		restart: "Restart",
 		error: "Error",

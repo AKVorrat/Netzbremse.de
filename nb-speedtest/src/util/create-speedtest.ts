@@ -18,6 +18,8 @@ export function createSpeedtest(config: ConfigOptions, callbacks: SpeedTestCallb
 	const [upLoadedLatency, setUpLoadedLatency, setUpLoadedLatencyPaused] = createAnimatedSignal()
 	const [downLoadedJitter, setDownLoadedJitter, setDownLoadedJitterPaused] = createAnimatedSignal()
 	const [upLoadedJitter, setUpLoadedJitter, setUpLoadedJitterPaused] = createAnimatedSignal()
+	const [idleLatency, setIdleLatency, setIdleLatencyPaused] = createAnimatedSignal()
+	const [idleJitter, setIdleJitter, setIdleJitterPaused] = createAnimatedSignal()
 
 	let timeoutId: number | undefined
 	const timeoutMs = callbacks.timeoutMs ?? appConfig.speedtestTimeoutMs
@@ -58,7 +60,9 @@ export function createSpeedtest(config: ConfigOptions, callbacks: SpeedTestCallb
 		setUpload(res.upload)
 		setUpLoadedLatency(res.upLoadedLatency)
 		setUpLoadedJitter(res.upLoadedJitter)
-		console.log(`Updated Stats: Down ${res.download}, Down Lat ${res.downLoadedLatency}, Down Jit ${res.downLoadedJitter}, Up ${res.upload}, Up Lat ${res.upLoadedLatency}, Up Jit ${res.upLoadedLatency}`)
+		setIdleLatency(res.latency)
+		setIdleJitter(res.jitter)
+		console.log(`Updated Stats: Down ${res.download}, Down Lat ${res.downLoadedLatency}, Down Jit ${res.downLoadedJitter}, Up ${res.upload}, Up Lat ${res.upLoadedLatency}, Up Jit ${res.upLoadedJitter}, Idle Lat ${res.latency}, Idle Jit ${res.jitter}`)
 
 		resetTimeoutTimer()
 	}
@@ -71,6 +75,8 @@ export function createSpeedtest(config: ConfigOptions, callbacks: SpeedTestCallb
 		setUploadPuased(!running)
 		setUpLoadedLatencyPaused(!running)
 		setUpLoadedJitterPaused(!running)
+		setIdleLatencyPaused(!running)
+		setIdleJitterPaused(!running)
 
 		if (running) {
 			resetTimeoutTimer()
@@ -109,6 +115,8 @@ export function createSpeedtest(config: ConfigOptions, callbacks: SpeedTestCallb
 		upLoadedLatency,
 		downLoadedJitter,
 		upLoadedJitter,
+		idleLatency,
+		idleJitter,
 	}
 }
 

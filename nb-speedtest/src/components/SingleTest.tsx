@@ -7,6 +7,7 @@ import { createSpeedtest } from "../util/create-speedtest"
 import { createFakeSpeedtest } from "../util/create-fake-speedtest"
 import { parseEnvBoolean } from "../util/env"
 import { useTranslation } from "../i18n/context"
+import { formatLatencyDisplay } from "../util/format-latency"
 
 export const SingleTest: Component<{
   label: string, run: boolean, config: ConfigOptions, onComplete?: (outcome: TestResult) => void
@@ -54,9 +55,9 @@ export const SingleTest: Component<{
       <SpeedStat speed={st.upload()} latency={st.upLoadedLatency()} jitter={st.upLoadedJitter()} direction='upload' />
     </div>
     <div class="text-center text-base-content font-title text-sm">
-      {t.speedtest.idleLatencyDisplay(
-        st.idleLatency() ? st.idleLatency()!.toLocaleString(undefined, { maximumFractionDigits: 0 }).padStart(3, " ") : '-',
-        st.idleJitter() ? st.idleJitter()!.toLocaleString(undefined, { maximumFractionDigits: 0 }).padStart(3, " ") : '-'
+{t.speedtest.idleLatencyDisplay(
+        formatLatencyDisplay(st.idleLatency()),
+        formatLatencyDisplay(st.idleJitter())
       )}
     </div>
   </div>

@@ -1,19 +1,45 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@plugin "daisyui" {
+  themes: light;
+}
+
+@plugin 'daisyui/theme' {
+  name: "light";
+  default: true;
+  --color-primary: #E00370;
+  --color-primary-content: #FFFFFF;
+  --color-secondary: #242038;
+  --color-accent: #8D86C9;
+  --color-neutral: #3d4451;
+  --color-neutral-content: #ffffff;
+  --color-base-100: #FFFFFF;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --depth: 0;
+  --noise: 0;
+  --size-field: 0.3rem;
+  --size-selectors: 0.3rem;
+}
+
+@config "./tailwind.config.js";
+@source "hugo_stats.json";
+
 @import "fonts.css";
 @import "lite-yt-embed.css";
 @import "carousel.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: var(--color-primary);
 }
 
 body {
   font-family: Roboto;
   overflow-x: hidden;
+  background-color: white;
 }
 
 h1,

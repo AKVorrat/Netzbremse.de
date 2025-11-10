@@ -26,9 +26,13 @@ defaultContentLanguageInSubdir = false
         [[languages.en.params.hero.links]]
           text = 'Press release'
           url = 'https://www.vzbv.de/pressemitteilungen/keine-zweiklassengesellschaft-im-internet-buendnis-reicht-beschwerde-gegen'
+        [[languages.en.params.hero.links]]
+          text = 'Measurement'
+          url = '/en/speed'
       [languages.en.params.footer]
         imprintURL = "https://epicenter.works/en/contact"
         privacyURL = "https://epicenter.works/en/privacy"
+        githubURL = "https://github.com/AKVorrat/Netzbremse.de/"
       [languages.en.params.newsletter]
         subscribeBTN = "Subscribe to Updates"
         alsoGetEpW = "Also subscribe to updates from [epicenter.works](https://epicenter.works/en/)"
@@ -50,10 +54,14 @@ defaultContentLanguageInSubdir = false
   [[params.hero.links]]
     text = 'Presseerklärung'
     url = 'https://www.vzbv.de/pressemitteilungen/keine-zweiklassengesellschaft-im-internet-buendnis-reicht-beschwerde-gegen'
+  [[params.hero.links]]
+    text = 'Messung'
+    url = '/speed'
 
 [params.footer]
   imprintURL = "https://epicenter.works/kontakt"
   privacyURL = "https://epicenter.works/datenschutz"
+  githubURL = "https://github.com/AKVorrat/Netzbremse.de/"
 
 [params.newsletter] 
   subscribeURL = "https://secure.dialog-mail.com/s/dyXMJ"
@@ -65,9 +73,13 @@ defaultContentLanguageInSubdir = false
 
 [menus]
   [[menus.main]]
+    name = 'Speedtest'
+    URL = '/speed'
+    weight = 10
+  [[menus.main]]
     name = 'Video'
     URL = '#video'
-    weight = 10
+    weight = 11
   [[menus.main]]
     name = 'Newsletter'
     URL = '#newsletter'
@@ -87,9 +99,13 @@ defaultContentLanguageInSubdir = false
 
 [languages.en.menus]
   [[languages.en.menus.main]]
+    name = 'Speedtest'
+    URL = '/en/speed'
+    weight = 10
+  [[languages.en.menus.main]]
     name = 'Video'
     URL = '#video'
-    weight = 10
+    weight = 11
   [[languages.en.menus.main]]
     name = 'Newsletter'
     URL = '#newsletter'
@@ -129,6 +145,9 @@ defaultContentLanguageInSubdir = false
   [[module.mounts]]
     source = "static"
     target = "static"
+  [[module.mounts]]
+    source = "nb-speedtest/dist"
+    target = "static/nb-speedtest"
   [[module.mounts]]
     source = "node_modules/@fontsource/roboto/files"
     target = "static/fonts"

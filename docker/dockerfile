@@ -1,4 +1,6 @@
-FROM  hugomods/hugo AS builder
+FROM ghcr.io/gohugoio/hugo:v0.152.1 AS builder
+
+USER root
 
 WORKDIR /src
 
@@ -6,9 +8,9 @@ COPY package*.json .
 
 RUN npm ci
 
-COPY . . 
+COPY . .
 
-RUN hugo --baseURL 'https://netzbremse.k1.muehlberger.dev/'
+RUN npm run speedtest:build && hugo --baseURL 'https://netzbremse.k1.muehlberger.dev/'
 
 FROM nginx AS run
 

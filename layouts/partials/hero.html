@@ -8,7 +8,8 @@
         </div>
         <div class="flex flex-row flex-wrap items-center justify-center gap-4 mt-6">
             {{ range .Site.Params.hero.links }}
-            <a href="{{ .url }}" target="_blank" class="btn text-primary text-lg font-normal">
+            {{- $u := urls.Parse .url -}}
+            <a href="{{ .url }}" {{- if $u.IsAbs }} target="_blank" {{ end -}} class="btn text-primary text-lg font-normal">
                 {{ .text }}
                 {{ partial "icons/icon" (dict "vendor" "fas" "name" "arrow-up-right-from-square" )}}
             </a>

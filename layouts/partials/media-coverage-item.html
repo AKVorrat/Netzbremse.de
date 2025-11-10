@@ -1,5 +1,6 @@
-<div class="media-coverage-item card bg-base-100 shadow-xl prose p-4 pt-0 mt-6 flex-shrink-0 flex snap-center offset">
-  <div class="flex justify-center -m-6">
+<div
+  class="media-coverage-item not-prose card bg-base-100 shadow-xl prose p-4 pt-0 mt-6 flex-shrink-0 flex snap-center offset">
+  <div class="flex justify-center -m-6 not-prose">
     {{ $logo := resources.GetMatch .Params.logo }}
     <img {{ if eq $logo.MediaType.SubType "svg" }} src="{{ $logo.RelPermalink | safeURL }}" {{ else }}
       src="{{ ($logo.Fit " 96x48").RelPermalink | safeURL }}" {{ end }}
@@ -10,7 +11,7 @@
   <div class="flex-grow mt-8">
     <div class="flex items-center gap-3 flex-shrink">
       <h4 class="text-pretty mt-0 line-clamp-3">
-        <a href="{{ .Params.url }}" target="_blank">
+        <a href="{{ .Params.url }}" target="_blank" class="link">
           {{ .Params.title }}
         </a>
       </h4>
@@ -21,5 +22,6 @@
       {{/*</p>*/}}
 
   </div>
-  <a href="{{ .Params.url }}" target="_blank" class="m-0 leading-none">Zum Beitrag von {{ .Params.publication }}</a>
+  <a href="{{ .Params.url }}" target="_blank" class="m-0 leading-none link">Zum Beitrag von {{ .Params.publication
+    }}</a>
 </div>

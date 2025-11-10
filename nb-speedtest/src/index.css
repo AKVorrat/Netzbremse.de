@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+
+@plugin 'daisyui' {
+  themes: light;
+}
+
+@plugin 'daisyui/theme' {
+  name: "light";
+  default: true;
+  --color-primary: #E00370;
+  --color-primary-content: #FFFFFF;
+  --color-secondary: #242038;
+  --color-accent: #8D86C9;
+  --color-neutral: #3d4451;
+  --color-base-100: #FFFFFF;
+}
+
+@plugin '@tailwindcss/typography';
+
+:host {
+  --nbs-measure: 65ch;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+.font-title {
+  font-family: "Source Code Pro", 'Courier New', monospace;
+  font-weight: 600;
+}
+
+.prose {
+  line-height: 1.5 !important;
+}

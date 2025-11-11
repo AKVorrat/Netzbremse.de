@@ -96,7 +96,7 @@ export const de = {
 				Wenn du den Speedtest verwendest, erhält Cloudflare die IP-Adresse, mit der du eine Verbindung zum Speedtest-Dienst von Cloudflare herstellst. Cloudflare nutzt deine IP-Adresse, um deine ungefähre geografische Position (auf Länder- und Stadtebene) zu bestimmen und die „Autonomous System Number“ (ASN) zu identifizieren, die mit deiner IP-Adresse verknüpft ist.
 			</p>
 			<p>
-				Cloudflare teilt diese Informationen mit unserem gemeinnützigen Partner Epicenter Works. Außerdem teilt Cloudflare anonymisierte Messdaten (z. B. die geschätzte Position, die mit deinem Speedtest verbundene ASN usw.) mit unseren Messpartnern, als Teil von Cloudflares Beitrag zu einer gemeinsamen Datenbank für Internetleistungsmessungen. Deine IP-Adresse wird dabei nicht an unsere Messpartner weitergegeben. Nach Abschluss unserer Analyse werden die folgenden Informationen zusätzlich in der öffentlichen BigQuery-Datenbank von Measurement Lab veröffentlicht.
+				Cloudflare will share anonymized measurement information (e.g., the estimated geolocation, ASN associated with your Speed Test, etc.) along with your truncated IP address with our measurement partners, including Epicenter Works, as part of Cloudflare’s contribution to a shared Ixnternet performance database. We do not share your full IP address with our measurement partners. Once our analysis is complete, such measurement information and truncated IP addresses will also be published to Measurement Lab’s public BigQuery database.
 			</p>
 			<p>
 				Im Rahmen dieses Speedtest erhält Cloudflare folgende Informationen:

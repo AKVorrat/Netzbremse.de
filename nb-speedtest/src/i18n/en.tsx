@@ -119,7 +119,7 @@ export const en = {
 			title: "Why should I disable my ad blocker?",
 			body: () => (<>
 				<p>
-					We collect anonymized measurement data from your browser using Cloudflare endpoints. Because the same interface is also used by advertising networks, it is often blocked by ad blockers. The speedtest itself will still work, but your results will not be sent to us and therefore won’t support the campaign.
+					We collect anonymized measurement data from your browser using Cloudflare endpoints. Even though these endpoints are anonymized and perform no tracking, they are often blocked by ad blockers. The speedtest itself will still work, but your results will not be sent to us and therefore won’t support the campaign.
 				</p>
 			</>),
 		},

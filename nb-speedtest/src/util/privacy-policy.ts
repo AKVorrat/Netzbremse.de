@@ -1,4 +1,4 @@
-const PRIVACY_POLICY_VERSION = "2025-11-10";
+const PRIVACY_POLICY_VERSION = "2025-11-11";
 const STORAGE_KEY = "netzbremse_cloudflare_privacy_policy_accepted";
 
 export interface PrivacyPolicyAcceptance {

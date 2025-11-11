@@ -119,8 +119,8 @@ export const de = {
 			title: "Wieso soll ich meinen Adblocker deaktivieren?",
 			body: () => (<>
 				<p>
-					Wir sammeln die anonymisierten Messergebnisse von deinem Browser mittels Cloudflare Endpunkten ein.Diese Schnittstelle
-					verwenden auch Werbenetzwerke und deshalb wird sie von Werbeblockern oft blockiert.Der Test funktioniert mit Adblocker
+					Wir sammeln die anonymisierten Messergebnisse von deinem Browser mittels Cloudflare Endpunkten ein. Diese Schnittstelle
+					verwenden auch Werbenetzwerke und deshalb wird sie von Werbeblockern oft blockiert. Der Test funktioniert mit Adblocker
 					einwandfrei, nur werden deine Ergebnisse nicht an uns zurück gemeldet und helfen der Kampagne nicht.
 				</p >
 			</>),

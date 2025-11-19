@@ -55,6 +55,7 @@ export const PrivacyPolicyModal: Component<PrivacyPolicyModalProps> = (props) =>
 				</div>
 				<div class="modal-action flex-col items-stretch">
 					<button
+						id="nb_speedtest_accept_policy"
 						class="btn btn-primary"
 						onClick={handleAccept}
 						autofocus

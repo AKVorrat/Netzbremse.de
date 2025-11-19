@@ -11,6 +11,10 @@ export function getPrivacyPolicyVersion(): string {
 }
 
 export function isPrivacyPolicyAccepted(): boolean {
+  if (window.nbSpeedtestOptions?.acceptedPolicy === true) {
+    return true
+  }
+
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) {

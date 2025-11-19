@@ -63,7 +63,6 @@ const App: Component = () => {
         </ColsLayout>
       </Container>
     </>
-
   );
 };
 

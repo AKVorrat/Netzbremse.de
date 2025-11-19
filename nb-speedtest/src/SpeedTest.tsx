@@ -91,6 +91,10 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
     const newResults = [...results(), outcome]
     setResults(newResults)
 
+    if (window.nbSpeedtestOnResult) {
+      window.nbSpeedtestOnResult({ success: outcome.success, result: outcome.success ? outcome.result.getSummary() : undefined })
+    }
+
     const nextIndex = currentIndex + 1
     if (nextIndex < testRuns().length) {
       setCurrentTest(nextIndex)
@@ -99,6 +103,10 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
       setTestRunCount(prev => prev + 1)
       setFinished(new Date())
       setTimeout(restart, config.repeatIntervalSec * 1000)
+
+      if (window.nbSpeedtestOnFinished) {
+        window.nbSpeedtestOnFinished()
+      }
     }
   }
 

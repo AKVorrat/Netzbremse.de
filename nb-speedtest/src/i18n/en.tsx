@@ -202,6 +202,12 @@ export const en = {
 			title: "What happens with the test results?",
 			body: "We first need to collect enough data to allow meaningful statistical analysis. Only with a sufficient data set can we draw reliable conclusions. As part of this process, we will also provide the data to the Federal Network Agency (BNetzA) so they can independently verify our results.",
 		},
+		{
+			title: "Can I run this test automated without a browser?",
+			body: () => (<>
+				Yes, you can find all information for headless operation on your server etc. <a href="https://github.com/AKVorrat/netzbremse-measurement/" target="_blank">here</a>.
+			</>),
+		},
 	]
 }
 

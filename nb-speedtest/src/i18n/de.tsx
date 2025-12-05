@@ -215,5 +215,11 @@ export const de = {
 			title: "Was passiert mit den Messergebnissen?",
 			body: "Wir müssen zuerst ausreichend Daten sammeln, um eine sinnvolle statistische Auswertung zu ermöglichen. Nur mit ausreichend vielen Daten können wir belastbare Aussagen treffen. Im Zuge dieser Auswertung werden wir auch die Daten an die Bundesnetzagentur übergeben, damit diese unsere Ergebnisse unabhängig überprüfen kann.",
 		},
+		{
+			title: "Kann ich diesen Test auch automatisiert ohne Browser laufen lassen?",
+			body: () => (<>
+				Ja, alle Infos für einen headless Betrieb auf deinem Server o.ä. findest du <a href="https://github.com/AKVorrat/netzbremse-measurement/" target="_blank">hier</a>.
+			</>),
+		},
 	]
 }

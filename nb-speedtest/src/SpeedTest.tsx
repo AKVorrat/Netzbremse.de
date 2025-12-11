@@ -1,6 +1,5 @@
-import { Results } from '@cloudflare/speedtest';
 import { TestResult } from './types/test-result';
-import { Component, createEffect, createResource, createSignal, For, Match, Show, Switch, on } from "solid-js";
+import { Component, createEffect, createSignal, For, Match, Show, Switch, on } from "solid-js";
 import { useTranslation } from './i18n/context';
 import { PowerBtn } from './components/PowerBtn';
 import { Stepper } from './components/Stepper';
@@ -8,7 +7,6 @@ import { TbPlayerPauseFilled, TbPlayerPlayFilled, TbRotate2 } from 'solid-icons/
 import { SingleTest } from './components/SingleTest';
 import { getTestRuns, TestRun } from './data/test-runs';
 import { v4 as uuidV4 } from "uuid";
-import { SingleResult } from './components/SingleResult';
 import { Slider } from './components/Slider';
 import { differenceInSeconds } from "date-fns";
 import { config } from './data/config';
@@ -92,7 +90,13 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
     setResults(newResults)
 
     if (window.nbSpeedtestOnResult) {
-      window.nbSpeedtestOnResult({ success: outcome.success, result: outcome.success ? outcome.result.getSummary() : undefined })
+      window.nbSpeedtestOnResult({
+        sessionID: sessionID(),
+        endpoint: testRuns()?.[currentIndex].endpoint,
+        success: outcome.success,
+        result: outcome.result?.getSummary(),
+        error: outcome.error,
+      })
     }
 
     const nextIndex = currentIndex + 1

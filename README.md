@@ -2,6 +2,8 @@
 
 Source code for [netzbremse.de](https://netzbremse.de) - a campaign website documenting Deutsche Telekom's peering policies.
 
+> **Note:** It is now possible to run automated measurements even from headless systems. Check out [netzbremse-measurement](github.com/AKVorrat/netzbremse-measurement).
+
 ## Tech
 
 - **Hugo** - Static site generator

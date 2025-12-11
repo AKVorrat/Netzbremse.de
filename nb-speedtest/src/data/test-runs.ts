@@ -5,6 +5,7 @@ const alphabet = ['A', 'B', 'C', 'D', 'E']
 
 export type TestRun = {
 	label: string,
+	endpoint: string,
 	config: ConfigOptions,
 }
 
@@ -19,6 +20,7 @@ export function getTestRuns(sessionID: string, routeLabeler: (letter: string, la
 
 	let runs = data.map((d, i): TestRun => ({
 		label: d.label,
+		endpoint: d.uri,
 		config: {
 			downloadApiUrl: `${d.uri}/__down`,
 			uploadApiUrl: `${d.uri}/__up`,

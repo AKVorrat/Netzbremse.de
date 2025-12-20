@@ -2,6 +2,7 @@ import { Results } from "@cloudflare/speedtest";
 import { TbDownload, TbUpload, TbExclamationCircle } from "solid-icons/tb";
 import { Component, Show, type JSX } from "solid-js";
 import { TestResult } from "../types/test-result";
+import { SpeedtestError } from "../types/speedtest-error";
 import { useTranslation } from "../i18n/context";
 import { formatLatencyDisplay } from "../util/format-latency";
 
@@ -29,7 +30,7 @@ const Stat: Component<{ label?: string, bandwidth: number, latency: number, jitt
   </div>
 }
 
-const ErrorDisplay: Component<{ error: Error }> = (props) => {
+const ErrorDisplay: Component<{ error: SpeedtestError }> = (props) => {
   const { t } = useTranslation();
   return <div class="stats shadow-md my-1 bg-base-200 px-2 overflow-x-hidden max-[25tem]:stats-vertical">
     <div class={`stat text-primary ${statPadding}`}>
@@ -47,7 +48,7 @@ export const SingleResult: Component<{ result?: TestResult }> = (props) => {
   const { t } = useTranslation();
   return <Show
     when={props.result?.success !== false}
-    fallback={<ErrorDisplay error={props.result?.success === false ? props.result.error : new Error(t.speedtest.unknownError())} />}
+    fallback={<ErrorDisplay error={props.result?.success === false ? props.result.error : { message: t.speedtest.unknownError() }} />}
   >
     <div class="stats shadow-md my-1 bg-base-200 px-2 overflow-x-hidden max-[25tem]:stats-vertical">
       <Stat bandwidth={props.result?.success ? props.result.result.getSummary()?.download : 0} latency={props.result?.success ? props.result.result.getSummary()?.downLoadedLatency : undefined} jitter={props.result?.success ? props.result.result.getSummary()?.downLoadedJitter : undefined} icon={<TbDownload />}></Stat>

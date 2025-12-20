@@ -2,10 +2,11 @@ import SpeedTestEngine, { ConfigOptions, Results } from "@cloudflare/speedtest"
 import { createAnimatedSignal } from "./animated-signal"
 import { createSignal, onCleanup, runWithOwner } from "solid-js"
 import { config as appConfig } from "../data/config"
+import { SpeedtestError } from "../types/speedtest-error"
 
 type SpeedTestCallbacks = {
 	onDone?: (results: Results) => void
-	onError?: (error: Error) => void
+	onError?: (error: SpeedtestError) => void
 	timeoutMs?: number
 }
 
@@ -37,7 +38,7 @@ export function createSpeedtest(config: ConfigOptions, callbacks: SpeedTestCallb
 
 		if (isRunning() && !isFinished()) {
 			timeoutId = setTimeout(() => {
-				const error = new Error(`Speedtest timeout after ${timeoutMs}ms`)
+				const error = { message: `Speedtest timeout after ${timeoutMs}ms` }
 				console.error("Speedtest timeout", error)
 				speedTest.pause()
 				if (callbacks.onError) {
@@ -93,7 +94,7 @@ export function createSpeedtest(config: ConfigOptions, callbacks: SpeedTestCallb
 		clearTimeoutTimer()
 		console.error("Speedtest error", error)
 		if (callbacks.onError) {
-			callbacks.onError(new Error(error))
+			callbacks.onError({ message: error })
 		}
 	}
 	onCleanup(() => {

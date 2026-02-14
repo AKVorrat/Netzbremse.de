@@ -1,5 +1,5 @@
 import { TestResult } from './types/test-result';
-import { Component, createEffect, createSignal, For, Match, Show, Switch, on } from "solid-js";
+import { Component, createEffect, createSignal, For, Match, Show, Switch, on, createResource } from "solid-js";
 import { useTranslation } from './i18n/context';
 import { PowerBtn } from './components/PowerBtn';
 import { Stepper } from './components/Stepper';
@@ -46,7 +46,7 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
 
   const now = createTimeSignal(1000)
 
-  // const [metadata] = createResource(fetchMetadata)
+  const [metadata] = createResource(fetchMetadata)
 
   const restart = () => {
     setSessionID(uuidV4())
@@ -64,6 +64,10 @@ const NBSpeedTest: Component<{ onStateChange?: (state: SpeedTestState) => void }
       sessionId: sessionID(),
     }))
   )
+
+  createEffect(() => {
+    console.log(`Connection Metadata: ${metadata()?.asOrganization} (ASN ${metadata()?.asn})`)
+  })
 
   const onStartClick = async () => {
     // Check privacy policy acceptance first

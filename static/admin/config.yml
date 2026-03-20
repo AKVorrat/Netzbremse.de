@@ -1,0 +1,261 @@
+backend:
+  name: github
+  repo: AKVorrat/Netzbremse.de
+  branch: main
+  base_url: https://sveltia-cms-auth.muehlberger.workers.dev
+
+media_folder: "static/img"
+public_folder: "/img"
+
+collections:
+  # Coverage/Media articles
+  - name: "coverage"
+    label: "Media Coverage"
+    folder: "content/coverage"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Weight (for ordering)", name: "weight", widget: "number", default: 100, value_type: "int"}
+      - {label: "Title", name: "title", widget: "string"}
+      - label: "Parameters"
+        name: "params"
+        widget: "object"
+        fields:
+          - {label: "Publication Name", name: "publication", widget: "string"}
+          - {label: "Logo Path", name: "logo", widget: "image", required: false}
+          - {label: "Logo Shadow", name: "logoShadow", widget: "boolean", required: false}
+          - {label: "Article URL", name: "url", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  # Testimonials
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Weight (for ordering)", name: "weight", widget: "number", default: 100, value_type: "int"}
+      - {label: "Draft", name: "draft", widget: "boolean", required: false}
+      - label: "Parameters"
+        name: "params"
+        widget: "object"
+        fields:
+          - {label: "Thread Number", name: "thread", widget: "number", required: false}
+          - {label: "Source URL", name: "sourceURL", widget: "string"}
+          - {label: "Archive URL", name: "archiveURL", widget: "string", required: false}
+          - {label: "Username", name: "username", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false}
+      - label: "Sitemap"
+        name: "sitemap"
+        widget: "object"
+        fields:
+          - {label: "Disable in sitemap", name: "disable", widget: "boolean", default: true}
+      - {label: "Testimonial Content", name: "body", widget: "markdown"}
+
+  # Homepage (_index.md files)
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Homepage (DE)"
+        name: "homepage_de"
+        file: "content/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string", required: false}
+          - {label: "Date", name: "date", widget: "datetime", required: false}
+          - {label: "Draft", name: "draft", widget: "boolean", required: false}
+          - label: "Parameters"
+            name: "params"
+            widget: "object"
+            fields:
+              - label: "Sections"
+                name: "sections"
+                widget: "list"
+                types:
+                  - label: "Video"
+                    name: "video"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Platform", name: "platform", widget: "select", options: ["youtube", "ccc"]}
+                      - {label: "YouTube Video ID", name: "youtubeID", widget: "string", required: false}
+                      - {label: "YouTube Title", name: "youtubeTitle", widget: "string", required: false}
+                      - {label: "Embed URL", name: "embedURL", widget: "string", required: false}
+                      - {label: "External URL", name: "extURL", widget: "string", required: false}
+                      - {label: "Thumbnail URL", name: "thumbnailURL", widget: "string", required: false}
+                      - {label: "Alt URL (markdown link)", name: "altURL", widget: "string", required: false}
+                      - {label: "Background", name: "bg", widget: "string", required: false}
+                      - {label: "Full Width", name: "fullW", widget: "boolean", required: false}
+                  - label: "Content Block"
+                    name: "content"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Content", name: "content", widget: "markdown"}
+                  - label: "Newsletter Signup"
+                    name: "newsletter"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Background", name: "bg", widget: "string", required: false}
+                      - {label: "Share Title", name: "shareTitle", widget: "string"}
+                      - {label: "Share Body", name: "shareBody", widget: "string", required: false}
+                      - {label: "Share Message", name: "shareMessage", widget: "string"}
+                      - label: "Share Links"
+                        name: "shareLinks"
+                        widget: "list"
+                        fields:
+                          - {label: "Service", name: "service", widget: "string"}
+                          - {label: "Message", name: "message", widget: "string", required: false}
+                          - {label: "Subject", name: "subject", widget: "string", required: false}
+                          - {label: "URL", name: "url", widget: "string", required: false}
+                  - label: "Testimonials"
+                    name: "testimonials"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Full Width", name: "fullW", widget: "boolean", required: false}
+                  - label: "Contact Us"
+                    name: "contact-us"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Message Bubble", name: "msgBubble", widget: "string"}
+                      - {label: "Content", name: "content", widget: "markdown"}
+                      - label: "Channels"
+                        name: "channels"
+                        widget: "list"
+                        field: {label: "Channel", name: "channel", widget: "string"}
+                  - label: "Donate"
+                    name: "donate"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Background", name: "bg", widget: "string", required: false}
+                      - label: "Links"
+                        name: "links"
+                        widget: "list"
+                        fields:
+                          - {label: "Name", name: "name", widget: "string"}
+                          - {label: "URL", name: "url", widget: "string"}
+                  - label: "Media Coverage"
+                    name: "media-coverage"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Full Width", name: "fullW", widget: "boolean", required: false}
+                  - label: "About Us"
+                    name: "about-us"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Donation Title", name: "donationTitle", widget: "string", required: false}
+                      - label: "Members"
+                        name: "members"
+                        widget: "list"
+                        fields:
+                          - {label: "Name", name: "name", widget: "string"}
+                          - {label: "URL", name: "url", widget: "string"}
+                          - {label: "Logo", name: "logo", widget: "image"}
+                          - {label: "Donation URL", name: "donationURL", widget: "string", required: false}
+      - label: "Homepage (EN)"
+        name: "homepage_en"
+        file: "content/_index.en.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string", required: false}
+          - {label: "Date", name: "date", widget: "datetime", required: false}
+          - {label: "Draft", name: "draft", widget: "boolean", required: false}
+          - label: "Parameters"
+            name: "params"
+            widget: "object"
+            fields:
+              - label: "Sections"
+                name: "sections"
+                widget: "list"
+                types:
+                  - label: "Video"
+                    name: "video"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Platform", name: "platform", widget: "select", options: ["youtube", "ccc"]}
+                      - {label: "YouTube Video ID", name: "youtubeID", widget: "string", required: false}
+                      - {label: "YouTube Title", name: "youtubeTitle", widget: "string", required: false}
+                      - {label: "Embed URL", name: "embedURL", widget: "string", required: false}
+                      - {label: "External URL", name: "extURL", widget: "string", required: false}
+                      - {label: "Thumbnail URL", name: "thumbnailURL", widget: "string", required: false}
+                      - {label: "Alt URL (markdown link)", name: "altURL", widget: "string", required: false}
+                      - {label: "Background", name: "bg", widget: "string", required: false}
+                      - {label: "Full Width", name: "fullW", widget: "boolean", required: false}
+                  - label: "Content Block"
+                    name: "content"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Content", name: "content", widget: "markdown"}
+                  - label: "Newsletter Signup"
+                    name: "newsletter"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Background", name: "bg", widget: "string", required: false}
+                      - {label: "Share Title", name: "shareTitle", widget: "string"}
+                      - {label: "Share Body", name: "shareBody", widget: "string", required: false}
+                      - {label: "Share Message", name: "shareMessage", widget: "string"}
+                      - label: "Share Links"
+                        name: "shareLinks"
+                        widget: "list"
+                        fields:
+                          - {label: "Service", name: "service", widget: "string"}
+                          - {label: "Message", name: "message", widget: "string", required: false}
+                          - {label: "Subject", name: "subject", widget: "string", required: false}
+                          - {label: "URL", name: "url", widget: "string", required: false}
+                  - label: "Testimonials"
+                    name: "testimonials"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Full Width", name: "fullW", widget: "boolean", required: false}
+                  - label: "Contact Us"
+                    name: "contact-us"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Message Bubble", name: "msgBubble", widget: "string"}
+                      - {label: "Content", name: "content", widget: "markdown"}
+                      - label: "Channels"
+                        name: "channels"
+                        widget: "list"
+                        field: {label: "Channel", name: "channel", widget: "string"}
+                  - label: "Donate"
+                    name: "donate"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Background", name: "bg", widget: "string", required: false}
+                      - label: "Links"
+                        name: "links"
+                        widget: "list"
+                        fields:
+                          - {label: "Name", name: "name", widget: "string"}
+                          - {label: "URL", name: "url", widget: "string"}
+                  - label: "Media Coverage"
+                    name: "media-coverage"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Full Width", name: "fullW", widget: "boolean", required: false}
+                  - label: "About Us"
+                    name: "about-us"
+                    fields:
+                      - {label: "ID", name: "id", widget: "string"}
+                      - {label: "Title", name: "title", widget: "string"}
+                      - {label: "Donation Title", name: "donationTitle", widget: "string", required: false}
+                      - label: "Members"
+                        name: "members"
+                        widget: "list"
+                        fields:
+                          - {label: "Name", name: "name", widget: "string"}
+                          - {label: "URL", name: "url", widget: "string"}
+                          - {label: "Logo", name: "logo", widget: "image"}
+                          - {label: "Donation URL", name: "donationURL", widget: "string", required: false}

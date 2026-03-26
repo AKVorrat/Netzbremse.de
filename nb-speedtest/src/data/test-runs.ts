@@ -29,6 +29,7 @@ export function getTestRuns(sessionID: string, routeLabeler: (letter: string, la
 			turnServerCredsApiUrl: `${d.uri}/__turn`,
 			turnServerUri: "turn.cloudflare.com:3478",
 			includeCredentials: false,
+			bandwidthAbortRequestDuration: 60 * 1000,
 			measurements: [
 				{ type: "download", bytes: 100_000, count: 2 },
 				{ type: "upload", bytes: 100_000, count: 2 },

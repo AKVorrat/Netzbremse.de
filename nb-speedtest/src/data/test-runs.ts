@@ -31,6 +31,10 @@ export function getTestRuns(sessionID: string, routeLabeler: (letter: string, la
 			includeCredentials: false,
 			bandwidthAbortRequestDuration: 60 * 1000,
 			measurements: [
+				{ type: "download", bytes: 5_000, count: 2 },
+				{ type: "upload", bytes: 5_000, count: 2 },
+				{ type: "download", bytes: 20_000, count: 2 },
+				{ type: "upload", bytes: 20_000, count: 2 },
 				{ type: "download", bytes: 100_000, count: 2 },
 				{ type: "upload", bytes: 100_000, count: 2 },
 				{ type: "download", bytes: 500_000, count: 2 },

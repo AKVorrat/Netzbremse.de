@@ -23,6 +23,11 @@ export const SingleTest: Component<{
       onDone: (result) => props.onComplete?.({ success: true, result, label: props.label }),
       onError: (error) => {
         console.error(`Speedtest ${props.label} error:`, error)
+        if (error.message && error.message.includes("bandwidthAbortRequestDuration")) {
+            // this error does not mean that the test failed in its entirety
+            // don't set success false
+            return;
+        }
         props.onComplete?.({ success: false, error, label: props.label })
       }
     })

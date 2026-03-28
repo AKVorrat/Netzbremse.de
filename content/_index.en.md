@@ -104,7 +104,7 @@ params:
       donationURL: "https://freiheitsrechte.org/en/unterstuetzen/einzelspenden"
     - name: "Federation of German Consumer Organizations"
       url: "https://www.vzbv.de/en"
-      logo: "/img/vzbv/Verbraucherzentrale_Bundesverband_Logo.svg.png"
+      logo: "/img/vzbv/vzbv-logo.svg"
     - name: "Prof. Dr. Barbara van Schewick"
       url: "https://law.stanford.edu/barbara-van-schewick/"
 ---

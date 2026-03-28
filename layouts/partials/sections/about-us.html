@@ -5,8 +5,14 @@
       <a href="{{ .url }}" target="_blank" class="text-base-content">
         {{ if .logo }}
         <span class="sr-only">{{ .name }}</span>
-        <img class="m-0" src="{{ ((resources.GetMatch .logo).Fit " 200x100").RelPermalink | safeURL }}"
+        {{ $img := resources.GetMatch .logo }}
+        {{ if eq $img.MediaType.SubType "svg" }}
+        <img class="m-0" width="200" height="100" style="object-fit:contain" src="{{ $img.RelPermalink | safeURL }}"
           alt="Logo von {{ .name }}">
+        {{ else }}
+        <img class="m-0" src="{{ ($img.Fit " 200x100").RelPermalink | safeURL }}"
+          alt="Logo von {{ .name }}">
+        {{ end }}
         {{ else }}
         {{ .name }}
         {{ end }}

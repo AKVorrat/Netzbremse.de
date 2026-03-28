@@ -16,7 +16,7 @@ export const ErrorAccordion: Component<{
       <div class="collapse-title text-lg font-medium peer-checked:bg-base-300 peer-checked:text-base-content">
         <div class="flex flex-row flex-wrap items-center justify-between gap-2">
           <span class="text-base lg:text-lg">{props.testResult.label}</span>
-          <div class="text-xs lg:text-sm opacity-70 flex items-center gap-2">
+          <div class="text-sm flex items-center gap-2">
             <TbExclamationCircle class="w-4 h-4 text-error" />
             <span class="text-error">{t.speedtest.error()}</span>
           </div>

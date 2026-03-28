@@ -5,7 +5,7 @@ import { config as appConfig } from "../data/config"
 import { SpeedtestError } from "../types/speedtest-error"
 
 type SpeedTestCallbacks = {
-	onDone?: (results: Results) => void
+	onDone?: (results: Results) => void // callbacks are called exactly once, either onDone or onError, never both
 	onError?: (error: SpeedtestError) => void
 	timeoutMs?: number
 }
@@ -38,12 +38,11 @@ export function createSpeedtest(config: ConfigOptions, callbacks: SpeedTestCallb
 
 		if (isRunning() && !isFinished()) {
 			timeoutId = setTimeout(() => {
+				if (isFinished()) return
+				setIsFinished(true)
 				const error = { message: `Speedtest timeout after ${timeoutMs}ms` }
-				console.error("Speedtest timeout", error)
 				speedTest.pause()
-				if (callbacks.onError) {
-					callbacks.onError(error)
-				}
+				callbacks.onError?.(error)
 			}, timeoutMs)
 		}
 	}
@@ -85,18 +84,29 @@ export function createSpeedtest(config: ConfigOptions, callbacks: SpeedTestCallb
 			clearTimeoutTimer()
 		}
 	}
+
 	speedTest.onFinish = () => {
 		clearTimeoutTimer()
+
+		// make sure we only ever do the callback once
+		if (isFinished()) return
 		setIsFinished(true)
-		if (callbacks.onDone) callbacks.onDone(speedTest.results)
-	}
-	speedTest.onError = (error) => {
-		clearTimeoutTimer()
-		console.error("Speedtest error", error)
-		if (callbacks.onError) {
-			callbacks.onError({ message: error })
+
+		const summary = speedTest.results.getSummary()
+		console.log("done", summary, speedTest.results.getDownloadBandwidth())
+		if (!summary.download && !summary.upload) { // we consider a speedtest with no results failed
+			callbacks.onError?.({ message: "All measurements failed" })
+		} else {
+			callbacks.onDone?.(speedTest.results)
 		}
 	}
+
+	// speedtest can return multiple errors when individual measurements fail
+	// errors are non terminal so for our purpose they are more like warnings
+	speedTest.onError = (error) => {
+		console.warn("Speedtest measurement error:", error)
+	}
+
 	onCleanup(() => {
 		clearTimeoutTimer()
 		if (speedTest?.isRunning) {

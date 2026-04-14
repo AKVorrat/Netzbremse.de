@@ -1,12 +1,29 @@
-<div class="card bg-base-100 shadow-xl overflow-hidden max-w-[720px] flex w-full aspect-video">
-  {{ if eq .section.platform "youtube" }}
-    {{ partial "utils/youtube" (dict "id" .section.youtubeID "title" .section.youtubeTitle) }}
-  {{ else if eq .section.platform "ccc" }} 
-    {{ partial "utils/ccc-video" (dict "embedURL" .section.embedURL "extURL" .section.extURL "thumbnailURL" .section.thumbnailURL) }}
-  {{ else }}
-    {{ errorf "Invalid video platform" }}
+{{ $videos := .section.videos }}
+{{ $showItemTitles := true }}
+{{ if not $videos }}
+  {{ $videos = slice .section }}
+  {{ $showItemTitles = false }}
+{{ end }}
+
+<div class="w-full flex flex-col items-center gap-6">
+  {{ range $video := $videos }}
+    <div class="w-full max-w-[720px] flex flex-col items-center gap-3">
+      {{ if and $showItemTitles $video.title }}
+        <h3 class="m-0 text-center">{{ $video.title }}</h3>
+      {{ end }}
+      <div class="card bg-base-100 shadow-xl overflow-hidden flex w-full aspect-video">
+        {{ if eq $video.platform "youtube" }}
+          {{ $ytTitle := or $video.youtubeTitle $video.title }}
+          {{ partial "utils/youtube" (dict "id" $video.youtubeID "title" $ytTitle) }}
+        {{ else if eq $video.platform "ccc" }}
+          {{ partial "utils/ccc-video" (dict "embedURL" $video.embedURL "extURL" $video.extURL "thumbnailURL" $video.thumbnailURL) }}
+        {{ else }}
+          {{ errorf "Invalid video platform: %v" $video.platform }}
+        {{ end }}
+      </div>
+      {{ if $video.altURL }}
+        <p>{{ $video.altURL | markdownify }}</p>
+      {{ end }}
+    </div>
   {{ end }}
 </div>
-{{ if .section.altURL }} 
-<p>{{ .section.altURL | markdownify }}</p>
-{{ end }}

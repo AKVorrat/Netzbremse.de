@@ -78,12 +78,21 @@ params:
 
   - type: video
     id: conference-talk
-    title: "Talk at Chaos Communication Congress 38C3"
-    platform: "ccc"
-    embedURL: "https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever/oembed#t=1205"
-    extURL: "https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever"
-    thumbnailURL: "img/thumbnails/ccc-talk-thumbnail.png"
-    altURL: "[Watch the full talk](https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever)"
+    title: "Talks"
+    videos:
+    - platform: "youtube"
+      title: "Telekom Shareholders Meeting 2026"
+      youtubeID: "JFDGCUX-qEo"
+      youtubeTitle: "Thomas Lohninger konfrontiert Telekom-Vorstand 2026 | Netzneutralität & bezahlte Überholspur"
+    - platform: "youtube"
+      youtubeID: "rFeXNkHrBrY"
+      youtubeTitle: "Einzelfall oder strukturelles Problem? Deutsche Telekom im Netzneutralitäts-Kreuzverhör"
+    - platform: "ccc"
+      title: "Talk at Chaos Communication Congress 38C3"
+      embedURL: "https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever/oembed#t=1205"
+      extURL: "https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever"
+      thumbnailURL: "img/thumbnails/ccc-talk-thumbnail.png"
+      altURL: "[Watch the full talk](https://media.ccc.de/v/38c3-net-neutrality-why-it-still-matters-more-than-ever)"
 
   - type: media-coverage
     title: "Media Coverage"

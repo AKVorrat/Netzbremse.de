@@ -33,6 +33,8 @@ export function getTestRuns(sessionID: string, routeLabeler: (letter: string, la
 			measurements: [
 				{ type: "download", bytes: 100_000, count: 2 },
 				{ type: "upload", bytes: 100_000, count: 2 },
+				{ type: "download", bytes: 1_000_000, count: 2 },
+				{ type: "upload", bytes: 700_000, count: 2 },
 				{ type: "download", bytes: 10_000_000, count: 2 },
 				{ type: "upload", bytes: 5_000_000, count: 2 },
 				{ type: "download", bytes: 25_000_000, count: 2 },
